@@ -1,0 +1,298 @@
+
+body {
+  background-color: white !important;
+  min-height: 50vh;
+}
+
+.sot-login-boton{
+  width: 16vh;
+  height: 15vh;
+}
+
+.div-sot-button-cocina{
+  margin-right: 6vh;
+}
+
+.sot-button-cocina {
+  background-color: #E0433A;
+  color: white;
+  box-shadow: 0px 3px 6px #A51209;
+  border: 1px solid #E0433A;
+  border-radius: 10px;
+}
+
+.sot-button-bar {
+  color: white;
+  background-color: #7B09A6;
+  box-shadow: 0px 3px 6px #21062C;
+  border: 1px solid #7B09A6;
+  border-radius: 10px;
+}
+
+.sot-button-checador {
+  color: white;
+  background-color: #058E6E;
+  box-shadow: 0px 3px 6px #033328;
+  border: 1px solid #058E6E;
+  border-radius: 10px;
+}
+
+.btn-modal-details{
+  width: 12vh;
+  height: 11vh;
+}
+
+.modal-dialog{
+
+}
+
+.background-img {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.div-form-login{
+  margin-top: 4vh;
+}
+
+.loader{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif')
+              50% 50% no-repeat rgb(249,249,249);
+}
+
+#clickme {
+  cursor: pointer
+}
+
+.sotformcontrol {
+  background-color: #C6C5C5;
+  border: 1px solid #C6C5C5;
+  border-radius: 10px 10px 10px 10px !important;
+  padding: 0 10px;
+  width: 100%;
+  margin-left:50px;
+
+}
+
+.ojo{
+
+  padding-top:4.61px;
+  border-radius: 0px 10px 10px 0px !important;
+  padding:4.64px;
+}
+
+.principal-login{
+  position: fixed;
+  z-index: 10;
+  top: -10px;
+  left: -14px;
+  height: 75%;
+  display: block;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fondo-login{
+  height: 120%
+}
+
+.logo-cont-login{
+  position: absolute;
+  z-index: 20;
+  top:28%;
+  left: 70px;
+}
+
+.logo-login{
+  height: 68px;
+  width: 20vh;
+}
+
+.titulo-login{
+  font-size: 8vh;
+  color: white;
+}
+
+.contenido-login{
+  position: relative;
+  height: 11vh;
+}
+
+.cortina-login{
+  height: 130%;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: block;
+}
+
+.cortina-login-2{
+  height: 130%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: block;
+  z-index: -1;
+}
+
+.size-100{
+  height: 100%;
+  width: 100%;
+}
+
+.margin-100{
+  margin-top: 100 !important;
+}
+
+#usuarioContrasenaIncorrectos{
+  margin: 0vh 6vh;
+}
+
+.icon-login{
+  font-size: 6vh;
+}
+
+.div-input-login{
+  width: 50vh;
+}
+
+.finger-button-login{
+  font-size: 9vh;
+  color: white;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+}
+
+.pass-margin{
+  margin: 0px -5vh 0px 0px;
+}
+
+.text-error{
+  color: red;
+  display: none;
+}
+
+.dis-none-login{
+  display: none;
+  padding: 1vh 3vh;
+}
+
+.button-entrar-login{
+  background-color: #AD1F17;
+  border: none;
+  box-shadow: 0px 3px 6px #71130E;
+  color: white;
+  border-radius: 20px;
+  width: 24vh;
+}
+
+.reestablecer-pass-modal-content{
+  width: 100vh;
+}
+
+.txt-accesando-margin{
+  margin: auto;
+  width: 50%;
+}
+
+.svg-style-login{
+  stroke: none;
+  fill: rgba(199, 44, 65, .95);
+  filter:url(#shadow);
+}
+
+.svg-style-login2{
+  stroke: none;
+  fill: rgba(224, 67, 58, .50);
+  filter:url(#shadow);
+}
+
+.mensaje-bienvenida{
+  margin: 1vh 0vh 2vh;
+  font-size: 7vh;
+}
+
+.w-90vh{
+  width: 90vh;
+}
+
+/********** Dispositivos Moviles **********/
+@media (max-width: 769px)
+{
+  .sot-login-boton {
+    width: 25vw;
+    height: 30vw;
+  }
+
+  .sot-login-boton .icon-login{
+    font-size: 8vh;
+    font-size: 10vw;
+  }
+
+  .sot-login-boton .font-2-5vh{
+    font-size: 4vw;
+  }
+
+  .finger-button-login{
+    width: 25vw;
+    height: 25vw;
+  }
+
+  .icon-manita_fingerprint{
+    font-size: 15vw;
+  }
+
+  .titulo-login{
+    width: 80vw;
+  }
+
+  .div-input-login{
+    width: 60vw;
+  }
+
+  input,
+  input::placeholder{
+    font-size: 5vw;
+  }
+
+  .ojo{
+    padding: 0px;
+    font-size: 4vw;
+  }
+
+  .btn-modal-details {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .btn-modal-details.mr-8vh{
+    margin-right: 12vw;
+  }
+
+  .btn-modal-details .font-3vh{
+    font-size: 6vw;
+  }
+
+  .btn-modal-details .font-2vh{
+    font-size: 3vw;
+  }
+
+  .w-90vh {
+    width: 70vh !important;
+  }
+
+  .modal-body {
+    padding: 3vw;
+  }
+}

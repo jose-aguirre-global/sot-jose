@@ -1,0 +1,358 @@
+.NumHabitacion{
+    font-size: 3vh;
+    color: #801336;
+    font-weight: bold;
+}
+
+.order-box {
+    box-shadow: 0px 3px 10px #00000029;
+    padding: 1vh 2vh;
+    width: 40vh;
+}
+
+.order-content{
+  border-radius: 1vh;
+  padding: 0.5vh 2vh;
+}
+
+.order-blue-content {
+    background: #E7E5FC;
+    border: 1px solid #3723FF;
+    color: #3723FF;
+}
+
+.order-green-content {
+    background: #f1fff2;
+    border: 1px solid #0AC917;
+    color: #0AC917;
+}
+
+.order-yellow-content {
+    background: #FFFDE6;
+    border: 1px solid #FFD500;
+    color: #FFD500;
+}
+
+.order-red-content {
+    background: #FAE2E4;
+    border: 1px solid #FD0022;
+    color: #FD0022;
+}
+
+.order-elementlist {
+  min-height: 40vh;
+  padding: 2vh 1vh 0vh;
+  font-size: 1.5vh;
+}
+
+.order-blue-result-content {
+  width: 100%;
+  height: 14vh;
+  padding: 1vh;
+    background: #E7E5FC;
+    color: #3723FF;
+    border-radius: 10px;
+}
+
+.order-default-result-content {
+    width: 100%;
+    height: 14vh;
+    padding: 1vh;
+    background: #fff;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.btn-order-success {
+    background-color: #0AC917;
+    border: 1px solid #0AC917;
+    color:white;
+}
+
+.btn-order-success:hover {
+    background-color: #0AC917;
+    border: 1px solid #0AC917;
+    color:white;
+}
+
+.btn-order-disable {
+    background-color: #C6C5C5;
+    border: 1px solid #C6C5C5;
+    color: white;
+}
+
+.loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif')
+                50% 50% no-repeat rgb(249,249,249);
+  }
+
+  .CambiarActivo
+  {
+      background-color: #e78300;
+      border: 1px solid #e78300;
+      color: white;
+  }
+
+  .modalCentradoComandas {
+    margin: 25vh 10vw 0vh;
+    width: 80vw;
+ }
+
+ .SelectModal
+ {
+    margin-bottom: 1vh;
+    width: 30vh;
+    font-size: 2vh;
+    text-align: left;
+ }
+
+ .inputCortesia{
+    width: 300px;
+    height: 100px;
+    background-color: #C6C5C5;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    margin: 15px 25%;
+ }
+
+ .div-container-ordersList{
+  overflow: auto;
+  padding: 0px;
+  margin: 0px;
+ }
+
+.cortesia-order{
+  font-size: 1.5vh;
+  margin: 1vh 0vh;
+}
+
+.ordersList-buttons button{
+  margin-right: 0.5vh;
+  width: 8vh;
+  height: 8vh;
+  padding: 0px;
+}
+
+.ordersList-buttons button i{
+  font-size: 2.5vh;
+}
+
+.ordersList-buttons button span{
+  font-size: 1.5vh;
+}
+
+.button-cambiar-inhabilitado{
+  background-color: #C6C5C5;
+  border: 1px solid #C6C5C5;
+  color:white;
+}
+
+.button-cambiar-habilitado{
+  background-color: #E78300;
+  border: 1px solid #E78300;
+  color:white;
+}
+
+.titulo-cancelacion{
+  font-size: 22px;
+  color: #707070;
+}
+
+.habitacion-cancelacion{
+  font-size: 2.3vh;
+  color: #707070;
+}
+
+#motivoCancelacion{
+  background-color: #C6C5C5;
+  width: 45vh;
+  height: 15vh
+}
+
+.div-OpenNewOrderModal{
+  position: fixed;
+  right: 1%;
+  top: 40%;
+  background: #b6b6b6;
+  border-radius: 30%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-OpenNewOrderModal{
+  border-radius: 50%;
+  background-color: #801336;
+  border: 1px solid #801336;
+  color:white;
+  box-shadow: 0px 3px 6px #292929;
+}
+
+#btnExitHuella,
+#btnOkHuella{
+  width: 10vh;
+  height: 10vh;
+}
+
+#huellaAutorizarOrden{
+  overflow:hidden;
+}
+
+#loaderAutorizarOrden{
+  margin: auto;
+  width: 50%;
+}
+
+#modalModificadoExitosoAutorizar .modal-titulo,
+#pagoComandaExitoso .modal-titulo{
+  text-align: center;
+  color:#181818;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#ModalMetodosPagoComanda .modal-body{
+  text-align: center;
+  padding: 0px;
+}
+
+#ModalMetodosPagoComanda .modal-content{
+  border: 1px solid #a3a3a3;
+  min-height: 40vh;
+  padding: 2.5vh;
+  padding-bottom: 4vh;
+}
+
+#LbNumeroTarjeta,
+#LbNumAprobacion
+{
+  width: 240px;
+}
+
+.div-tipo-pago-mensaje{
+  left: 6px;
+  top: 2px;
+  color: #737373;
+}
+
+.nombre-articulo{
+  min-width: 25vh;
+}
+
+.titulo-modales-alertas{
+  font-size: 4.7vh;
+}
+
+.titulo-modales-alertas.entregado{
+  font-weight: bolder;
+}
+
+.tamaño-modal-alerta{
+  width: 100vh;
+}
+
+.tamaño-modal-alerta-entregado{
+  width: 80vh !important;
+}
+
+
+
+/* ////////////////////////////////////////// */
+
+/* MODAL PAGO */
+
+.inputs-pago-tarjeta{
+  width: 27vh !important;
+}
+
+.tamaño-letra-tarjeta{
+  font-size:2.5vh !important;
+}
+
+.tamaño-contenedor-textos-tarjeta{
+  width: 40vh;
+}
+
+.observaciones-motivo{
+  width: 55vh !important;
+  height: 10vh !important;
+}
+
+.tamaño-select{
+  width:45vh;
+}
+
+.subtitulos-modal-hab{
+  font-size: 2.7vh;
+}
+
+#cancelacion.titulo-modales-alertas{
+  color:#707070;
+  font-size: 3.7vh;
+}
+
+@media (max-width: 769px){
+
+  .inputs-pago-tarjeta{
+    width: 18vh !important;
+  }
+
+  .tamaño-contenedor-textos-tarjeta{
+    width: 35vh;
+  }
+
+  .tamaño-letra-tarjeta{
+    font-size:1.8vh !important;
+  }
+
+  .observaciones-motivo{
+    width: 35vh !important;
+    height: 10vh !important;
+  }
+
+  .subtitulos-modal-hab{
+    font-size: 1.3vh !important;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .tamaño-modal-alerta{
+    width: 65vh;
+  }
+
+  .SelectModal
+ {
+    width: 18vh;
+ }
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+
+  .tamaño-select{
+    width:35vh;
+  }
+
+  .subtitulos-modal-hab{
+    font-size: 2vh !important;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .tamaño-modal-alerta{
+    width: 55vh;
+  }
+}
+
+
+/*////////////////////////////////////////// */

@@ -1,0 +1,104 @@
+.modal{
+  background: #0000006b;
+}
+
+.modal-header{
+  padding: 1vh 2vh;
+}
+
+.modal-dialog{
+  width: 70vh;
+  margin: auto;
+}
+
+.modal-content{
+  min-height: 50vh;
+  max-height: 90vh;
+  border-radius: 2.5vh;
+}
+
+.modal-title{
+  width: 100%;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: 700;
+  color: #6d6d6d;
+}
+
+.modal-body{
+  overflow-x: auto;
+  padding: 2.5vh 3vh;
+}
+
+.modal-body .lista-roles .list-group-item{
+  background-color: #8c8c8c;
+  padding: 2vh 3vh;
+  font-size: 3vh;
+  font-weight: 400;
+  margin: 1vh 0vh;
+  border-radius: 1.5vh;
+  border: none;
+  box-shadow: 1px 2px 7px #7f7f7f;
+}
+
+.lista-roles .rol-botones button{
+  padding: 0.5vh 2vh;
+  background: #8c8c8c;
+  border: none;
+  font-size: 3vh;
+}
+
+.lista-roles .rol-botones button i{
+  font-weight: 400;
+}
+
+.row-botones{
+  margin: 2vh 0vh;
+}
+
+
+@media (min-width: 1350px){     /*  PANTALLAS GRANDES */
+  /* .modal-content{
+    width: 60vw;
+  } */
+}
+
+@media (max-width: 576px){ /*  TELEFONOS */
+
+  .modal-dialog{
+    width: 95vw;
+  }
+
+  .modal-title{
+    font-size: 3vh;
+  }
+
+  .modal-body{
+    padding: 1.5vh 2vh;
+  }
+
+  .modal-body .lista-roles .list-group-item{
+    font-size: 2.5vh;
+    padding: 1vh 2vh;
+    margin: 1.5vh 0vh;
+  }
+
+  .lista-roles .rol-botones button{
+    padding: 0vh 1vh;
+    font-size: 2.5vh;
+  }
+
+}
+
+
+.modalMensajeGestionarRoles .modal-content{
+  min-height: auto;
+  max-height: auto;
+}
+
+.modalMensajeGestionarRoles .modal-body p{
+  margin: 4vh;
+  font-size: 3.5vh;
+  text-align: center;
+  font-weight: 700;
+}

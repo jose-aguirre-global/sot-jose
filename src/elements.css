@@ -1,0 +1,81 @@
+/* 
+    Fondo encabezados tablas: #E4E4E4
+*/
+
+.header-tables {
+    background-color: #E4E4E4;
+    font-size: 16px;
+    color: #9B9898;
+    font-weight: bold;
+    /* border-radius: 10px 10px 0 0; */
+}
+
+.divider {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.border-10p {
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.divider-3 {
+    width: 33.33%;
+}
+
+.divider-5 {
+    width: 20%;
+}
+
+/* 
+    Botón mas y menos
+*/
+
+.sm-button-plus { 
+    height: 20px;
+    width: 20px;
+    background-color: #801336; 
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 2px;
+}
+
+.sm-button-minus {
+    height: 20px;
+    width: 20px;
+    background-color: #801336;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 2px;
+}
+
+/* Elementos generales */
+
+.sot-textbox {
+    background-color: #C6C5C5;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.label-gray {
+    background: #E4E4E4;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.text-light-gray {
+    color: #9B9898;
+    font-size: 22px;
+}
+
+.secondary-header {
+    color: #707070;
+    font-weight: bold;
+}

@@ -1,0 +1,194 @@
+<div *ngIf="behaviorCortina" (click)="showCortina = !showCortina" id="cortina" class="animated fadeInDown principal-login"
+    [ngClass]="{'fadeOutUp': !showCortina}">
+    <img class="fondo-login" src="./assets/img/fondoIndex.svg" alt="Motel Logo">
+    <div class="logo-cont-login">
+        <img class="logo-login" src="./assets/img/sot_logo.svg" alt="Motel Logo">
+        <h2 class="titulo-login">Sistema de gestion hotelera</h2>
+    </div>
+</div>
+
+<div class="contenido-login">
+    <div class="cortina-login">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="size-100">
+            <defs>
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="3" stdDeviation="6" />
+                </filter>
+            </defs>
+            <path d="M0.00,49.99 C150.00,150.00 273.36,-30.29 502.48,66.41 L500.00,0.00 L0.00,0.00 Z"
+            class="svg-style-login"></path>
+        </svg>
+    </div>
+    <div class="cortina-login-2">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="size-100">
+            <defs>
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="3" stdDeviation="6" />
+                </filter>
+            </defs>
+            <path d="M-0.90,0.30 C89.95,-14.50 355.19,223.31 493.45,-11.54 L501.35,-6.60 L-9.93,-23.39 Z"
+            class="svg-style-login2"></path>
+        </svg>
+    </div>
+</div>
+
+<div class="margin-100">
+
+    <div>
+        <div class="d-flex justify-content-center">
+            <div class="div-sot-button-cocina">
+                <button class="sot-button-cocina sot-login-boton" (click)="RedirectRestaurante(false ,0)">
+                    <div class="icon-login"><i class="icon-cocina"></i></div>
+                    <div class="font-2-5vh">Cocina</div>
+                </button>
+            </div>
+            <div>
+                <button class="sot-button-bar sot-login-boton" (click)="RedirectRestaurante(false ,1)">
+                    <div class="icon-login"><i class="icon-bar"></i></div>
+                    <div class="font-2-5vh">Bar</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-form-login">
+        <form (submit)="SessionOpen()" autocomplete="off">
+            <div class="d-flex justify-content-center mb-4vh">
+              <div [ngClass]="[fingerButtonColor, 'd-flex', 'justify-content-center', 'finger-button-login', 'sot-login-boton']">
+                <i [ngClass]=" fingerButtonLogo "></i>
+              </div>
+            </div>
+
+            <!-- <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeScannerDetectado !== '' ">
+              <span class="text-danger font-2-5vh">
+                {{ mensajeScannerDetectado }}
+              </span>
+            </div> -->
+
+            <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeResultadoLogin !== '' ">
+              <span class="text-danger font-2-5vh">
+                {{ mensajeResultadoLogin }}
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-center mb-2vh" >
+                <div>
+                    <label id="usuarioContrasenaIncorrectos" class="text-error font-2-5vh">Usuario o contraseña incorrecto favor de validar</label>
+                    <label id="usuarioNull" class="text-error font-2-5vh" >Favor de ingresar un usuario</label>
+                    <label id="PassNull" class="text-error font-2-5vh" >Favor de ingresar su contraseña</label>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-4vh">
+                <div class="div-input-login">
+                    <input  type="text"
+                            class="sot-form-control text-center font-2-5vh w-40vh line-h-5vh"
+                            name="userName"
+                            [(ngModel)]="loginModel.identificadorUsuario"
+                            placeholder="Usuario"
+                    >
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="div-input-login">
+                    <input  type="password"
+                            class="sotformcontrol text-center pass-margin font-2-5vh w-40vh line-h-5vh"
+                            name="password"
+                            id ="passwordLogin"
+                            [(ngModel)]="loginModel.valorVerificarStr"
+                            placeholder="Contraseña"
+                    >
+                        <span class="fa fa-eye text-secondary ojo font-3vh"   (click)="verContrasena()"></span>
+                </div>
+            </div>
+
+            <div class="text-center p-3vh">
+                <button type="button" class="btn-modal-details btn-redBold mr-8vh" data-dismiss="modal">
+                    <div class="txt-pass font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                    <div class="size-txt font-2vh">Salir</div>
+                </button>
+                <button type="submit" class="btn-modal-details btn-green" data-dismiss="modal">
+                    <div class="txt-pass font-3vh"><i class="fas fa-check"></i></div>
+                    <div class="size-txt font-2vh">Aceptar</div>
+                </button>
+
+            </div>
+        </form>
+        <div class="d-flex justify-content-center">
+            <button id="btnRestablecerContrasena" class="btn btn-warning dis-none-login" (click)="RedirectRestablecerContrasenaModal()">
+                <div class="font-2-5vh">Restablecer contraseña</div>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="SelectModal">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+            <div class="modal-content w-90vh">
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="d-flex justify-content-center">
+                    <div class="mensaje-bienvenida">{{ 'Bienvenido '+ usuarioLogin | titlecase }}</div>
+                  </div>
+
+                  <div class="mb-3 d-flex justify-content-center">
+                    <button class="button-entrar-login" (click)="RedirectHotel()">
+                    <div class="font-12vh"><i class="icon-hotel_carita"></i></div>
+                    <div class="font-3vh">V Sur</div>
+                    </button>
+                  </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade reestablecer-pass-margin" id="restablecerContrasenaModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content reestablecer-pass-modal-content">
+                <div class="modal-body">
+                    <div>
+                        <div class="text-center">
+
+                            <div class="mb-4vh txt-pass font-4vh">
+                                <b>¿Desea restablecer su contraseña?</b>
+                            </div>
+
+                            <div>
+                                <button type="button" class="btn-modal-details btn-redBold mr-8vh" data-dismiss="modal" (click)="RedirectSalirModalRestablecerContrasena()" >
+                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                    <div class="size-txt font-2vh">Salir</div>
+                                </button>
+                                <button  class="btn-modal-details btn-green"(click)="stopFingerprintServices(); child_huella.OpenModalAutorizarRestablecimientoPassword('retablecerPassword')" >
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="size-txt font-2vh">Aceptar</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  class="modal fade modal-huella"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myLargeModalLabel"
+          aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+          <div class="modal-content modal-accesando-margin w-100vh">
+            <div class="modal-body">
+              <app-huella #child_huella></app-huella>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

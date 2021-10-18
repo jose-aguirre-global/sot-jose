@@ -1,0 +1,12 @@
+
+.modalMensajeGestionarRoles .modal-content{
+  min-height: auto;
+  max-height: auto;
+}
+
+.modalMensajeGestionarRoles .modal-body p{
+  margin: 4vh;
+  font-size: 3.5vh;
+  text-align: center;
+  font-weight: 700;
+}

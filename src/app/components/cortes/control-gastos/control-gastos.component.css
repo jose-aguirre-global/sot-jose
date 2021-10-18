@@ -1,0 +1,45 @@
+.modal-header{
+  padding: 1vh 2vh;
+}
+
+.modal-dialog{
+  width: 90%;
+  margin: auto;
+}
+
+.modal-content{
+  min-height: 50vh;
+  max-height: 90vh;
+}
+
+.modal-title{
+  width: 100%;
+  text-align: center;
+  font-size: 2.5vh;
+}
+
+.modal-body{
+  overflow-x: auto;
+  padding: 1vh 2.5vh;
+}
+
+.modal-body .col-resumen-corte{
+  padding: 0vh 2vh 0.5vh;
+}
+
+.row-botones{
+  margin: 2vh 0vh;
+}
+
+@media (min-width: 1350px){     /*  PANTALLAS GRANDES */
+  .modal-content{
+    width: 60vw;
+  }
+}
+
+@media (max-width: 576px){ /*  TELEFONOS */
+
+  .modal-body .col-resumen-corte{
+    padding: 1vh 1vh 3vh;
+  }
+}

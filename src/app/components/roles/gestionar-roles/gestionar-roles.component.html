@@ -1,0 +1,86 @@
+<div class="modal fade modalGestionarRoles" id="modalGestionarRoles" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+          <h4 class="modal-title">Gestionar Roles</h4>
+          <!-- <button type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div><!-- moda-header -->
+
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="lista-roles">
+            <ul class="list-group">
+
+              <li class="list-group-item d-flex justify-content-between align-items-center btn-secondary">
+                Administrador
+                <div class="rol-botones">
+                  <button type="button" (click)="editarRol(57)" class="btn btn-secondary">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button (click)="modalAlerta(57)" type="button"  class="btn btn-secondary">
+                    <i class="icon-sucia"></i>
+                  </button>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div><!-- modal-body -->
+
+          <!-- BOTONES -->
+          <div class="row d-flex justify-content-center row-botones">
+            <button type="button" data-dismiss="modal" class="btn-modal-details btn-redBold mr-8vh">
+              <div class="txt-pass font-3vh">
+                <i class="icon-icon-metro-exit"></i>
+              </div>
+              <div class="size-txt font-2vh">Salir</div>
+            </button>
+
+            <button type="button" (click)="crearRol()" class="btn-modal-details btn-success">
+              <div class="txt-pass font-3vh">
+                <i class="fas fa-print"></i>
+              </div>
+              <div class="size-txt font-2vh">Crear Rol</div>
+            </button>
+
+          </div><!-- row -->
+      </div><!-- modal-content -->
+  </div>
+</div>
+
+<app-editar-rol [idRolEditar]="idRolEditar"></app-editar-rol>
+
+<div class="modal fade modalMensajeGestionarRoles" id="modalMensajeGestionarRoles" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+
+        <!-- MODAL BODY -->
+        <div class="modal-body d-flex justify-content-center">
+          <p>{{ mensajeAlerta }}</p>
+        </div><!-- modal-body -->
+
+          <!-- BOTONES -->
+          <div class="row d-flex justify-content-center row-botones">
+            <button type="button" data-dismiss="modal" class="btn-modal-details btn-redBold mr-8vh">
+              <div class="txt-pass font-3vh">
+                <i class="icon-icon-metro-exit"></i>
+              </div>
+              <div class="size-txt font-2vh">Cancelar</div>
+            </button>
+
+            <button type="button" (click)="borrarRol()" class="btn-modal-details btn-success">
+              <div class="txt-pass font-3vh">
+                <i class="icon-sucia"></i>
+              </div>
+              <div class="size-txt font-2vh">Eliminar</div>
+            </button>
+
+          </div><!-- row -->
+      </div><!-- modal-content -->
+  </div>
+</div>

@@ -1,0 +1,366 @@
+
+.disable-tipos{
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.row-header{
+  padding: 0.5vh 3vh;
+}
+
+.input-icons i {
+  position: absolute;
+  right: 1vh;
+  padding: 1vh;
+}
+
+.input-icons {
+  position: relative;
+}
+
+.input-icons .filter-textbox,
+.input-icons .filter-textbox::placeholder{
+    font-size: 2vh;
+}
+
+.input-icons .filter-textbox{
+    text-align: center;
+    border: 2px solid #707070;
+    border-radius: 15px;
+    width: 60vw;
+    padding-right: 38px;
+}
+
+.input-icons .filter-textbox:focus {
+    outline: none;
+    border-color: #a703fb;
+    /* border-color: #85e0e0; */
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(167, 3, 251, 0.5);
+    /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(46, 184, 184, 0.5); */
+}
+
+.tablas-content{
+  width: 75vh;
+}
+
+.lista-articulos{
+  padding: 0vh 1.5vh;
+  margin: 1vh 0vh 0vh;
+}
+
+.lista-label{
+  width: 100%;
+  font-size: 2vh;
+  border-radius: 1vh;
+  text-align: center;
+  color: #FFFEFE;
+  line-height: 4vh;
+  font-weight: 600;
+}
+
+.orange-label {
+  background: #f48b00;
+  box-shadow: 0vh 0.2vh 0.5vh #361f00;
+}
+
+.red-label {
+  background: #ef1f3b;
+    box-shadow: 0vh 0.2vh 0.5vh #65000e;
+}
+
+.green-label {
+  background: #00a57f;
+  box-shadow: 0vh 0.2vh 0.5vh #004c3b;
+}
+
+.purple-label {
+  background: #7e3899;
+  box-shadow: 0vh 0.2vh 0.5vh #290038;
+}
+
+.label-content{
+  width: 100%;
+  height: 36vh;
+  margin: 1vh 0vh;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.box-orange-content {
+  border: 1px solid #623800;
+  background: #ffffff;
+}
+.box-orange-content .label-list{
+  background: #eaba7b;
+}
+
+.box-green-content {
+  border: 1px solid #003b2d;
+}
+.box-green-content .label-list{
+  background: #7edcc7;
+}
+
+.box-red-content {
+  border: 1px solid #310007;
+}
+.box-red-content .label-list{
+  background-color: #f79090;
+}
+
+.box-purple-content {
+  border: 1px solid #230031;
+}
+.box-purple-content .label-list{
+  background: #d897f1;
+}
+
+.label-list{
+  font-size: 2vh;
+  padding: 0.5vh 1vh;
+  cursor: pointer;
+  color: black;
+  margin: 0.5vh 1vh 0vh;
+  border-radius: 0.5vh;
+}
+
+.orders-item {
+    width: 95%;
+    border-radius: 5px;
+    margin: 1vh;
+    padding: 1vh 0vh 1vh 1vh;
+    font-size: 1.5vh;
+}
+
+.orders-action {
+    padding: 3px 6px;
+}
+
+.orders-bg-orange {
+    background-color: #e68300;
+    color: white;
+}
+
+.orders-bg-red {
+    background-color: #c72c41;
+    color: white;
+}
+
+.orders-bg-green {
+    background-color: #058E6E;
+    color: white;
+}
+
+.orders-bg-purple {
+    background-color: #7b09a6;
+    color: white;
+}
+
+.editar-articulo{
+  padding: 0.5vh;
+}
+
+.item-button-rl{
+  border-radius: 2vh;
+  border: none;
+  background-color: white;
+  width: 3vh;
+  height: 3vh;
+  color: black;
+  font-size: 1vh;
+  cursor: pointer;
+}
+
+.input-cantidad-r{
+  text-align: center;
+  font-size: 2vh;
+  line-height: normal;
+}
+
+.input-cantidad-rl{
+  text-align: center;
+  width: 40px;
+  height: 20px;
+  border-radius: 14px;
+  outline: none;
+}
+
+.input-observaciones-rl{
+  width: 95%;
+  height: 10vh;
+  border-radius: 0.5vh;
+  margin: 1vh 0vh;
+  font-size: 2vh;
+  padding: 1vh;
+}
+
+.grown-orders-item {
+    min-height: 108px;
+}
+
+.payload-box {
+  width: 100%;
+  border-radius: 0.5vh;
+  overflow: auto;
+  max-height: 25vh;
+  max-height: 25vh;
+  margin: 0vh 0vh 2vh;
+  box-shadow: 0px 0.3vh 0.5vh #626262;
+}
+
+#orderBox{
+  min-height: 20vh;
+}
+
+.button-cortesy {
+    border: 1px solid #9B9898;
+    border-radius: 1vh;
+    background: #FFFFFF;
+    width: 95%;
+    margin: 1vh 0vh;
+    font-size: 2vh;
+}
+
+.button-cortesy-activated {
+    background: #801336;
+    color: white;
+}
+
+.box-results {
+    width: 100%;
+    box-shadow: 0px 3px 6px #9B9898;
+    border-radius: 1vh;
+    color: black;
+}
+
+.box-results-item{
+  margin: 1vh 1vh 0vh;
+  font-size: 2vh;
+}
+
+.div-btn-room-list{
+  margin: 2vh 0vh 1vh;
+}
+
+.btn-room-list{
+  width: 9vh;
+  height: 9vh;
+  font-size: 2.5vh;
+}
+
+.btn-room-list.btn-redBold{
+  margin-right: 8vh;
+}
+
+.icon {
+    padding: 12px;
+    min-width: 40px;
+}
+
+.loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif')
+                50% 50% no-repeat rgb(249,249,249);
+  }
+
+  .NumHabitacion{
+    font-size: 3vh;
+    color: #801336;
+    font-weight: bold;
+  }
+
+
+.overflow{
+    overflow:hidden;
+}
+
+.loader-margin-size{
+    margin: auto;
+    width: 50%;
+}
+
+.cont-modal-huella{
+    width: 950px;
+    padding: 15px;
+}
+
+.tamaño-modal-alerta{
+  width: 100vh;
+}
+
+
+@media (min-width: 1200px)
+{
+  .label-content{
+    height: 75vh;
+    /* width: 100%; */
+    width: 16vw;
+  }
+}
+
+/***** TAMAÑO IPAD *****/
+@media (max-width: 769px){
+  .tamaño-modal-alerta{
+    width: 65vh;
+  }
+}
+
+/***** TAMAÑO MEDIANO *****/
+@media (max-width: 767px){
+
+  .tamaño-modal-alerta{
+    width: 55vh;
+  }
+
+}
+
+/***** HEADER TELEFONO *****/
+@media (max-width: 576px){
+
+  .input-icons .filter-textbox{
+    width: 85vw;
+  }
+
+  .row-listas,
+  .resumen-compra{
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin-right: 0px;
+    margin-left: 0px;
+    justify-content: normal !important;
+  }
+
+  .lista-articulos{
+    max-width: none;
+    min-width: 85vw;
+  }
+
+  .label-content{
+    max-height: 30vh;
+  }
+
+  /* .resumen-compra{
+    flex-direction: inherit !important;
+  } */
+
+  .resumen-box{
+    min-width: 85vw;
+    /* max-height: 25vh; */
+    margin: 0vw;
+  }
+
+  #orderBox{
+    max-height: 27vh;
+  }
+
+  #orderCourtesiesBox{
+    max-height: 22vh;
+  }
+
+}
+

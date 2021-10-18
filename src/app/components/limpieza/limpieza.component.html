@@ -1,0 +1,155 @@
+<div class="mt-1 d-flex justify-content-center ">
+  <div class="mt-1 d-flex ">
+    <input type="text" class="text-center input-buscar" name="buscar_camarista" id="buscar_camarista" placeholder="Ingresa un nombre"
+      [(ngModel)]="filterCamarista" (keyup)="ObtieneCamaristas(filterCamarista,true)">
+    <span class="font-3vh fas fa-search text-secondary search"></span>
+  </div>
+</div>
+
+<div id="modalmant" class="modal-body justify-content-between">
+  <div class="row">
+    <div class="col-12 col-md-6 pr-0">
+      <div class="matricula-box align-content-center">
+        <div>
+          <div class="card contenedor-mantenimiento mt-2">
+            <div class="card-header text-center">
+              <b>Camaristas disponibles</b>
+            </div>
+            <div class="card-body card-padding overy-auto">
+              <div id="objetos_camaristas" class="txt-al-center">
+
+                <div class="text-danger" id="texto_mensaje"></div>
+                <ngx-skeleton-loader count="{{totalCount}}" [theme]="{'height.px': 50}" appearance="line" *ngIf="loader">
+                </ngx-skeleton-loader>
+
+                <div class="mb-2 mt-2 justify-content-center" *ngFor="let recamarista of listaTodasCamaristas"
+                  (click)="ValidarMoverCamaristas(recamarista, 1)">
+                  <!--Recamarista Libre-->
+                  <div id="recam_{{recamarista.idEmpleado}}" data-id="{{recamarista.nombre}}"
+                    class="mb-2 mt-2 justify-content-center camarista-box-libre" *ngIf="recamarista.idHabitacion == 0">
+                    <div>
+                      {{recamarista.nombre}}
+                    </div>
+                  </div>
+
+                  <!--Recamarista Ocupada-->
+                  <div id="recam_{{recamarista.idEmpleado}}" data-id="{{recamarista.nombre}}"
+                    class="mb-3 mt-3 justify-content-center camarista-box-ocupada" *ngIf="recamarista.idHabitacion != 0">
+                    <div>
+                      {{recamarista.nombre}}
+                      <div class="fl-right">{{recamarista.numeroHabitacion}}</div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 pr-0 pr-md-3">
+      <div class="matricula-box">
+        <div>
+          <div class="card contenedor-mantenimiento mt-2">
+            <div class="card-header text-center">
+              <div><b>Camaristas seleccionadas</b></div>
+            </div>
+            <div class="card-body card-padding overy-auto text-center justify-content-center">
+              <div class="txt-al-center">
+                <div class="mb-2 mt-2 justify-content-center" *ngFor="let recamarista of listaCamaristasSeleccionada"
+                  (click)="ValidarMoverCamaristas(recamarista, 2)">
+                  <!--Recamarista Libre-->
+                  <div id="recam_{{recamarista.idEmpleado}}"
+                    class="mb-2 mt-2 justify-content-center camarista-box-seleccionada"
+                    *ngIf="recamarista.idHabitacion == 0">
+                    <div>
+                      {{recamarista.nombre}}
+                    </div>
+                  </div>
+
+                  <!--Recamarista Ocupada-->
+                  <div id="recam_{{recamarista.idEmpleado}}"
+                    class="mb-2 mt-2 justify-content-center camarista-box-seleccionada"
+                    *ngIf="recamarista.idHabitacion != 0">
+                    <div>
+                      {{recamarista.nombre}}
+                      <div class="fl-right">{{recamarista.numeroHabitacion}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2 justify-content-between">
+    <div class="col-12 col-md-8 contenedor-botones">
+        <div class="btn-border-blue d-inline">
+          <button type="button" class="btn-modal-details btn-blue btn-normal" id="limpieza_normal"
+            (click)="AsignarLimpieza('normal')">
+            <div class="font-3vh"><i class="icon-limpieza"></i></div>
+            <div class="font-2vh">Normal</div>
+          </button>
+        </div>
+        <div class="btn-border-darkblue d-inline">
+          <button type="button" class="btn-modal-details btn-darkblue btn-detallada ml-3" id="limpieza_detallada"
+            (click)="AsignarLimpieza('detallada')">
+            <div class="font-3vh"><i class="icon-limpieza"></i></div>
+            <div class="font-2vh">Detallada</div>
+          </button>
+        </div>
+        <div class="btn-border-greenblue d-inline">
+          <button type="button" class="btn-modal-details btn-greenblue btn-rapida ml-3" id="limpieza_rapida"
+            (click)="AsignarLimpieza('rapida')">
+            <div class="font-3vh"><i class="icon-limpieza"></i></div>
+            <div class="font-2vh">Rapida</div>
+          </button>
+        </div>
+        <div class="btn-border-greenblue d-inline">
+          <button type="button" class="btn-modal-details btn-greenblue btn-retoque ml-3" id="limpieza_retoque"
+            (click)="AsignarLimpieza('retoque')">
+            <div class="font-3vh"><i class="icon-limpieza"></i></div>
+            <div class="font-2vh">Retoque</div>
+          </button>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 text-right contenedor-botones mt-2 mt-md-0">
+        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+          <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+          <div class="font-2vh">Salir</div>
+        </button>
+        <button type="button" class="btn-modal-details btn-green ml-3" (click)="ValidarAceptarLimpieza()">
+          <div class="font-3vh"><i class="fas fa-check"></i></div>
+          <div class="font-2vh">Aceptar</div>
+        </button>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorLimpieza" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+    <div class="modal-content tamaño-modal-alerta">
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="titulo-modales-alertas mb-3">
+            <b>{{errorLimpieza}}</b>
+          </div>
+          <div>
+            <button type="button" class="btn-modal-details btn-green ml-2" (click)="Reload()">
+              <div class="font-3vh"><i class="fas fa-check"></i></div>
+              <div class="font-2vh">Aceptar</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

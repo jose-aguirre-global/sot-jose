@@ -1,0 +1,59 @@
+
+<!-- SELECT -->
+<div class="cortes-select">
+  <div class="form-group">
+    <label for="inputPassword" class="col-form-label">&nbsp; #Corte &nbsp;</label>
+    <select name="corte1" (change)="cambioCorte($event)">
+      <option value="0">&nbsp; Selecciona... &nbsp;</option>
+      <option *ngFor="let corte of listaCortes" [value]="corte.id">{{ corte.numeroCorte }}</option>
+    </select>
+  </div>
+</div>
+
+<div class="card" *ngIf=" idCorte > 0 ">
+  <div class="card-header">
+    Corte #{{ idCorte }}
+  </div>
+
+  <div class="card-body">
+
+    <app-lista-corte [data]="resumenHabitaciones" [idCorte]="idCorte"></app-lista-corte>
+    <app-lista-corte [data]="resumenRoomService" [idCorte]="idCorte"></app-lista-corte>
+    <app-lista-corte [data]="resumenRestaurante" [idCorte]="idCorte"></app-lista-corte>
+    <app-lista-corte [data]="resumenTotal" [idCorte]="idCorte"></app-lista-corte>
+
+    <div class="resumen-pagos">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Pago con efectivo
+          <b>{{ pagosEfectivo | currency:'':'$' }}</b>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Pago con tarjeta
+          <b>{{ pagosTarjeta | currency:'':'$' }}</b>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Reservas válidas
+          <b>{{ reservasValidas | currency:'':'$' }}</b>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Anticipos reservas
+          <b>{{ anticiposReservas | currency:'':'$' }}</b>
+        </li>
+      </ul>
+    </div>
+
+    <div class="resumen-total">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total Desglose
+          <b>{{ resumenTotal.valor | currency:'':'$' }}</b>
+        </li>
+      </ul>
+    </div>
+
+  </div><!-- card-body -->
+</div><!-- card -->

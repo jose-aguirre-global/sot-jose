@@ -1,0 +1,1527 @@
+<div class="modal fade modal-detalleCorte" id="detalleCorte" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-detalle-corte">
+            <div class="modal-body">
+                <div class="row text-right">
+                    <div class="col">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="close disabled-button-ventana" id="modal_maximizar" (click)="AjustarDetalleModal()" data-toggle="collapse" data-target="#collapseCorte" aria-expanded="true" aria-controls="collapseCorte" aria-label="Close">
+                            <span>&#10064;</span>
+                        </button>
+                        <button type="button" class="close" id="modal_minimizar" (click)="AjustarDetalleModal()" data-toggle="collapse" data-target="#collapseCorte" aria-expanded="true" aria-controls="collapseCorte" aria-label="Close">
+                                <span>&minus;</span> 
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6" id="modalapartadoCorte">
+
+                        <div class="card bg-color-secondary">
+                            <div class="card-header text-center" id="encabezadocorte">
+                                <b>Corte #{{idCorte}}</b>
+                                <span data-toggle="collapse" (click)="AjustarDetalleModal()" data-target="#collapseCorte" aria-expanded="true" aria-controls="collapseCorte">
+                                    <i class="alineacion-flecha fas fa-chevron-down"></i> 
+                                    <i class="alineacion-flecha fas fa-chevron-up"></i> 
+                                </span>
+                            </div>
+                            <div class="card-body collapse show" id="collapseCorte">
+                                
+                                <div class="card  mt-1 desglose-corte-nav">
+                                    <div class="card-body">
+                                        Total Habitaciones
+                                        <span class="alineacion-flecha">
+                                            $40,200.00
+                                            <span data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                <i class="alineacion-flecha fas fa-chevron-down color2"></i> 
+                                                <i class="alineacion-flecha fas fa-chevron-up color2"></i> 
+                                            </span>
+                                        </span> 
+                                        <div id="collapseOne" class="collapse collapse-detail" aria-labelledby="headingOne">
+                                            <div>
+                                                Habitaciones
+                                                <span class="alineacion-flecha-total">$37,400.00</span> 
+                                            </div>
+                                            <div>
+                                                Personas
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Hospedaje
+                                                <span class="alineacion-flecha-total">$2,550.00</span> 
+                                            </div>
+                                            <div>
+                                                Propinas
+                                                <span class="alineacion-flecha-total">$250.00</span> 
+                                            </div>
+                                            <div>
+                                                Paquetes
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Cortesias a habitación
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Consumos a habitación
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Descuentos a habitación
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card  mt-1 desglose-corte-nav">
+                                    <div class="card-body">
+                                        Total Room Service
+                                        <span class="alineacion-flecha">
+                                            $3,729.00
+                                            <span data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="alineacion-flecha fas fa-chevron-down color2"></i> 
+                                                <i class="alineacion-flecha fas fa-chevron-up color2"></i> 
+                                            </span>
+                                        </span> 
+                                        <div id="collapseTwo" class="collapse collapse-detail" aria-labelledby="headingOne">
+                                            <div>
+                                                Room Service
+                                                <span class="alineacion-flecha-total">$3,695.00</span> 
+                                            </div>
+                                            <div>
+                                                Propinas
+                                                <span class="alineacion-flecha-total">$32.00</span> 
+                                            </div>
+                                            <div>
+                                                Cortesias room service
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Descuentos room service
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card  mt-1 desglose-corte-nav">
+                                    <div class="card-body">
+                                        Total Restaurante
+                                        <span class="alineacion-flecha">
+                                            $0.00
+                                            <span data-toggle="collapse" data-target="#collapseTree" aria-expanded="false" aria-controls="collapseTree">
+                                                <i class="alineacion-flecha fas fa-chevron-down color2"></i> 
+                                                <i class="alineacion-flecha fas fa-chevron-up color2"></i> 
+                                            </span>
+                                        </span>
+                                        <div id="collapseTree" class="collapse collapse-detail" aria-labelledby="headingOne">
+                                            <div>
+                                                Restaurante
+                                                <span class="alineacion-flecha-total">$500.00</span> 
+                                            </div>
+                                            <div>
+                                                Propinas
+                                                <span class="alineacion-flecha-total">$32.00</span> 
+                                            </div>
+                                            <div>
+                                                Cortesias restaurante
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Consumos restaurante
+                                                <span class="alineacion-flecha-total">$500.00</span> 
+                                            </div>
+                                            <div>
+                                                Descuentos restaurante
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card  mt-1 desglose-corte-nav">
+                                    <div class="card-body">
+                                        Total
+                                        <span class="alineacion-flecha">
+                                            $48,927.00
+                                            <span data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                <i class="alineacion-flecha fas fa-chevron-down color2"></i> 
+                                                <i class="alineacion-flecha fas fa-chevron-up color2"></i> 
+                                            </span>
+                                        </span>
+                                        <div id="collapseFour" class="collapse collapse-detail" aria-labelledby="headingOne">
+                                            <div>
+                                                Total habitaciones
+                                                <span class="alineacion-flecha-total">$40,200.00</span> 
+                                            </div>
+                                            <div>
+                                                Total room service
+                                                <span class="alineacion-flecha-total">$3,727.00</span> 
+                                            </div>
+                                            <div>
+                                                Total restaurante
+                                                <span class="alineacion-flecha-total">$0.00</span> 
+                                            </div>
+                                            <div>
+                                                Entradas adicionales
+                                                <span class="alineacion-flecha-total">$500.00</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mt-1 desglose-corte-nav2">
+                                    <div>
+                                        Pago con efectivo
+                                        <span class="alineacion-flecha-total">$31,570.00</span> 
+                                    </div>
+                                    <div>
+                                        Pago con tarjeta
+                                        <span class="alineacion-flecha-total">$17,357.00</span> 
+                                    </div>
+                                    <div>
+                                        Reservas válidas
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                </div>
+                                <div class="card mt-1 desglose-corte-nav2">
+                                    <div>
+                                        1x$1,000.00
+                                        <span class="alineacion-flecha-total">$1,000.00</span> 
+                                    </div>
+                                    <div>
+                                        53x$500.00
+                                        <span class="alineacion-flecha-total">$26,500.00</span> 
+                                    </div>
+                                    <div>
+                                        18x$200.00
+                                        <span class="alineacion-flecha-total">$3,600.00</span> 
+                                    </div>
+                                    <div>
+                                        1x$100.00
+                                        <span class="alineacion-flecha-total">$100.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$50.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$20.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$10.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$5.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$2.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        132x$1.00
+                                        <span class="alineacion-flecha-total">$132.00</span> 
+                                    </div>
+                                    <div>
+                                        0x$0.50
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        Euro - 1 EUR = 20.00000 MXN<br>
+                                        0x$1.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                    <div>
+                                        Dolar - 1 USD = 16.00000 MXN<br>
+                                        0x$1.00
+                                        <span class="alineacion-flecha-total">$0.00</span> 
+                                    </div>
+                                </div>
+                                <div class="card mt-1 desglose-corte-nav3">
+                                    <div class="total-formato">
+                                        Total Desglose
+                                        <span class="alineacion-flecha-total">$31,332.00</span> 
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6" id="modalapartadoDetalle">
+                        <div class="text-center titulo-revison-cortes">
+                            <span><b>{{titulo_detalle}}</b></span>
+                        </div>
+                        <!---slider-->
+                        <div id="carouselDetalleCorte" class="carousel slide" data-interval="false"  data-ride="carousel" data-pause="hover" >
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselDetalleCorte" data-slide-to="0" class="active" (click)="CambiarTitulo('Desglose de fajillas')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="1" (click)="CambiarTitulo('Pagos de habitaciones')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="2" (click)="CambiarTitulo('Pagos de Room Service')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="3" (click)="CambiarTitulo('Pagos de Restaurante')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="4" (click)="CambiarTitulo('Comisión de Meseros')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="5" (click)="CambiarTitulo('Comisión de Vendedores')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="6" (click)="CambiarTitulo('Gastos')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="7" (click)="CambiarTitulo('Lectura mantenimiento de hotel')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="8" (click)="CambiarTitulo('Incidencias de habitaciones')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="9" (click)="CambiarTitulo('Incidencias de turno')"></li>
+                                <li data-target="#carouselDetalleCorte" data-slide-to="10" (click)="CambiarTitulo('Incidencias de turno ')"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <!--Inicia Carrusel 1-->
+                                <!--Desglose fajillas-->
+                                <div class="carousel-item active">
+                                    <div class="col-8">
+                                        <span class="ml-4 fajilla-span-titulo">5 Fajillas</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8" id="detalleFajilla">
+                                            <!--miles-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'miles')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.miles" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'miles')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$1,000.00</span>
+                                                </div>
+                                            </div>
+                                            <!--quinientos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'quinientos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.quinientos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'quinientos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$500.00</span>
+                                                </div>
+                                            </div>
+                                            <!--doscientos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'doscientos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.doscientos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'doscientos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$200.00</span>
+                                                </div>
+                                            </div>
+                                            <!--cientos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'cientos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.cientos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'cientos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$100.00</span>
+                                                </div>
+                                            </div>
+                                            <!--cincuentas-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'cincuentas')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.cincuentas" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'cincuentas')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$50.00</span>
+                                                </div>
+                                            </div>
+                                            <!--veintes-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'veintes')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.veintes" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'veintes')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$20.00</span>
+                                                </div>
+                                            </div>
+                                            <!--diez-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'diez')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.diez" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'diez')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$10.00</span>
+                                                </div>
+                                            </div>
+                                            <!--cincos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'cincos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.cincos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'cincos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$5.00</span>
+                                                </div>
+                                            </div>
+                                            <!--dos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'dos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.dos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'dos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$2.00</span>
+                                                </div>
+                                            </div>
+                                            <!--unos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'unos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.unos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'unos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$1.00</span>
+                                                </div>
+                                            </div>
+                                            <!--centavos-->
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'centavos')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.centavos" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'centavos')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$0.50</span>
+                                                </div>
+                                            </div>
+                                            <!--euros-->
+                                            <div class="row pt-1">
+                                                <div class="col-12 text-center">
+                                                    <span class="text-secondary">Euro - 1 EUR = 20.0000 MXN</span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'euros')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.euros" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'euros')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$1.00</span>
+                                                </div>
+                                            </div>
+                                            <!--dolares-->
+                                            <div class="row pt-1">
+                                                <div class="col-12 text-center">
+                                                    <span class="text-secondary">Dolar - 1 USD = 16.0000 MXN</span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="boton-suma-resta" (click)="operacion(1, 'dolares')"><b>+</b></button> 
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" [(ngModel)]="monedas.dolares" placeholder="0"> 
+                                                    <button class="boton-suma-resta" (click)="operacion(2, 'dolares')"><b>-</b></button>
+                                                    <span class="ml-1 fajilla-span">$1.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12 text-center">
+                                                    <br>
+                                                </div>
+                                                <div class="col-12 pt-2">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-12 text-center salto">
+                                                    <br>
+                                                </div>
+                                                <div class="col-12 pt-2">
+                                                    <input type="text" class="ml-1 mr-1 valor-input-fajilla text-center" value="$0.00" placeholder="0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row text-right">
+                                        <div class="col-12">
+                                            <span class="fajilla-span-titulo">Sobrante $6,332.00</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span class="fajilla-span-titulo">Total $31,332.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="boton-slider-siguiente" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Pagos de habitaciones')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 1-->
+                                <!--Inicia Carrusel 2-->
+                                <!--Pagos de habitaciones-->
+                                <div class="carousel-item">
+                                    <div class="table-responsive card mt-1 tableFixHead">
+                                        <table class="table table-hover" id="pagosHabitaciones">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Ticket</th>
+                                                    <th scope="col">Total</th>
+                                                    <th scope="col">Cajero</th>
+                                                    <th scope="col">Valet</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let pago of listaPagosHabitacion" (click)="DetallePagosdeHabitacion(pago, $event);">
+                                                    <td><span>{{pago.fecha}}</span> {{pago.hora}} </td>
+                                                    <td>{{pago.ticket}}</td>
+                                                    <td>{{pago.total  | currency: '$' }}</td>
+                                                    <td>{{pago.cajero}}</td>
+                                                    <td>{{pago.valet}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Desglose de fajillas')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Pagos de Room Service')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 2-->
+                                <!--Inicia Carrusel 3-->
+                                <!--Pagos Room service -->
+                                <div class="carousel-item text-center">
+                                    <div class="table-responsive card mt-1 tableFixHead">
+                                        <table class="table table-hover" id="pagosRoomService">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Ticket</th>
+                                                    <th scope="col">Total</th>
+                                                    <th scope="col">Cajero</th>
+                                                    <th scope="col">Valet</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let pago of listaRoomServiceHabitacion" (click)="DetallePagoRoomService(pago, $event);">
+                                                    <td><span>{{pago.fecha}}</span> {{pago.hora}} </td>
+                                                    <td>{{pago.ticket}}</td>
+                                                    <td>{{pago.total  | currency: '$' }}</td>
+                                                    <td>{{pago.cajero}}</td>
+                                                    <td>{{pago.valet}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Pagos de Habitaciones')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Pagos de Restaurante')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 3-->
+                                <!--Inicia Carrusel 4-->
+                                <!--Pagos de restaurante -->
+                                <div class="carousel-item text-center">
+                                    <div class="table-responsive card mt-1 tableFixHead">
+                                        <table class="table table-hover" id="pagosRestaurante">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Ticket</th>
+                                                    <th scope="col">Total</th>
+                                                    <th scope="col">Cajero</th>
+                                                    <th scope="col">Valet</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let pago of listaRestauranteHabitacion" (click)="DetallesPagoRestaurante(pago, $event);">
+                                                    <td><span>{{pago.fecha}}</span> {{pago.hora}} </td>
+                                                    <td>{{pago.ticket}}</td>
+                                                    <td>{{pago.total  | currency: '$' }}</td>
+                                                    <td>{{pago.cajero}}</td>
+                                                    <td>{{pago.valet}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Pagos de Room Service')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Comisión de Meseros')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 4-->
+                                <!--Inicia Carrusel 5-->
+                                <!--Comision de meseros-->
+                                <div class="carousel-item text-center">
+                                    <div class="table-responsive card mt-1 tableFixHead">
+                                        <table class="table table-hover" id="comisionMeseros">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Mesero</th>
+                                                    <th scope="col">Alimentos</th>
+                                                    <th scope="col">Bebidas</th>
+                                                    <th scope="col">Spa&Sex</th>
+                                                    <th scope="col">Puntos a Pagar</th>
+                                                    <th scope="col">Visa</th>
+                                                    <th scope="col">Mastercard</th>
+                                                    <th scope="col">American Express</th>
+                                                    <th scope="col">Comisión Tarjeta</th>
+                                                    <th scope="col">Propinas</th>
+                                                    <th scope="col">Totales</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let mesero of listaComisionMeseros" (click)="DetalleComisionMeseros(mesero, $event);">
+                                                    <td>{{mesero.nombre}} </td>
+                                                    <td>{{mesero.alimentos  | currency: '$' }}</td>
+                                                    <td>{{mesero.bebidas  | currency: '$' }}</td>
+                                                    <td>{{mesero.spasex  | currency: '$' }}</td>
+                                                    <td>{{mesero.puntospagar  | currency: '$' }}</td>
+                                                    <td>{{mesero.visa  | currency: '$' }}</td>
+                                                    <td>{{mesero.mastercard  | currency: '$' }}</td>
+                                                    <td>{{mesero.americanexpress  | currency: '$' }}</td>
+                                                    <td>{{mesero.comisiontarjeta  | currency: '$' }}</td>
+                                                    <td>{{mesero.propinas  | currency: '$' }}</td>
+                                                    <td>{{mesero.totales  | currency: '$' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Pagos de Restaurante')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-reporte" >
+                                            <span> Generar Reporte </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Comisión de Vendedores')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 5-->
+                                <!--Inicia Carrusel 6-->
+                                <!--Comision de vendedores-->
+                                <div class="carousel-item text-center">
+                                    <div class="table-responsive card mt-1 tableFixHead">
+                                        <table class="table table-hover" id="comisionVendedores">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Vendedor</th>
+                                                    <th scope="col">Fondos a Pagar</th>
+                                                    <th scope="col">Visa</th>
+                                                    <th scope="col">Mastercard</th>
+                                                    <th scope="col">American Express</th>
+                                                    <th scope="col">Comisión Tarjeta</th>
+                                                    <th scope="col">Propinas</th>
+                                                    <th scope="col">Totales</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let vendedor of listaComisionVendedores" (click)="DetalleComisionVendedores(vendedor, $event);">
+                                                    <td>{{vendedor.nombre}} </td>
+                                                    <td>{{vendedor.fondospagar  | currency: '$' }}</td>
+                                                    <td>{{vendedor.visa  | currency: '$' }}</td>
+                                                    <td>{{vendedor.mastercard  | currency: '$' }}</td>
+                                                    <td>{{vendedor.americanexpress  | currency: '$' }}</td>
+                                                    <td>{{vendedor.comisiontarjeta  | currency: '$' }}</td>
+                                                    <td>{{vendedor.propinas  | currency: '$' }}</td>
+                                                    <td>{{vendedor.totales  | currency: '$' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>                                    
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Comisión de meseros')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-reporte" >
+                                            <span> Generar Reporte </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Gastos')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 6-->
+                                <!--Inicia Carrusel 7-->
+                                <!--Gastos-->
+                                <div class="carousel-item text-center">
+                                    
+                                    <div class="table-responsive card mt-1 tableFixHead3">
+                                        <table class="table table-hover" id="tablaGastos">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Concepto</th>
+                                                    <th scope="col">Valor</th>
+                                                    <th scope="col">Clasificación</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let gasto of listaGastosRealizada" (click)="seleccionarDetalleGasto(gasto, $event)" >
+                                                    <td>{{gasto.concepto}}</td>
+                                                    <td>{{gasto.valor | currency: '$' }}</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>  
+                                    
+                                    <div class="text-center mt-3">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn-modal-details btn-green ml-2" id="" (click)="RegistrarGasto()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Registrar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-yellow ml-2" id="" (click)="ModificarGasto()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Modificar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-danger ml-2" id="" (click)="DescartarGasto()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Descartar</div>
+                                            </button>
+                                        </div>
+                                    </div> 
+                                    
+                                    <div class="details-card">
+                                        <span id="error_gasto" class="text-danger">Nota: Los gastos con clasificación no afectan el corte en turno</span>
+                                    </div>     
+                                    
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Comisión de vendedores')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Lectura mantenimiento de hotel ')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 7-->
+                                <!--Inicia Carrusel 8-->
+                                <!--Lectura Mantenimiento Hotel-->
+                                <div class="carousel-item text-center">
+                                    <div class="table-responsive card mt-1 tableFixHead3">
+                                        <table class="table table-hover" id="matenimientoHotel">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Número de Corte</th>
+                                                    <th scope="col">Fecha Registro</th>
+                                                    <th scope="col">Medida</th>
+                                                    <th scope="col">Medidor</th>
+                                                    <th scope="col">Valor</th>
+                                                    <th scope="col">Presentación</th>
+                                                    <th scope="col">Empleado</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let lectura of listaLecturaMantoHotel" (click)="DetalleMantenimientoHotel(lectura, $event)">
+                                                    <td>{{lectura.numero_corte}}</td>
+                                                    <td>{{lectura.fecharegistro}}</td>
+                                                    <td>{{lectura.medida}}</td>
+                                                    <td>{{lectura.medidor}}</td>
+                                                    <td>{{lectura.valor}}</td>
+                                                    <td>{{lectura.presentacion}}</td>
+                                                    <td>{{lectura.empleado}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>  
+                                    
+                                    <div class="text-center mt-3">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn-modal-details btn-green ml-2" id="" (click)="RegistrarLecturas()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Registrar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-yellow ml-2" id="" (click)="RegistrarLecturas()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Modificar</div>
+                                            </button>
+                                        </div>
+                                    </div> 
+                                    
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Gastos')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Incidencias de habitaciones')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 8-->
+                                <!--Inicia Carrusel 9-->
+                                <!--Incidencias de Habitaciones-->
+                                <div class="carousel-item text-center">
+                                    <div class="row">
+                                        <div class="ancho_incidencias col-6">
+                                            <div class="form-group">
+                                                <small><span>Habitación</span></small>
+                                                <select class="form-control medidor incidencia">
+                                                    <option>Habitación 1</option>
+                                                    <option>Habitación 2</option>
+                                                    <option>Habitación 3</option>
+                                                    <option>Habitación 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="ancho_incidencias col-6">
+                                            <div class="form-group">
+                                                <small><span>Empleado que reporta</span></small>
+                                                <select class="form-control medidor incidencia">
+                                                    <option>Empleado 1</option>
+                                                    <option>Empleado 2</option>
+                                                    <option>Empleado 3</option>
+                                                    <option>Empleado 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="ancho_incidencias col-6">
+                                            <div class="form-group">
+                                                <small><span>Fecha Inicial</span></small>
+                                                <input type="date" class="form-control medidor" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="ancho_incidencias col-6">
+                                            <div class="form-group">
+                                                <small><span>Fecha Final</span></small>
+                                                <input type="date" class="form-control medidor" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="table-responsive card mt-1 tableFixHead4">
+                                        <table class="table table-hover" id="incidenciasHabitacion">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Habitación</th>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Zonas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let incidenciahabitacion of listaIncidenciasHabitacion" (click)="seleccionarIncidenciaHabitacion(incidenciahabitacion, $event)">
+                                                    <td>{{incidenciahabitacion.id}}</td>
+                                                    <td>{{incidenciahabitacion.fecha}}</td>
+                                                    <td>{{incidenciahabitacion.nombre}}</td>
+                                                    <td>{{incidenciahabitacion.descripcion}}</td>
+                                                    <td>{{incidenciahabitacion.zonas}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>    
+                                    
+                                    <div class="text-center mt-3">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn-modal-details btn-green ml-2" id="" (click)="agregarIncidenciaHabitacion()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Registrar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-yellow ml-2" id="">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Modificar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-danger ml-2" id="">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Descartar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-gray ml-2" id="">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Eliminar</div>
+                                            </button>
+                                        </div>
+                                    </div> 
+                                    
+                                    
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Lectura mantenimiento de hotel ')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-reporte" >
+                                            <span> Generar Reporte </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" href="#carouselDetalleCorte" role="button" data-slide="next" (click)="CambiarTitulo('Incidencias de turno')" >
+                                            <span> Siguiente </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 9-->
+                                <!--Inicia Carrusel 10-->
+                                <!--Incidencias de Turno-->
+                                <div class="carousel-item text-center">                                    
+                                    <div class="table-responsive card mt-1 tableFixHead3">
+                                        <table class="table table-hover" id="incidenciasTurno">
+                                            <thead class="tabla-revison-cortes-head">
+                                                <tr>
+                                                    <th scope="col">Folio de turno </th>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Área</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Empleado Registro</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="contenido-tabla-historial text-center">
+                                                <tr *ngFor="let incidenciaturno of listaIncidenciasTurno"  (click)="seleccionarIncidenciaTurno(incidenciaturno, $event);">
+                                                    <td>{{incidenciaturno.folio_turno}}</td>
+                                                    <td>{{incidenciaturno.fecha}}</td>
+                                                    <td>{{incidenciaturno.area}}</td>
+                                                    <td>{{incidenciaturno.nombre}}</td>
+                                                    <td>{{incidenciaturno.descripcion}}</td>
+                                                    <td>{{incidenciaturno.empleado_registro}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>   
+                                    
+                                    <div class="text-center mt-3">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn-modal-details btn-green ml-2" id="" (click)="agregarIncidenciaTurno()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Registrar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-yellow ml-2" id="">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Modificar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-danger ml-2" id="" (click)=descartarIncidenciaTurno()>
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Descartar</div>
+                                            </button>
+                                            <button type="button" class="btn-modal-details btn-gray ml-2" id="" (click)="eliminarIncidenciaTurno()">
+                                                <div class="font-3vh"><i class="far fa-clipboard"></i></div>
+                                                <div class="font-2vh">Eliminar</div>
+                                            </button>
+                                        </div>
+                                    </div> 
+                                    
+                                    <div class="text-center mt-3">
+                                        <button class="boton-slider-siguiente mr-1" href="#carouselDetalleCorte" role="button" data-slide="prev" (click)="CambiarTitulo('Incidencias de habitaciones')" >
+                                            <span> Atras </span>
+                                        </button>
+                                        <button class="boton-slider-siguiente ml-1" role="button" (click)="FinalizarCorte()">
+                                            <span> Finalizar </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Termina Carrusel 10-->
+                            </div>
+                        </div>
+                        <!--termina slider-->
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Gastos -->
+<div class="modal fade" id="agregarGastos" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamanio-modal-gasto">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="card contenedor-supervisores mt-1">
+                        <div class="card-header contenedor-supervisor text-center text-secondary">
+                            <b>Registro de gastos</b>
+                        </div>
+                        <div class="card-body d-flex flex-wrap justify-content-center overy-auto">
+                            <button class="btn-modal-details-gastos text-center"  *ngFor="let listagastos of listaGastos" (click)="seleccionarConceptoGastos(listagastos)">
+                                <div id="{{listagastos.id}}" data-id="{{listagastos.concepto}}" class="gasto-box-list">
+                                    <div class="row pintar" id="gasto_{{listagastos.id}}">
+                                        <div class="col-12 align-items-center">
+                                            {{listagastos.concepto}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+
+                        <div class="m-3 btn-modal-details-gastos text-center btn-green">
+                            <div id="" data-id="" class="gasto-box-list-input">
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        Importe
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="number" class="form-control input-gasto" placeholder="0.00" [(ngModel)]="valor_importe" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-green" (click)="agregarGasto()" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-redBold ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----Descartar Gastos -->
+<div class="modal fade" id="descartarGasto" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>¿Estas seguro de descartar el gasto <br> {{ concepto_seleccionado_descartar_concepto }} con valor {{concepto_seleccionado_descartar_valor  | currency: '$' }}?</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" (click)="ConfirmarDescartarGasto()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Confirmar Descartar Gastos -->
+<div class="modal fade" id="confirmardescartarGasto" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>El gasto se ha descartado</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----Registrar Lecturas del hotel-->
+<div class="modal fade" id="registrarLecturas" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-lectura">
+            <div class="modal-body">
+                <div class="text-center p2-5">
+                    <div class="titulo-modales-alertas2">
+                        <b>Registro de lecturas del hotel</b>
+                    </div>
+
+                    <div class="table-responsive mt-1">
+                        <table class="table table-hover table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col"  class="th-title">Medida</th>
+                                    <th scope="col"  class="th-title">Medidor</th>
+                                    <th scope="col"  class="th-title">Valor Anterior</th>
+                                    <th scope="col"  class="th-title">Diferencia</th>
+                                    <th scope="col"  class="th-title">Valor</th>
+                                    <th scope="col"  class="th-title">Presentación</th>
+                                </tr>
+                            </thead>
+                            <tbody class="contenido-tabla-historial text-center">
+                                <tr>
+                                    <td>AGUA</td>
+                                    <td>MEDIDOR 1</td>
+                                    <td>19668.8</td>
+                                    <td>0.00</td>
+                                    <td><input type="text" class="form-control medidor" [(ngModel)]="valor_agua"></td>
+                                    <td>L</td>
+                                </tr>
+                                <tr>
+                                    <td>GAS</td>
+                                    <td>MEDIDOR 1</td>
+                                    <td>19668.8</td>
+                                    <td>0.00</td>
+                                    <td><input type="text" class="form-control medidor" [(ngModel)]="valor_gas"></td>
+                                    <td>L</td>
+                                </tr>
+                                <tr>
+                                    <td>LUZ</td>
+                                    <td>MEDIDOR 1</td>
+                                    <td>19668.8</td>
+                                    <td>0.00</td>
+                                    <td><input type="text" class="form-control medidor" [(ngModel)]="valor_luz"></td>
+                                    <td>kWH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal" (click)="confirmarRegistroGasto();">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Confirmar Descartar Gastos -->
+<div class="modal fade" id="confirmarRegistroGasto" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>Se ha realizado el registro de <br> de forma exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Agregar Incidencia Habitación -->
+<div class="modal fade" id="agregarIncidenciaHabitacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamanio-modal-incidencia">
+            <div class="modal-body">
+                <div class="text-center pt-2">
+                    <div class="contenedor-supervisores mt-1  text-center text-secondary">
+                        <b>Registro de incidencia</b>
+                    </div>
+                        
+                    <div class="row mt-1">
+                        <div class="ancho_incidencias col-12">
+                            <div class="form-group">
+                                <small><span>Habitación</span></small>
+                                <select class="form-control medidor incidencia">
+                                    <option>Habitación 1</option>
+                                    <option>Habitación 2</option>
+                                    <option>Habitación 3</option>
+                                    <option>Habitación 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ancho_incidencias col-12">
+                            <div class="form-group">
+                                <small><span>Empleado que reporta</span></small>
+                                <select class="form-control medidor incidencia">
+                                    <option>Empleado 1</option>
+                                    <option>Empleado 2</option>
+                                    <option>Empleado 3</option>
+                                    <option>Empleado 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ancho_incidencias col-12">
+                            <div class="form-group">
+                                <small><span>Nombre de la incidencia*</span></small>
+                                <input type="date" class="form-control medidor" placeholder="">
+                            </div>
+                        </div>
+                        <div class="ancho_incidencias col-12">
+                            <div class="form-group">
+                                <small><span>Zonas</span></small>
+                                <input type="date" class="form-control medidor" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" (click)="agregadaIncidenciaHab()" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---- Confirmar Descartar Gastos -->
+<div class="modal fade" id="confirmarRegistroIncidenciaHabitacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>La incidencia se ha registrado <br> de forma exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Incidencia Turno -->
+<div class="modal fade" id="agregarIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamanio-modal-incidencia">
+            <div class="modal-body">
+                <div class="text-center pt-2">
+                    <div class="contenedor-supervisores mt-1  text-center text-secondary">
+                        <b>Registro de incidencia</b>
+                    </div>
+                        
+                    <div class="row mt-1">
+                        
+                        <div class="ancho_incidencias col-12">
+                            <div class="ancho_incidencias col-12">
+                                <div class="form-group">
+                                    <small><span>Nombre de la incidencia*</span></small>
+                                    <input type="date" class="form-control medidor" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <small><span>Área*</span></small>
+                                <select class="form-control medidor incidencia">
+                                    <option>Área 1</option>
+                                    <option>Área 2</option>
+                                    <option>Área 3</option>
+                                    <option>Área 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ancho_incidencias col-12">
+                            <div class="form-group">
+                                <small><span>Descripción</span></small>
+                                <textarea type="text" class="form-control" rows="4" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" (click)="agregadaIncidenciaTurno()" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Confirmar registro Incidencia -->
+<div class="modal fade" id="confirmarRegistroIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>La incidencia se ha registrado <br> de forma exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Descartar  Incidencia -->
+<div class="modal fade" id="descartarIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>¿Estas seguro de descartar <br> esta incidencia?</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal" (click)="confirmardescartarIncidenciaTurno()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Confirmar Descartar  Incidencia -->
+<div class="modal fade" id="confirmardescartarIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>La incidencia se ha descartado <br> de forma exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Eliminar  Incidencia -->
+<div class="modal fade" id="eliminarIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>¿Estas seguro de eliminar <br> esta incidencia?</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal" (click)="confirmareliminarIncidenciaTurno()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---- Confirmar Eliminar  Incidencia -->
+<div class="modal fade" id="confirmareliminarIncidenciaTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas ">
+                        <b>La incidencia se ha eliminado <br> de forma exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Finalizar Corte -->
+<div class="modal fade" id="finalizarCorte" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>¿Deseas guardar la <br> información del corte?</b>
+                    </div>
+                    <div class="mt-3 ">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal" (click)="confirmarCorte()" >
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmar Finalizar Corte -->
+<div class="modal fade" id="finalizarCorteConfirmacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>La información del corte <br> ha sido actualizada de <br> manera exitosa</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-gray" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-print"></i></div>
+                            <div class="font-2vh">Reporte</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Forma de Pago -->
+<div class="modal fade" id="modalFormaPago" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="mt-1 text-center">
+                        <div class="texttitulo-revison-cortes2">
+                            <span><b>Forma de Pago</b></span>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <select class="custom-form-control subtitulos-modal-hab" name="tipoPago"  id="tipoPago" disabled>
+                                <option *ngFor="let item of opcTipoPago" [ngValue]="item.idTipoPago">
+                                    {{item.desc_TipoPago}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fail -->
+<div class="modal fade" id="failMesage" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-mensaje-corte">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="titulo-modales-alertas">
+                        <b>{{fail}}</b>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

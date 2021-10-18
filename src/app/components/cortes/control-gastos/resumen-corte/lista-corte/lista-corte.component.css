@@ -1,0 +1,67 @@
+.accordion{
+  margin: 1vh 0vh;
+}
+
+.card{
+  border: 1px solid #b5b5b5;
+  border-radius: 2vh;
+}
+
+.card-header{
+  padding: 0px;
+}
+
+.card-header h5{
+  margin-bottom: 0rem;
+}
+
+.card-header h5 button{
+  font-size: 2.5vh;
+  padding: 0.75vh 2vh;
+  box-shadow: none;
+}
+
+.card-header h5 button:hover,
+.card-header h5 button:focus{
+  text-decoration: none;
+}
+
+.card-header h5 button p{
+  margin-bottom: 0rem;
+  color: #000000;
+  font-weight: 700;
+}
+.card-header h5 button i{
+  color: #b00039;
+}
+
+.card-body{
+  padding: 0px;
+  font-size: 2vh;
+  padding: 0.5vh 0vh 1vh 0vh;
+}
+
+.card-body ul li{
+  padding: 0vh 2vh;
+  font-weight: 600;
+  border: none;
+}
+
+.card-body ul li b{
+  font-weight: 700;
+}
+
+
+
+@media (max-width: 576px){ /*  TELEFONOS */
+
+  .card-header h5 button{
+    font-size: 2vh;
+    padding: 0.5vh 1.5vh;
+  }
+
+  .card-body{
+    font-size: 1.75vh;
+  }
+
+}

@@ -1,0 +1,59 @@
+<div id="tableFixHead2" class="table-responsive card mt-1">
+    <!--height: 450px; overflow-y: scroll;-->
+    <table class="table table-hover">
+        <thead class="tabla-revison-cortes-head">
+            <tr>
+                <th scope="col">Corte</th>
+                <th scope="col">Fecha y Hora Inicio</th>
+                <th scope="col">Fecha y Hora Final</th>
+                <th scope="col">Revisar</th>
+                <th scope="col">Imprimir</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody class="contenido-tabla-historial text-center">
+            <tr>
+                <td class="celdaformato"><b>1388</b></td>
+                <td>
+                    <span class="celdaformato"><b>03/10/2020</b></span><br>
+                    <span>06:06:02 AM</span>
+                </td>
+                <td>
+                    <span class="celdaformato"><b>03/10/2020</b></span><br>
+                    <span>02:10:02 PM</span>
+                </td>
+                <td class="celdaformato mouse" (click)="corteActivo.emit(1388)"><i class="fas fa-file icons-color fa-2x"></i></td>
+                <td class="celdaformato mouse"><i class="fas fa-print icons-color fa-2x"></i></td>
+                <td class="celdaformato"><i class="fas fa-check-double icons-color fa-2x"></i></td>
+            </tr>
+            <tr>
+                <td class="celdaformato"><b>1387</b></td>
+                <td>
+                    <span class="celdaformato"><b>02/10/2020</b></span><br>
+                    <span>06:06:02 AM</span>
+                </td>
+                <td>
+                    <span class="celdaformato"><b>03/10/2020</b></span><br>
+                    <span>02:10:02 PM</span>
+                </td>
+                <td class="celdaformato mouse" (click)="corteActivo.emit(1387)"><i class="fas fa-file icons-color fa-2x"></i></td>
+                <td class="celdaformato mouse"><i class="fas fa-print icons-color fa-2x"></i></td>
+                <td class="celdaformato"><i class="fas fa-check-double text-success icons-color fa-2x"></i></td>
+            </tr>
+            <tr>
+                <td class="celdaformato"><b>1386</b></td>
+                <td>
+                    <span class="celdaformato"><b>01/10/2020</b></span><br>
+                    <span>06:06:02 AM</span>
+                </td>
+                <td>
+                    <span class="celdaformato"><b>01/10/2020</b></span><br>
+                    <span>02:10:02 PM</span>
+                </td>
+                <td class="celdaformato mouse" (click)="corteActivo.emit(1386)"><i class="fas fa-file icons-color fa-2x"></i></td>
+                <td class="celdaformato mouse"><i class="fas fa-print icons-color fa-2x"></i></td>
+                <td class="celdaformato"><i class="fas fa-check-double icons-color fa-2x"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

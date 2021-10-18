@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+  <title>Imprimir ticket</title>
+  <script language="Javascript">
+
+    function AddZero(num) {
+      return (num >= 0 && num < 10) ? "0" + num : num + "";
+    }
+
+    window.onload = function () {
+      var now = new Date();
+      var strDateTime = [[AddZero(now.getDate()),
+      AddZero(now.getMonth() + 1),
+      now.getFullYear()].join("/"),
+      [AddZero(now.getHours()),
+      AddZero(now.getMinutes())].join(":"),
+      now.getHours() >= 12 ? "PM" : "AM"].join(" ");
+      document.getElementById("Console").innerHTML = strDateTime;
+    };
+
+    function imprSelec(nombre) {
+      var ficha = document.getElementById(nombre);
+      var ventimp = window.open(' ', 'popimpr');
+      ventimp.document.write(ficha.innerHTML);
+      ventimp.document.close();
+      ventimp.print();
+      ventimp.close();
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <div id="ticketHabitacion">
+    <div style="text-align: center; width: auto; ">
+      <img src="http://hades.gmm.local:8070/dist/assets/img/motelv_Logo.png" width="286px" height="94px">
+      <p></p>
+      <div style="color: black; font-size: 13px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin: 5px auto; text-align: center;">
+        BOUTIQUE VIADUCTO S DE RL DE CV
+        BLVD. ADOLFO RUIZ CORTINEZ 5552, COL. EL CARACOL, COYOACAN C.P. 04739
+      </div>
+      <div
+        style="color: black; font-size: 13px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin: 5px auto; text-align: center;">
+        RFC: BVI1102117P9
+      </div>
+      <p></p>
+      <p id="Console" style="color: black; font-size: 13px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center; font-size: 13px;">
+      </p>
+      <p></p>
+      <div style=" font-size: 21px; color: black; text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+        Habitacion {{ numeroHabitacion }}</div>
+
+      <div style=" font-size: 21px; color: black; text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+        Tipo de Pago {{ rentaHabitacion.tipoPago }}</div>
+
+      <div style=" width:50%; margin-left: 0px; margin: 30px;">
+        <table>
+          <thead>
+            <tr>
+              <th
+                style="color: black;font-weight: bold; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Descripción</th>
+              <th
+                style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Cantidad</th>
+              <th
+                style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Precio</th>
+              <th
+                style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- Detalle Habitacion -->
+              <td style="text-align: left; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                {{rentaHabitacion.nombreHabitacion}}
+              </td>
+              <td style="color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                1
+              </td>
+              <td style="text-align: left; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.precioHabitacion | number:'1.2-2'}}
+              </td>
+              <td style="text-align: right; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.precioHabitacion | number:'1.2-2'}}
+              </td>
+            </tr>
+            <!--PErsona Extra-->
+            <tr>
+              <td style="text-align: left;color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Personas Extra
+              </td>
+              <td style="color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                {{rentaHabitacion.personasExtras}}
+              </td>
+              <td style="text-align: left; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.precioPersonaExtra | number:'1.2-2'}}
+              </td>
+              <td style="text-align: right; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.totalPrecioPersonasExtras | number:'1.2-2'}}
+              </td>
+            </tr>
+            <!--Hospedaje Extra-->
+            <tr>
+              <td style="text-align: left;color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Hospedaje Extra
+              </td>
+              <td style="color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                {{rentaHabitacion.hospedajeExtra}}
+              </td>
+              <td style="text-align: left; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.precioHospedajeExtra | number:'1.2-2'}}
+              </td>
+              <td style="text-align: right; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.totalHospedajeExtra | number:'1.2-2'}}
+              </td>
+            </tr>
+            <!--Horas Extra-->
+            <tr>
+              <td style="text-align: left;color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Horas Extra
+              </td>
+              <td style="color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                {{rentaHabitacion.horasExtra}}
+              </td>
+              <td style="text-align: left;color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.precioHoraExtra | number:'1.2-2'}}
+              </td>
+              <td style="text-align: right; color: black; font-size: 12px; width: 1000px 300px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ${{rentaHabitacion.totalHoraExtra | number:'1.2-2'}}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <div style="margin: 10px 50px; text-align: center;   margin-left: 60px;">
+        <table style="border: black 1px solid ; width: auto;">
+          <tr>
+            <th style="color: black; font-size: 12px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+              Subtotal</th>
+            <th style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: right; padding-right: 10px;">
+              ${{rentaHabitacion.subtotal | number:'1.2-2' }}
+          </tr>
+          <tr>
+            <th
+              style="color: black; font-size: 12px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+              Descuento</th>
+            <th
+              style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: right; padding-right: 10px;">
+              $0.00</th>
+          </tr>
+
+          <tr>
+            <th
+              style="color: black; font-size: 12px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+              Cortesía</th>
+            <th
+              style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: right; padding-right: 10px;">
+              $0.00</th>
+          </tr>
+
+          <tr>
+            <th
+              style="color: black;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 18px; height: 100%;">
+              Total</th>
+            <th
+              style="color: black;font-weight: bold; font-size: 12px; width: 100px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: right;  padding-right: 10px;">
+              ${{rentaHabitacion.subtotal | number:'1.2-2' }}</th>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+    <p></p>
+
+    <div style="margin-left: 50px; text-align: center; margin: 0 30px;">
+      <h6 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: black; font-size: 14px;">GRACIAS
+        POR SU PREFERENCIA</h6>
+      <h5 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: black; font-size: 14px;">Empleado {{ idEmpleado }}</h5>
+      <div *ngIf="rentaHabitacion.idEmpleado != 0">
+        <h6 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: black; font-size: 12px;">Gracias por su Propina</h6>
+      </div>
+    </div>
+
+    <div style="margin-left: 50px; text-align: center; margin: 0 30px;">
+      <h6 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: black; font-size: 12px;">
+        **Si requiere factura solicítela a recepción previo a su salida presentando su RFC**</h6>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; padding-top: 2vh; padding-bottom: 2vh;">
+    <button type="button" class="BotonImprimir" (click)="imprSelec('ticketHabitacion')"
+      style="width: 30vh;
+            height: 6vh;
+            background-color: #801336;
+            color: white;
+            font-weight: bold;
+            border-radius: 5vh;
+            box-shadow: 2px 2px 2px #801336;
+            font-size: 2vh;">
+      Imprimir ticket
+    </button>
+  </div>
+
+</body>
+
+</html>

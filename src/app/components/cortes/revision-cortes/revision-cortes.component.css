@@ -1,0 +1,29 @@
+.tabla-revison-cortes-head{
+    font-size: 0.75 rem !important;
+    color: #9B9898;
+}
+
+.icons-color{
+    font-size: 0.75 rem !important;
+    color: #707070
+}
+
+.modal-body{
+    height: 90 vh;
+}
+
+#tableFixHead2{
+    border-radius: 5px;
+}
+
+.celdaformato{
+    color: #9B9898;
+}
+
+#tableFixHead2          { overflow: auto; height: 450px; }
+#tableFixHead2 thead th { position: sticky; top: 0; z-index: 1; }
+th {background: #F7F7F7 ;}
+
+.mouse{
+    cursor: pointer;
+}

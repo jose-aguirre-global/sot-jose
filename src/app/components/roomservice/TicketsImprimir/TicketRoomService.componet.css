@@ -1,0 +1,120 @@
+.BotonImprimir
+{    
+    border: 0;
+    text-align: center;
+}
+
+.alineacion-principal-ticket{
+    text-align: center; 
+    width: auto;
+}
+
+.txt-resumen-ticket{
+    color: black; 
+    font-size: 13px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    margin: 5px auto; 
+    text-align: center;
+}
+
+.txt-resumen-ticket2{
+    color: black; 
+    font-size: 13px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    text-align: center;
+}
+
+.txt-consumo-ticket{
+    font-size: 21px; 
+    color: black; 
+    text-align: center; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.alineacion-secundaria-ticket{
+    width:50%; 
+    margin-left: 0px; 
+    margin: 30px;
+}
+
+.tit-descripcion-ticket{
+    color: black;
+    font-weight: bold; 
+    font-size: 12px; 
+    width: 1000px 300px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.tit-descripcion2-ticket{
+    color: black;
+    font-size: 12px; 
+    width: 1000px 300px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.titulos-ticket{
+    color: black;
+    font-weight: bold; 
+    font-size: 12px; 
+    width: 100px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.titulos2-ticket{
+    color: black;
+    font-size: 12px; 
+    width: 100px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.tabla-border-ticket{
+    border: black 1px solid ; 
+    width: auto;
+}
+
+.subtotal-ticket{
+    color: black;
+    font-size: 12px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.alineacion-resumen-ticket{
+    margin: 10px 50px; 
+    text-align: center;   
+    margin-left: 60px;
+}
+
+.resumen-venta-ticket{
+    color: black;
+    font-weight: bold; 
+    font-size: 12px; 
+    width: 100px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    text-align: right; 
+    padding-right: 10px;
+}
+
+.total-ticket{
+    color: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-size: 18px; 
+    height: 100%;
+}
+
+.empleado-ticket{
+    color: black; 
+    font-size: 13px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.align-porSuPreferencia{
+    margin-left: 50px; 
+    text-align: center; 
+    margin: 0 30px;
+}
+
+.txt-porSuPreferencia{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black; 
+    font-size: 14px;
+}

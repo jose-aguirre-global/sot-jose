@@ -1,0 +1,57 @@
+
+<div class="modal fade modalEditarRoles" id="modalEditarRoles" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header d-flex justify-content-center">
+          <div class="form-group row">
+
+            <div class="col-sm-12 col-md-6 col-input">
+              <label for="inputNombreRol" >Nombre</label>
+              <input type="text" class="form-control" name="inputNombreRol" id="inputNombreRol">
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-input">
+              <label for="inputFiltroRol" >Filtro</label>
+              <input type="text" class="form-control" name="inputFiltroRol" id="inputFiltroRol">
+            </div>
+
+          </div>
+        </div><!-- moda-header -->
+
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="lista-roles">
+            <ul class="list-group">
+
+              <app-lista-permisos [data]="permisosAyB" [idRol]="idRolEditar"></app-lista-permisos>
+              <app-lista-permisos [data]="permisosAyB" [idRol]="idRolEditar"></app-lista-permisos>
+              <app-lista-permisos [data]="permisosAyB" [idRol]="idRolEditar"></app-lista-permisos>
+              <app-lista-permisos [data]="permisosAyB" [idRol]="idRolEditar"></app-lista-permisos>
+
+            </ul>
+          </div>
+        </div><!-- modal-body -->
+
+          <!-- BOTONES -->
+          <div class="row d-flex justify-content-center row-botones">
+            <button type="button" data-dismiss="modal" class="btn-modal-details btn-redBold mr-8vh">
+              <div class="txt-pass font-3vh">
+                <i class="icon-icon-metro-exit"></i>
+              </div>
+              <div class="size-txt font-2vh">Salir</div>
+            </button>
+
+            <button type="button" class="btn-modal-details btn-success">
+              <div class="txt-pass font-3vh">
+                <i class="fas fa-print"></i>
+              </div>
+              <div class="size-txt font-2vh">Crear Rol</div>
+            </button>
+
+          </div><!-- row -->
+      </div><!-- modal-content -->
+  </div>
+</div>

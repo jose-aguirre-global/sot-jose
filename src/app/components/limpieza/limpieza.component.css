@@ -1,0 +1,256 @@
+.btn-normal{
+  background-color: #15D1CB;
+}
+
+.btn-detallada{
+  background-color: #00A2B8;
+}
+
+.btn-rapida{
+  background-color: #009DD6;
+}
+
+.btn-retoque{
+  background-color: #5DBBDD;
+}
+
+.input-buscar{
+  margin: 0vh -9vh 0vh 0vh;
+  width: 57vh;
+  height: 6vh;
+  border-radius: 25px;
+  border-color: #E4E4E4;
+  outline-style: none;
+  font-size: 2.5vh;
+}
+.overflow-au{
+  overflow-y: auto;
+}
+
+.input-buscar::placeholder{
+  font-size: 2.5vh;
+}
+.card-padding{
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.align-btn{
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search{
+  padding-top: 4.64px;
+  border-radius: 0px 10px 10px 0px !important;
+  padding: 10px;
+}
+
+.camarista-box-libre {
+  font-size: 2vh;
+  width: 50vh;
+  height: 8vh;
+  box-shadow: 0px 3px 6px #A19C9C;
+  border-radius: 6px;
+  background-color: #00A2B8;
+  color: white;
+  padding: 2.3vh;
+  cursor: pointer;
+  justify-content: center;
+  align-content: center;
+}
+
+.camarista-box-ocupada {
+  font-size: 2vh;
+  width: 50vh;
+  height: 8vh;
+  box-shadow: 0px 3px 6px #e6e6e6;
+  border-radius: 6px;
+  background-color: #A19C9C;
+  color: #C6C5C5;
+  padding: 2.3vh;
+  cursor: pointer;
+  justify-content: center;
+  align-content: center;
+  /* display: flex; */
+}
+
+.camarista-box-seleccionada {
+  font-size: 2vh;
+  width: 50vh;
+  height: 8vh;
+  box-shadow: 0px 3px 6px #A19C9C;
+  border-radius: 6px;
+  background-color: #5DBBDD;
+  color: white;
+  padding: 2.3vh;
+  cursor: pointer;
+  justify-content: center;
+  align-content: center;
+  /* display: flex; */
+}
+
+.contenedor-mantenimiento{
+  color: #9B9898;
+  font-size: 2.7vh;
+  height: 60vh;
+  border-radius: 10px;
+}
+
+.fl-right{
+  float: right;
+}
+
+.overy-auto{
+  overflow-y: auto
+}
+.txt-al-center{
+  text-align: -webkit-center
+}
+
+.tamaño-modal-alerta{
+  width: 100vh;
+}
+
+.titulo-modales-alertas{
+  font-size: 4.7vh;
+}
+
+
+@media (max-width: 769px){         /*IPAD*/
+
+  .tamaño-modal-alerta{
+    width: 65vh;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .contenedor-mantenimiento{
+    color: #9B9898;
+    font-size: 2vh;
+    height: 60vh;
+    border-radius: 10px;
+  }
+
+  .camarista-box-libre {
+    font-size: 1vh;
+    width: 27vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #A19C9C;
+    border-radius: 6px;
+    background-color: #00A2B8;
+    color: white;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .camarista-box-ocupada {
+    font-size: 1vh;
+    width: 27vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #e6e6e6;
+    border-radius: 6px;
+    background-color: #A19C9C;
+    color: #C6C5C5;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+    /* display: flex; */
+  }
+
+  .camarista-box-seleccionada {
+    font-size: 1vh;
+    width: 27vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #A19C9C;
+    border-radius: 6px;
+    background-color: #52d9b9;
+    color: white;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+    /* display: flex; */
+  }
+
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+
+  .tamaño-modal-alerta{
+    width: 55vh;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .contenedor-botones{
+    padding: 0px !important;
+  }
+
+  .input-buscar{
+    margin: 0vh -9vh 0vh 0vh;
+    width: 40vh;
+    height: 6vh;
+    border-radius: 25px;
+    border-color: #E4E4E4;
+    outline-style: none;
+    font-size: 2.5vh;
+  }
+
+  .camarista-box-libre {
+    font-size: 1.4vh;
+    width: 35vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #A19C9C;
+    border-radius: 6px;
+    background-color: #00A2B8;
+    color: white;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .camarista-box-ocupada {
+    font-size: 1.4vh;
+    width: 35vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #e6e6e6;
+    border-radius: 6px;
+    background-color: #A19C9C;
+    color: #C6C5C5;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+    /* display: flex; */
+  }
+
+  .camarista-box-seleccionada {
+    font-size: 1.4vh;
+    width: 35vh;
+    height: 6vh;
+    box-shadow: 0px 3px 6px #A19C9C;
+    border-radius: 6px;
+    background-color: #52d9b9;
+    color: white;
+    padding: 2.3vh;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+    /* display: flex; */
+  }
+
+  #modalmant.modal-body{
+    padding: 0vh;
+  }
+
+}

@@ -1,0 +1,145 @@
+input{
+  text-align: center;
+  font-weight: bold;
+}
+.disable-buttons{
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.disable-tarifas{
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.tabla-contenido{
+    height: 60vh;
+}
+
+.head-tabla{
+    background-color: #e4e4e4;
+}
+
+.table-responsive{
+    box-shadow: 7px 7px 15px #dfdfdf;
+    border-radius: 1vh;
+  }
+
+.cont-nuevo-horario{
+width: 165vh;
+}
+
+input{
+    width: 100%;
+    background-color: #c6c5c5;
+    border: none;
+    border-radius: 5vh;
+}
+
+.text-area{
+    width: 100%;
+    background-color: #c6c5c5;
+    border: none;
+    border-radius: 1.7vh;
+}
+
+.contenedor-tarifa{
+    border-radius: 2vh;
+    box-shadow: 3px 3px 7px #dfdfdf;
+
+}
+
+.tamaño-modal-alerta{
+    width: 100vh;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 4.7vh;
+  }
+
+  .radio-check{
+    width: 4vh;
+    height: 4vh;
+  }
+
+  @media (min-width:  1350px){ /* PANTALLAS GRANDES */
+    .checkbox-round {
+      width: 3vh;
+      height: 3vh;
+    }
+    
+    .checkbox-round:checked {
+      width: 3vh;
+      height: 3h;
+    }
+
+    input[type='radio']:after {
+      width: 3vh !important;
+      height: 3vh !important;
+    }
+
+    input[type='radio']:checked:after {
+      width: 3vh !important;
+      height: 3vh !important;
+    }
+
+    .radio-check{
+      width: 3vh !important;
+      height: 3vh !important;
+    }
+  }
+
+  @media (max-width: 769px){         /*IPAD*/
+    .titulo-modales-alertas{
+      font-size: 3.5vh;
+    }
+  
+    .tamaño-modal-alerta{
+      width: 65vh;
+    }
+
+    .cont-nuevo-horario{
+      width: 70vh;
+  }
+  }
+  
+  @media (max-width: 767px){  /* TELEFONO */
+
+    .titulo-modales-alertas{
+      font-size: 3.5vh;
+    }
+  
+    .tamaño-modal-alerta{
+      width: 55vh;
+    }
+  }
+
+  input[type='radio']:after {
+    width: 4vh;
+    height: 4vh;
+    border-radius: 5vh;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+    outline: 2px solid rgb(156,156,156);
+}
+
+input[type='radio']:checked:after {
+  width: 4vh;
+  height: 4vh;
+  border-radius: 5vh;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #801336;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid white;
+  outline: 2px solid rgb(156,156,156);
+}

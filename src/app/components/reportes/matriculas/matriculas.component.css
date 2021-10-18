@@ -1,0 +1,438 @@
+.modal-body{
+  width: 90vw;
+}
+
+.matricula-box {
+  width: auto;
+}
+
+.contenedor-reportes{
+  overflow-y: scroll;
+}
+
+.align-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh 0vh 2vh;
+}
+
+.align-btn #matricula{
+  width: 95%;
+  text-align: center;
+}
+.card-reportes{
+  background-color: #E4E4E4 !important;
+}
+.matricula-box .card-reportes {
+  background-color: #E4E4E4;
+  width: 100%;
+  height: 65vh;
+}
+
+.matricula-box .card-header{
+  padding: 1vh;
+  color: #626262;
+  font-size: 2vh;
+}
+
+.matricula-box .card-reportes .card-body{
+  padding: 0vh;
+}
+
+.card-reportes .card-body .div-reportes-matricula{
+  text-align: -webkit-center;
+}
+
+.card-reportes .reportes-box-container{
+  margin: 2.5vh 0vh;
+}
+
+.div-reportes-matricula .matricula-box input[type=text] {
+  /* background-color: #9B9898; */
+  background-color: #ffffff;
+  border: 1px solid rgba(34, 33, 33, 0.125);
+  border-radius: 35px;
+  text-align: center;
+  /* color: white; */
+  color: rgb(151, 146, 146);
+  font-weight: bold;
+  width: 321px;
+  height: 60px;
+}
+
+.reportes-box{
+  font-weight: bold;
+  width: 90%;
+  height: 6vh;
+  border-radius: 1vh;
+  font-size: 2vh;
+  padding: 1.5vh;
+  cursor: pointer;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+
+}
+
+.div-reportes-matricula .reportes-box-negativo {
+  box-shadow: 0 0.2vh 1vh #801336;
+  background-color: #FFFEFE;
+}
+
+.div-reportes-matricula .reportes-box_checked-negativo {
+  box-shadow: 0 0.2vh 1vh gray;
+  background-color: #eccbcb;
+  color: #be1c1c;
+}
+
+.div-reportes-matricula .reportes-box_checked-positivo {
+  box-shadow: 0 0.2vh 1vh #909090;
+  background-color: #dcffde;
+  color: #A19C9C;
+}
+
+.div-reportes-matricula .reportes-box_checked-neutro {
+  box-shadow: 0 0.2vh 1vh #909090;
+  background-color: #e6e6e6;
+  color: #A19C9C;
+}
+
+.div-reportes-matricula .reportes-box-positivo {
+  box-shadow: 0 0.2vh 1vh #0ac917;
+  background-color: #FFFEFE;
+}
+
+.div-reportes-matricula .reportes-box-neutro {
+  box-shadow: 0 0.2vh 1vh #e6e6e6;
+  background-color: #e6e6e6;
+  color: #A19C9C;
+}
+
+.card-reportes .card-body .mensaje-error-matriculas{
+  margin: 2vh 0vh;
+  font-size: 2vh;
+}
+
+.btn-inhabilitarReporte {
+  background-color: #C72C41;
+  border: 1px solid #C72C41;
+  width: 80%;
+  height: 6vh;
+  text-align: center;
+  border-radius: 2vh;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  bottom: -55px;
+  justify-content: center;
+  font-size: 2.5vh;
+}
+
+.btn-inhabilitarReporte:disabled {
+  background-color: #a19c9c;
+  border: 1px solid #e6e5e5;
+  border: 1px solid rgba(34, 33, 33, 0.125);
+}
+
+.matricula-box-derecha{
+  margin-top: 7.8vh;
+}
+
+.matricula-box-derecha .box-nuevo-reporte{}
+
+.matricula-box-derecha #detalles{
+  text-transform: capitalize;
+}
+
+.matricula-box-derecha .details-textarea{
+  border: none;
+  font-size: 2vh;
+  text-align: justify;
+  display: block;
+  width: 95%;
+  height: 65%;
+  padding: 1vh;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6e707e;
+  background-color: #fff;
+  background-clip: padding-box;
+  margin: 1.5vh 2.5%;
+}
+
+.details{
+  margin: 2vh 0vh;
+  font-size: 2vh;
+}
+
+.details .radio-button-label{
+  margin-right: 1.5vh;
+  cursor: pointer;
+}
+
+.details .form-check-inline{
+  margin: 0px;
+}
+
+.radio-item input[type='radio'] {
+  display: none;
+}
+
+.radio-item label {
+  color: #707070;
+  font-weight: normal;
+}
+
+.radio-item label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 1vh;
+  margin: 0;
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  border: 2px solid #707070;
+  background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+  border-radius: 50%;
+  width: 2vh;
+  height: 2vh;
+  position: absolute;
+  top: 1.5vh;
+  left: 0.5vh;
+  content: " ";
+  display: block;
+  background: #707070;
+}
+
+.borde-detalle-reporte{
+  border-radius: 1vh;
+  border-style: solid;
+  border-width: 0.4vh;
+  margin: 1.5vh;
+}
+
+.borde-positivo{
+  border-color: #0ac917;
+}
+
+.borde-negativo{
+  border-color: #ff0011;
+}
+
+.borde-neutro{
+  border-color: #e6e6e6;
+}
+
+.btn-reportarMatricula {
+  background-color: #C72C41;
+  border: 1px solid #C72C41;
+  width: 80%;
+  height: 6vh;
+  text-align: center;
+  padding-top: 0px;
+  margin-top: 15px;
+  border-radius: 2vh;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  /*bottom: 5px;*/
+  justify-content: center;
+}
+
+.btn-reportarMatricula:disabled {
+  background-color: #a19c9c;
+  border: 1px solid #e6e5e5;
+}
+
+.details-report{
+  font-size: 2vh;
+  color:#9B9898;
+  text-align: left;
+}
+
+.details-report div{
+  margin: 2vh 1vh;
+}
+
+.details-report #estatus_1{
+  color: #0ac917;
+}
+
+.details-report #estatus_2{
+  color: #ff0011;
+}
+
+.details-report #estatus_3{
+  color: #707070;
+}
+
+#descripcion{
+  height: 30vh;
+}
+
+.tamaño-modal-alerta{
+  width: 100vh;
+}
+
+.titulo-modales-alertas{
+  font-size: 4.7vh;
+}
+
+.back-card{
+  background-color: white;
+}
+
+.input-matricula{
+  background-color: lightgray;
+    border: none;
+    width: 53vh;
+    height: 5vh;
+    font-size: 2.5vh;
+    border-radius: 5vh;
+    box-shadow: 2px 2px 2px darkgrey;
+}
+
+.input-matricula::placeholder{
+  color:white;
+}
+
+.modalHuella{
+  width: initial !important;
+}
+
+.boton-cerrar{
+  display: none;
+}
+
+/***** TAMAÑO GRANDE *****/
+@media (min-width: 1200px){
+
+}
+
+/****  TAMAÑO MEDIANO *****/
+@media (max-width: 1200px){  
+  .modal-body{
+    width: 60vw;
+  }
+
+  .crear-reporte{
+    height: 35vh !important;
+  }
+
+  .detalle-reporte{
+    height: 37vh !important;
+    margin-top: 1vh;
+  }
+
+  .details-textarea{
+    height: 15vh !important;
+  }
+
+  .matricula-box-derecha{
+    margin-top: initial;
+  }
+
+  .details-report div{
+    margin: .5vh 1vh;
+  }
+
+  .details .d-flex{
+    display: initial !important;
+  }
+
+  .boton-crear {
+    padding-left: initial;
+    padding-right: initial;
+  }
+
+  .boton-cerrar{
+    display: none;
+  }
+}
+
+@media (max-width: 769px){         /*IPAD*/
+
+  .tamaño-modal-alerta{
+    width: 65vh;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .modal-body{
+    width: 100vw;
+  }
+
+  .details-textarea{
+    height: 12vh !important;
+  }
+
+  .btn-reportarMatricula{
+    height: 8vh;
+  }
+
+  .boton-cerrar{
+    display: none;
+  }
+
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+
+  .tamaño-modal-alerta{
+    width: 55vh;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .matricula-box .card-reportes {
+    height: 35vh;
+  }
+
+  .crear-reporte{
+    height: 38vh !important;
+  }
+
+  .detalle-reporte{
+    height: 38vh !important;
+    margin-top: 0vh;
+  }
+
+  .details .d-flex{
+    display: flex !important;
+  }
+
+  .acomodo-responsivo{
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: normal !important;
+    display: flex;
+  }
+
+  .box-nuevo-reporte{
+    order: 2;
+  }
+
+  .box-detalle-reporte{
+    order: 1;
+  }
+
+  .boton-cerrar{
+    display: block;
+  }
+
+  .boton-salir{
+    display: none;
+  }
+
+}
+

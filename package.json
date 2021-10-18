@@ -1,0 +1,62 @@
+{
+  "name": "cliente-electron",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "node --max_old_space_size=2048 ./node_modules/@angular/cli/bin/ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~11.2.12",
+    "@angular/common": "~11.2.12",
+    "@angular/compiler": "~11.2.12",
+    "@angular/core": "~11.2.12",
+    "@angular/forms": "~11.2.12",
+    "@angular/platform-browser": "~11.2.12",
+    "@angular/platform-browser-dynamic": "~11.2.12",
+    "@angular/router": "~11.2.12",
+    "@digitalpersona/core": "^0.2.6",
+    "@digitalpersona/devices": "^0.2.6",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@vertx/core": "^4.1.0",
+    "angular-cleave": "^1.0.5",
+    "base64url": "^3.0.1",
+    "bootstrap": "^4.6.0",
+    "moment": "^2.29.1",
+    "ng2-currency-mask": "^11.0.0",
+    "ngx-currency": "^2.5.2",
+    "ngx-skeleton-loader": "^2.10.1",
+    "ngx-socket-io": "^4.1.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "^0.11.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^12.2.5",
+    "@angular/cli": "^11.2.11",
+    "@angular/compiler-cli": "~11.2.12",
+    "@angular/language-service": "~11.2.12",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "^6.3.4",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~4.1.5"
+  },
+  "browser": {
+    "crypto": false
+  }
+}

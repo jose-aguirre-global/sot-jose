@@ -1,0 +1,78 @@
+.list-group-item{
+  padding: 0.5vh 12vh;
+  border: none;
+}
+
+.botones-contador button{
+  font-size: 2vh;
+  color: #fff;
+  border-radius: 0.5vh;
+  border: none;
+  box-shadow: none;
+}
+
+.botones-contador span{
+  margin-left: 1.5vh;
+  font-size: 2.5vh;
+  font-weight: 700;
+  color: #8f8f8f;
+}
+
+.botones-contador input,
+.input-sumador input{
+  color: #000000;
+  background: #d0d0d0;
+  margin: 0vh;
+  font-size: 2.5vh;
+  font-weight: 700;
+  padding: 0vh;
+  text-align: center;
+  border-radius: 5vh;
+  display: inline-block;
+  box-shadow: none;
+  border: none;
+  width: 25vh;
+  height: 3.5vh;
+}
+
+.botones-contador input{
+  width: 10vh;
+  margin: 0vh 1vh;
+}
+
+.botones-contador input::placeholder,
+.input-sumador input::placeholder{
+  text-align: center;
+  font-size: 2vh;
+}
+
+
+@media (max-width: 850px){ /*  TELEFONOS */
+
+  .list-group-item{
+    padding: 1vw 2vw;
+  }
+
+  .botones-contador button{
+    font-size: 3vw;
+    border-radius: 1vw;
+  }
+
+  .botones-contador span{
+    margin-left: 1vw;
+    font-size: 3.5vw;
+  }
+
+  .botones-contador input,
+  .input-sumador input{
+    font-size: 3.5vw;
+    border-radius: 5vw;
+    width: 28vw;
+    height: 5vw;
+  }
+
+  .botones-contador input{
+    width: 13vw;
+    margin: 0 1vw;
+  }
+}

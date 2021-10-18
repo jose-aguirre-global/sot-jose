@@ -1,0 +1,35 @@
+.option{
+  margin-bottom: 1vh;
+  height: 6vh;
+  box-shadow: 3px 3px 5px #dfdfdf;
+  border-radius: 1vh;
+  padding: 1vh 2vh !important;
+  font-size: 2.5vh;
+  border:none;
+  cursor: pointer;
+}
+
+.option:hover{
+  background-color:#801336 ;
+  color:white;
+}
+
+.option:hover i{
+  color:white;
+}
+
+.i-verde{
+  color:green
+}
+
+.i-rojo{
+  color: #801336;
+}
+
+@media (min-width: 1200px)
+{
+  .option{
+      padding: 2vh 2vh!important;
+      font-size: 1.7vh;
+  }
+}

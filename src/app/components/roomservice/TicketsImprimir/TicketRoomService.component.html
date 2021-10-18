@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+  <title>Imprimir ticket</title>
+  <script language="Javascript">
+
+    function AddZero(num) {
+      return (num >= 0 && num < 10) ? "0" + num : num + "";
+    }
+
+    window.onload = function () {
+      var now = new Date();
+      var strDateTime = [[AddZero(now.getDate()),
+      AddZero(now.getMonth() + 1),
+      now.getFullYear()].join("/"),
+      [AddZero(now.getHours()),
+      AddZero(now.getMinutes())].join(":"),
+      now.getHours() >= 12 ? "PM" : "AM"].join(" ");
+      document.getElementById("Console").innerHTML = strDateTime;
+    };
+    function imprSelec(nombre) {
+      var ficha = document.getElementById(nombre);
+      var ventimp = window.open(' ', 'popimpr');
+      ventimp.document.write(ficha.innerHTML);
+      ventimp.document.close();
+      ventimp.print();
+      ventimp.close();
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <div id="seleccion">
+    <div class="alineacion-principal-ticket">
+      <img src="http://hades.gmm.local:8070/dist/assets/img/motelv_Logo.png" width="286px" height="94px">
+      <p></p>
+      <div
+        class="txt-resumen-ticket">
+        {{resumenVenta.RazonSocial}}
+      </div>
+      <div
+        class="txt-resumen-ticket">
+        {{resumenVenta.Direccion}} RFC: {{resumenVenta.RFC}}
+      </div>
+      <p></p>
+      <p id="Console"
+      class="txt-resumen-ticket2">
+      </p>
+      <p></p>
+      <div
+        class="txt-consumo-ticket">
+        Consumo</div>
+
+      <div class="alineacion-secundaria-ticket">
+        <table>
+          <thead>
+            <tr>
+              <th
+                class="tit-descripcion-ticket">
+                Descripción</th>
+              <th
+                class="titulos-ticket">
+                Cantidad</th>
+              <th
+                class="titulos-ticket">
+                Precio</th>
+              <th
+                class="titulos-ticket">
+                Total</th>
+            </tr>
+          </thead>
+
+          <tr *ngFor="let consumo of resumenVenta.Items">
+            <td
+              class="tit-descripcion-ticket">
+              {{consumo.nombre}}</td>
+            <td
+              class="titulos-ticket">
+              {{consumo.cantidad}}</td>
+            <td
+              class="titulos-ticket">
+              ${{consumo.precioUnidad}}</td>
+            <td
+              class="titulos-ticket">
+              ${{consumo.total | number:'1.2-2'}}</td>
+          </tr>
+
+
+        </table>
+
+      </div>
+      <div id="idTituloCortesia"
+        class="txt-consumo-ticket">
+        Cortesía</div>
+
+      <div class="alineacion-secundaria-ticket">
+        <table>
+          <tr>
+            <th
+              class="tit-descripcion2-ticket">
+              Descripción</th>
+            <th
+              class="titulos-ticket">
+              Cantidad</th>
+            <th
+              class="titulos2-ticket">
+              Precio</th>
+            <th
+              class="titulos-ticket">
+              Total</th>
+          </tr>
+          <tr *ngFor="let cortesia of resumenVenta.ArticulosCortesia">
+            <th
+              class="tit-descripcion2-ticket">
+              {{cortesia.nombre}}</th>
+            <th
+              class="titulos-ticket">
+              {{cortesia.cantidad}}</th>
+            <th
+              class="titulos2-ticket text-right">
+              ${{cortesia.precioUnidad | number:'1.2-2'}}</th>
+            <th
+              class="titulos-ticket text-right">
+              ${{cortesia.total | number:'1.2-2'}}</th>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="alineacion-resumen-ticket">
+        <table class="tabla-border-ticket">
+          <tr>
+            <th
+              class="subtotal-ticket">
+              Subtotal</th>
+              <th class="text-center">$</th>
+            <th
+              class="titulos-ticket">
+              {{resumenVenta.SubTotal| number:'1.2-2'}}</th>
+          </tr>
+          <tr>
+            <th
+              class="subtotal-ticket">
+              Descuento</th>
+              <th class="text-center">$</th>
+            <th
+              class="titulos-ticket">
+              {{resumenVenta.Descuentos| number:'1.2-2'}}</th>
+          </tr>
+
+          <tr>
+            <th
+              class="subtotal-ticket">
+              Cortesía</th>
+              <th class="text-center">$</th>
+            <th
+              class="resumen-venta-ticket">
+              {{resumenVenta.Cortesia| number:'1.2-2'}}</th>
+          </tr>
+
+          <tr>
+            <th
+              class="total-ticket">
+              Total</th>
+              <th class="text-center">$</th>
+            <th
+              class="resumen-venta-ticket">
+              {{resumenVenta.Total| number:'1.2-2'}}</th>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+    <p></p>
+
+    <div
+      class="empleado-ticket text-center" *ngFor="let empleado of resumenVenta.DtoEmpleadoPuesto">
+      <div> Le atendió:</div>
+      <div>Empleado:{{empleado.idEmpleado}}</div>
+      <div>Ticket:{{resumenVenta.Ticket}}</div>
+    </div>
+
+    <div class="align-porSuPreferencia">
+      <h6 class="txt-porSuPreferencia">GRACIAS
+        POR SU PREFERENCIA</h6>
+    </div>
+
+    <div class="align-porSuPreferencia">
+      <h6 class="subtotal-ticket">
+        **Si requiere factura solicítela a recepción previo a su salida presentando su RFC**</h6>
+    </div>
+
+  </div>
+
+  <div class="text-center" syle="padding-top: 2vh; padding-bottom: 2vh;">
+    <button type="button" class="BotonImprimir" (click)="imprSelec('seleccion')" 
+    style="width: 30vh;
+          height: 6vh;
+          background-color: #801336;
+          color: white;
+          font-weight: bold;
+          border-radius: 5vh;
+          box-shadow: 2px 2px 2px #801336;
+          font-size: 2vh;">
+      Imprimir ticket
+    </button>
+  </div>
+
+
+
+
+</body>
+
+</html>

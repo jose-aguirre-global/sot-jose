@@ -1,0 +1,30 @@
+.option{
+    margin-bottom: 1vh;
+    box-shadow: 3px 3px 5px #dfdfdf;
+    border-radius: 1vh;
+    padding: 1vh 2vh !important;
+    font-size: 2.5vh;
+    border:none;
+}
+
+.option:hover{
+    background-color:#801336 ;
+    color:white;
+}
+
+
+@media (min-width: 1200px)
+{
+    .option{     
+        padding: 2vh 2vh!important;
+        font-size: 1.7vh;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .option2{     
+        padding: 2vh 2vh!important;
+        font-size: 1.7vh;
+    }
+}

@@ -1,0 +1,83 @@
+.button-generalStyle {
+    box-shadow: 0px 3px 6px #C6C5C5;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    color: white;
+}
+.credenciales-container
+{
+  max-width: 700px;
+  position: fixed;
+  top: 15%;
+}
+
+.div-cambio-contrasena{
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+  width: 300px;
+  height: 325px;
+}
+
+.div-cambio-contrasena label{
+  position: relative;
+}
+
+.radio-button-exterior{
+  border: 2px solid #707070;
+  height: 30px;
+  width: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.radio-button-interior{
+  background-color: #801336;
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  top: 5px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.radio-button-titulo{
+  color: #707070;
+  font-size: 14px;
+}
+
+.logo-titulo{
+  color: #C6C5C5;
+  font-size: 16px;
+}
+
+.logo-huella{
+  border-radius: 10px;
+  border: 2px solid #C6C5C5;
+  width: 120px;
+  height: 120px;
+  color: #C6C5C5;
+  font-size: 60px;
+}
+
+.label-cambio-contrasena{
+  font-size: 13px;
+  color: #707070;
+}
+
+#regexPass{
+  font-size: xx-small;
+  text-align: center;
+}
+
+.modal-content{
+  width: 950px;
+  padding: 15px;
+}
+
+.modal-content-text{
+  text-align: center;
+  color:#181818;
+  font-size: 25px;
+  font-weight: bold;
+}

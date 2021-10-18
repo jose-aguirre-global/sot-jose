@@ -1,0 +1,92 @@
+<div class="modal fade modalRegistroFajilla" id="modalRegistroFajilla" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+          <h4 class="modal-title">Registre la fajilla</h4>
+        </div><!-- moda-header -->
+
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+            <ul class="list-group">
+              <app-lista-fajilla  *ngFor="let fajilla of estructuraFajilla"
+                                  [total]="total"
+                                  [data]="fajilla"
+                                  (eventoFajilla)="eventoFajilla()"
+              ></app-lista-fajilla>
+            </ul>
+
+            <div class="otras-monedas-titulos d-flex justify-content-between">
+              <span>Euros</span>
+              <span>Dolares</span>
+            </div>
+            <div class="otras-monedas d-flex justify-content-between">
+              <div class="fajilla-euro">
+                <div class="botones-contador">
+                  <button type="button" class="btn-redBold" (click)="aumentarEuro(1)">
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <input [(ngModel)]="contadorEuros" class="form-control" readonly="readonly">
+
+                  <button type="button" class="btn-redBold" (click)="aumentarEuro(-1)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+
+                  <span>{{ precioEuro | currency:'':'$' }}</span>
+
+                </div>
+
+                <div class="input-sumador">
+                  <input class="form-control" [value]=" totalEuros | currency:'':'$' " readonly="readonly">
+                </div>
+              </div>
+
+              <div class="fajilla-dolar">
+                <div class="botones-contador">
+                  <button type="button" class="btn-redBold" (click)="aumentarDolar(1)">
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <input [(ngModel)]="contadorDolares" class="form-control" readonly="readonly">
+
+                  <button type="button" class="btn-redBold" (click)="aumentarDolar(-1)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+
+                  <span>{{ precioDolar | currency:'':'$' }}</span>
+
+                </div>
+
+                <div class="input-sumador">
+                  <input class="form-control" [value]=" totalDolares | currency:'':'$' " readonly="readonly">
+                </div>
+              </div>
+            </div><!-- otras-monedas -->
+        </div><!-- modal-body -->
+
+        <!-- TOTALES -->
+        <div class="total-fajilla d-flex justify-content-between">
+          <span> $5,000.00</span>
+
+          <span class="text-danger"> Capturado: {{ total | currency:'':'$' }} </span>
+        </div>
+
+          <!-- BOTONES -->
+          <div class="row d-flex justify-content-center row-botones">
+            <button type="button" data-dismiss="modal" class="btn-redBold mr-8vh">
+              <i class="icon-icon-metro-exit"></i>
+              <span>Salir</span>
+            </button>
+
+            <button [attr.disabled]=" (total !== 5000) ? '' : null " type="button" class="btn-success">
+                <i class="fas fa-check"></i>
+              <span>Aceptar</span>
+            </button>
+
+          </div><!-- row -->
+      </div><!-- modal-content -->
+  </div>
+</div>

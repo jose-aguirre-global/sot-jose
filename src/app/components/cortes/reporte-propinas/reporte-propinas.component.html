@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-12 text-center">
+        <h4>Reporte de propinas</h4>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-10">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        Fecha inicial
+                    </div>
+                    <div class="col-12">
+                        <input type="date" [(ngModel)]="fechaFiltro" class="form-control select-areas" (change)="buscarRangoFechas()">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        Fecha final
+                    </div>
+                    <div class="col-12">
+                        <input type="date" [(ngModel)]="fechaFiltroFinal" class="form-control select-areas" (change)="buscarRangoFechas()">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 text-center">
+                <div class="row corte-check">
+                    <div class="col-8 p-0 text-center">
+                        Corte Actual
+                    </div>
+                    <div class="col-2 p-0">
+                        <input class="form-check-input form checkbox-round" type="checkbox" value="" id="defaultCheck1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 my-4">
+        <div class="table-responsive tabla-contenido">
+            <table class="table tabla-contenido"  id="tabla-cont4">
+                <thead class="head-tabla">
+                    <tr class="text-center">
+                        <th scope="col">Folio</th>
+                        <th scope="col">Estadod de corte</th>
+                        <th scope="col">Fecha de incio de corte</th>
+                        <th scope="col">Fecha de fin de corte</th>
+                        <th scope="col">Reporte meseros</th>
+                        <th scope="col">Reporte vendedores</th>
+                    </tr>
+                </thead>
+                <tbody style="overflow-y: auto;" >
+                    <tr *ngFor="let corte of tablaE" class="text-center">
+                        <td>{{corte.folio}}</td>
+                        <td>{{corte.estadoCorte}}</td>
+                        <td>{{corte.fInicio}}</td>
+                        <td>{{corte.fFin}}</td>
+                        <td>
+                            <button class="boton-reporte">Generar Reporte</button>
+                        </td>
+                        <td>
+                            <button class="boton-reporte">Generar Reporte</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-12 text-center pt-2">
+        <button type="button" class="btn-modal-details btn-redBold ml-2" data-dismiss="modal">
+            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+            <div class="font-2vh">Salir</div>
+        </button>
+    </div>
+</div>

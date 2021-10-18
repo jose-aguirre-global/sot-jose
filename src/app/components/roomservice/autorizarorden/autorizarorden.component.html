@@ -1,0 +1,487 @@
+<ng-container *ngIf="ordersList.length">
+  <div class="text-right">
+      <div class="NumHabitacion pr-2vh">{{ 'Habitación ' + viewNumHabitacion }}</div>
+  </div>
+  <div class="d-flex div-container-ordersList">
+
+      <div class="d-flex justify-content-start" *ngFor="let order of ordersList">
+
+          <div class="d-flex justify-content-start">
+              <div class="order-box">
+                  <div>
+                      <div [ngClass]="{'order-green-content': order.timer.elapsed == 0 && order.idEstadoPedido != 4,
+                                          'order-yellow-content': order.timer.elapsed == 1 && order.idEstadoPedido != 4,
+                                          'order-red-content': order.timer.elapsed == 2 && order.idEstadoPedido != 4,
+                                          'order-blue-content': order.idEstadoPedido == 4,
+                                          'order-content':true
+                                      }
+                      ">
+                          <div class="d-flex justify-content-center font-2-5vh"><b>{{ order.numeroOrden }}</b></div>
+                          <div class="d-flex justify-content-between font-2vh">
+                              <div><b>{{ order.abrLineaOrden | uppercase }}</b></div>
+                              <div>{{ order.timer.timeStamp }}</div>
+                              <div>{{ order.estadoPedido }}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="order-elementlist">
+                      <div *ngFor="let detail of order.detalleComandas">
+                          <div class="d-flex justify-content-between" *ngIf="!detail.esCortesia">
+                                <div>
+                                    {{ detail.cantidad }}
+                                </div>
+                                <div class="nombre-articulo">
+                                    {{ detail.desc_Articulo }}
+                                </div>
+                                <div>
+                                    $ {{ detail.precioUnidadConIva }}
+                                </div>
+                          </div>
+                      </div>
+                      <div class="cortesia-order">
+                          <div class="mb-1vh font-2vh" *ngIf="order.tieneCortesias">
+                              Cortesía
+                          </div>
+                          <div *ngFor="let detail of order.detalleComandas">
+                                  <div class="d-flex justify-content-between" *ngIf="detail.esCortesia">
+                                      <div>
+                                          {{ detail.cantidad }}
+                                      </div>
+                                      <div class="nombre-articulo">
+                                          {{ detail.desc_Articulo }}
+                                      </div>
+                                      <div>
+                                          $ {{ detail.precioUnidadConIva }}
+                                      </div>
+                                  </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  <div class="order-blue-result-content"
+                      [ngClass]="{'order-blue-result-content': order.idEstadoPedido == 4, 'order-default-result-content': order.idEstadoPedido != 4}">
+
+                      <div class="justify-content-between font-2vh">
+                        <div class="row">
+                          <div class="col">Subtotal</div>
+                          <div class="col text-right">$</div>
+                          <div class="col text-right">{{ order.subtotal | number : '1.2-2' }}</div>
+                        </div>
+                      </div>
+
+                      <div class="justify-content-between font-2vh">
+                        <div class="row">
+                          <div class="col">Descuento</div>
+                          <div class="col text-right">$</div>
+                          <div class="col text-right">0.00</div>
+                        </div>
+                      </div>
+
+                      <div class="justify-content-between font-2vh">
+                        <div class="row">
+                          <div class="col">Cortesía</div>
+                          <div class="col text-right">$</div>
+                          <div class="col text-right">{{ order.precioCortesia  | number : '1.2-2' }}</div>
+                        </div>
+                      </div>
+                      <div class="justify-content-between font-2vh">
+                            <b>
+                              <div class="row">
+                                <div class="col">Total</div>
+                                <div class="col text-right">$</div>
+                                <div class="col text-right">{{ order.total  | number : '1.2-2' }}</div>
+                              </div>
+                            </b>
+                      </div>
+                  </div>
+                  <div class="d-flex justify-content-center mt-1vh ordersList-buttons">
+                      <button class="btn btn-danger" (click)="child_huella.OpenModaCancelarComanda('cancelarComanda',order.idComanda)">
+                          <div class="h-3vh"><i class="fas fa-times"></i></div>
+                          <span>Cancelar</span>
+                      </button>
+                      <button class="btn btn-secondary" (click)="Imprimir(order.idComanda)">
+                          <div class="h-3vh"><i class="fas fa-print"></i></div>
+                          <span>Imprimir</span>
+                      </button>
+                      <button class="btn btn-light button-cambiar-inhabilitado" [disabled]="order.idEstadoPedido > 2" *ngIf ="order.idEstadoPedido > 2">
+                          <div class="h-3vh"><i class="fas fa-retweet"></i></div>
+                          <span>Cambiar</span>
+                      </button>
+
+                      <button class="btn btn-light button-cambiar-habilitado" (click)="ModificaComanda(order,viewNumHabitacion)" *ngIf ="order.idEstadoPedido < 3">
+                          <div class="h-3vh"><i class="fas fa-retweet"></i></div>
+                          <span>Cambiar</span>
+                      </button>
+                      <button [ngClass]="order.idEstadoPedido > 2 ? 'btn btn-light btn-order-success': 'btn btn-light btn-order-disable'" [disabled]="order.idEstadoPedido < 3"
+                              *ngIf="order.idEstadoPedido != 4"
+                              (click)="AutorizarComanda(order)"
+                          >
+                          <div class="h-3vh"><i class="fas fa-check"></i></div>
+                          <span>Aceptar</span>
+                      </button>
+                      <button class="btn btn-light btn-order-success" *ngIf="order.idEstadoPedido === 4"
+                          data-toggle="modal" (click)="SetObjectForAuthorize(order,order.total)">
+                          <div class="h-3vh"><i class="fas fa-check"></i></div>
+                          <span>Aceptar</span>
+                      </button>
+
+                  </div>
+              </div>
+          </div>
+          <div class="modal fade" id="CancelacionModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" >
+              <div class="modal-dialog modal-dialog-centered justify-content-center">
+                  <div class="modal-content tamaño-modal-alerta">
+                      <div class="modal-body">
+                          <div>
+                              <div class="text-center">
+
+                                  <div id="cancelacion" class="titulo-modales-alertas mb-4">
+                                      <b>Motivo de cancelación</b>
+                                  </div>
+                                  <p></p>
+                                  <div class="mb-4 habitacion-cancelacion">
+                                      {{ 'Habitación ' + viewNumHabitacion }}
+                                  </div>
+                                  <div>
+                                      <input type="text" class="sot-form-control text-center" name="motivoCamncelacion" id="motivoCancelacion"  autocomplete="off">
+                                  </div>
+
+                                  <div class="mt-3 d-flex justify-content-center" >
+                                      <div>
+                                          <label class="text-danger d-none">No se pudo cancelar, intente nuevamente</label>
+                                      </div>
+                                  </div>
+
+                                  <div class="mt-3">
+
+                                      <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal" (click)= "SalirCancelarComanda()" >
+                                          <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                          <div class="font-2vh">Salir</div>
+                                      </button>
+
+                                      <button  class="btn-modal-details btn-green ml-2 mr-15px" (click) = "AceptarModificarComanda()" >
+                                          <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                          <div class="font-2vh">Aceptar</div>
+                                      </button>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="ml-3 div-OpenNewOrderModal">
+          <button class="btn btn-light btn-OpenNewOrderModal" (click)="OpenNewOrderModal()">
+              <div class="font-25px"><i class="fas fa-plus"></i></div>
+          </button>
+      </div>
+
+  </div>
+
+
+  <!-- Modal -->
+  <div  class="modal fade modal-huella"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+        data-backdrop="static"
+        data-keyboard="false"
+        id="huellaAutorizarOrden"
+  >
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document" >
+        <div class="modal-content tamaño-modal-alerta">
+              <div class="modal-body">
+                  <app-huella #child_huella (actualizarHabitaciones)="actualizarHabitaciones.emit($event)"></app-huella>
+              </div>
+        </div>
+    </div>
+  </div>
+<!--
+<div class="modal fade modal-roomservice" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true" id="modalRoomService">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <app-room-list #child_roomService></app-room-list>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<div  class="modal fade modal-huella"
+    id="modalModificadoExitosoAutorizar"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myLargeModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+    data-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content tamaño-modal-alerta justify-content-center text-center">
+          <div class="modal-body">
+              <div class="titulo-modales-alertas">
+                  Cambios guardados con exito
+              </div>
+              <p></p>
+              <p></p>
+              <div>
+                  <button type="button" class="btn-modal-details btn-green ml-2">
+                      <div class="font-3vh"><i class="fas fa-check"></i></div>
+                      <div class="font-2vh">Aceptar</div>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="ModalMetodosPagoComanda" aria-hidden="true" Style ="overflow:hidden;">
+      <div class="modal-dialog modal-dialog-centered justify-content-center" role="document" >
+          <div class="modal-content tamaño-modal-alerta">
+              <div class="modal-body justify-content-center">
+                  <div class="pb-3">
+                      <div class="titulo-modales-alertas"><b>Total</b></div>
+                      <div class="titulo-modales-alertas"><b>$ {{ cobrarTotal | number : '1.2-2' }}</b></div>
+                  </div>
+                  <div class="row justify-content-center text-center">
+                      <div class="">
+                          <select class="custom-form-control SelectModal subtitulos-modal-hab"
+                                  name="tipoPago"
+                                  id="tipoPago"
+                                  [(ngModel)]="tipoPago"
+                                  *ngIf="cobrarTotal > 0"
+                                  (click)="validacionTipoPago($event)">
+                              <option [value]="0">Forma de pago</option>
+                              <option [value]="tipo.idTipoPago"
+                                      *ngFor="let tipo of tiposPago">
+                                  {{ tipo.desc_TipoPago }}
+                              </option>
+                          </select>
+
+                          <select class="custom-form-control SelectModal"
+                                  name="tipoPago"
+                                  id="tipoPago"
+                                  [(ngModel)]="tipoPago"
+                                  *ngIf="cobrarTotal == 0">
+                              <option [value]="0">Forma de pago</option>
+                              <option [value]="6">Cortesía</option>
+                          </select>
+                      </div>
+                  </div>
+                  <!-- Tipo de pago con tarjeta-->
+
+                  <div *ngIf="tipoPago == 2" class="text-center">
+
+                      <div class="d-flex justify-content-center">
+                          <div class="text-center">
+                              <select class="custom-form-control SelectModal subtitulos-modal-hab" name="tipoTarjeta" id="tipoTarjeta" [(ngModel)]="tipoTarjeta" (click)="validacionTipoTarjeta($event)">
+                                  <option [value]="0">Tipo Tarjeta</option>
+                                  <option [value]="tipo.cod_TipoTarjeta"  *ngFor="let tipo of tiposTarjeta">{{ tipo.desc_TipoTarjeta }}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+
+
+                      <div class="d-flex justify-content-center">
+                          <span class="tamaño-letra-tarjeta tamaño-contenedor-textos-tarjeta">
+                              Número de tarjeta *</span>
+
+                             <input type="text"
+                                    id="numTarjeta"
+                                    class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                    maxlength="4"
+                                    name="numeroTarjeta"
+                                    (keyup)="ValidaTarjeta($event)" autocomplete="off"
+                             >
+                      </div>
+
+                      <div class="d-flex justify-content-center align-items-center">
+                          <span class="tamaño-letra-tarjeta tamaño-contenedor-textos-tarjeta">
+                              Número de aprobación *</span>
+
+                          <input  type="text"
+                                  id="numAprobacionTarjeta"
+                                  class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta my-2"
+                                  maxlength="4"
+                                  (keyup)="ValidaNumeroAprobacion($event)"  autocomplete="off">
+
+                      </div>
+
+                      <div class="d-flex justify-content-center mb-3">
+                          <span class="tamaño-letra-tarjeta tamaño-contenedor-textos-tarjeta">
+                              Propina con tarjeta </span>
+
+                          <div class="position-relative">
+                              <input  type="text"
+                                      class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                      id="propTarjetaRoomService"
+                                      name="propinaTarjeta"
+                                      placeholder="$0.00"
+                                      (keyup)="validacionPropina($event)"
+                                      maxlength="10"  autocomplete="off"
+                                >
+                              <div class="position-absolute div-tipo-pago-mensaje"></div>
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+
+              <!-- cortesia -->
+              <div *ngIf="tipoPago == 6">
+                  <div class="row justify-content-center">
+
+                      <input type="text" placeholder="Observaciones Cortesia " id="observCortesiaRoomService"
+                          name="obsCortesia"  class="inputCortesia observaciones-motivo tamaño-letra-tarjeta"  autocomplete="off">
+                  </div>
+                  <div>
+                      <span></span>
+                  </div>
+              </div>
+
+              <!-- Termina cortesia -->
+
+              <!-- Transferencia -->
+              <div *ngIf="tipoPago == 8">
+                  <div class="d-flex justify-content-center py-3">
+
+                      <input type="text" placeholder="Codigo de transferencia *"
+                          class="sot-form-control text-center text-center tamaño-select tamaño-letra-tarjeta" id="numTransRoomServeces"
+                          maxlength="20" (keyup)="validacionTransferencia($event)"  autocomplete="off">
+                  </div>
+              </div>
+
+              <!-- Termina Transferencia -->
+
+                <!-- Mixto -->
+                <div *ngIf="tipoPago == 9">
+
+                  <div class="justify-content-center">
+                      <div>
+
+                          <div class="d-flex justify-content-center">
+                              <div class="text-center">
+                                  <select class="custom-form-control SelectModal subtitulos-modal-hab" name="tipoTarjeta" id="tipoTarjetaMixtoRoom" [(ngModel)]="tipoTarjeta" (click)="validacionTipoTarjetaMixto($event)">
+                                      <option [value]="0">Tipo Tarjeta</option>
+                                      <option [value]="tipo.cod_TipoTarjeta"  *ngFor="let tipo of tiposTarjeta">{{ tipo.desc_TipoTarjeta }}
+                                      </option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <span id="lbNumTajetaMix" class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta"> Número de tarjeta* </span>
+
+                         <input type="text"
+                                id="numTarjetaRoomMixto"
+                                class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                maxlength="4"
+                                name="numeroTarjeta"
+                                (keyup)="ValidaTarjeta($event)"  autocomplete="off"
+                          >
+                  </div>
+
+                  <div class="d-flex justify-content-center py-2" id="lbNumAprobTarjRoomMixto">
+                      <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta"> Número de aprobación * </span>
+
+                      <input  type="text"
+                              id="numAprobacionTarjetaRoomMixto"
+                              class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                              maxlength="4"
+                              (keyup)="ValidaNumeroAprobacion($event)"  autocomplete="off"
+                      >
+
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+
+                      <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta">
+                        <b>Pago con tarjeta</b>
+                      </span>
+
+                      <div class="position-relative">
+                          <input  type="text"
+                                  id="montoTarjetaMixtoRoom"
+                                  class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                  placeholder="$0.00"
+                                  (keyup)="validacionTarjetaMixto($event)"
+                          >
+                          <div class="position-absolute div-tipo-pago-mensaje"></div>
+                      </div>
+
+                  </div>
+
+
+                  <div class="d-flex justify-content-center py-2">
+
+                      <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta">
+                          <b>Pago en efectivo</b>
+                      </span>
+
+                      <div class="position-relative">
+                          <input  type="text"
+                                  id="RoomServiceEfectivoMixto"
+                                  class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                  placeholder="$0.00"
+                                  (keyup)="validacionEfectivoMixto($event)"  autocomplete="off"
+                          >
+                          <div class="position-absolute div-tipo-pago-mensaje"></div>
+                      </div>
+
+                  </div>
+
+                  <div class="d-flex justify-content-center mb-3">
+                      <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta">
+                          Propina con tarjeta
+                      </span>
+
+                      <div class="position-relative">
+                          <input  type="text"
+                                  class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                  id="propTarjetaMixtoRoom"
+                                  name="propinaTarjeta"
+                                  placeholder="$0.00"
+                                  (keyup)="validacionPropina($event)"  autocomplete="off"
+                          >
+                          <div class="position-absolute div-tipo-pago-mensaje"></div>
+                      </div>
+
+                  </div>
+              </div>
+
+          <!-- Termina Mixto -->
+
+          <div class="text-danger text-center d-none" id="errorRoomService">
+              {{error}}
+          </div>
+              <div class="d-flex justify-content-center">
+                  <button type="button" class="btn-modal-details btn-redBold mr-3vh" data-dismiss="modal"
+                      id="btnExitHuella">
+                      <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                      <div class="font-1-5vh">Salir</div>
+                  </button>
+                  <button type="button" class="btn-modal-details btn-green" id="btnOkHuella"
+                      (click)="tipoPago == 6 ? child_huella.OpenModalCortesiaComanda('RoomServiceCortesia',idComandaAux,cobrarTotal): AutorizarComanda()">
+                      <div class="font-3vh"><i class="fas fa-check"></i></div>
+                      <div class="font-1-5vh">
+                          Aceptar</div>
+                  </button>
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+
+</ng-container>

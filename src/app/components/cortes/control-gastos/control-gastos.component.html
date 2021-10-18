@@ -1,0 +1,46 @@
+
+<div class="modal fade modalControlGastos" id="modalControlGastos" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Control de Gastos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <!-- RESUMENES -->
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 col-lg-6 col-resumen-corte">
+              <app-resumen-corte [listaCortes]="listaCortes"></app-resumen-corte>
+            </div>
+
+            <div class="col-12 col-lg-6 col-resumen-corte">
+              <app-resumen-corte [listaCortes]="listaCortes"></app-resumen-corte>
+            </div>
+          </div><!-- row -->
+        </div><!-- modal-body -->
+
+
+          <!-- BOTONES -->
+          <div class="row d-flex justify-content-center row-botones">
+            <button type="button" class="btn-modal-details btn-secondary mr-8vh">
+              <div class="txt-pass font-3vh">
+                <i class="fas fa-print"></i>
+              </div>
+              <div class="size-txt font-2vh">Genear reporte</div>
+            </button>
+
+            <button type="button" data-dismiss="modal" class="btn-modal-details btn-redBold">
+              <div class="txt-pass font-3vh">
+                <i class="icon-icon-metro-exit"></i>
+              </div>
+              <div class="size-txt font-2vh">Salir</div>
+            </button>
+          </div><!-- row -->
+      </div><!-- modal-content -->
+  </div>
+</div>

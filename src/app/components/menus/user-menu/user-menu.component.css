@@ -1,0 +1,232 @@
+.modal-backdrop {
+    z-index: 1 !important;
+}
+
+.list-group .li-item {
+    background-color: #9B9898;
+    color: white;
+    font-size: 18px;
+}
+
+.list-group .li-item .btn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+.card-footer {
+    background-color: #C6C5C5 !important;
+}
+
+.card-footer .importe-box {
+    color: white;
+}
+
+.list-group-item.active {
+    background-color: #801336 !important;
+    border: none;
+}
+
+.result li {
+    background-color: #9B9898;
+    color: white;
+    border: none;
+}
+
+.btn-cancel {
+    width: 300px;
+    border-radius: 25px;
+    font-size: 21px;
+    background-color: #C6C5C5;
+    color: white;
+}
+
+.result li:hover {
+    background-color: #801336;
+}
+
+.card-footer .importe-box input[type=text] {
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-align: right;
+    width: 100px;
+}
+
+.role-box {
+    width: 363px;
+    height: 68px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 10px;
+}
+
+.role-box input[type=text] {
+    background-color: #C6C5C5;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    color: #707070;
+    width: 100%;
+}
+
+.roles-collapse .btn-link {
+    color: #707070;
+}
+
+.roles-collapse .card-header {
+    background-color: white;
+}
+
+.empleados li {
+    background-color: #9B9898;
+    color: white;
+    border: none;
+}
+
+.empleadosHabilitados li {
+    background-color: #0AC917;
+    color: white;
+    border: none;
+}
+
+.btn-inhabilitar {
+    background-color: #C6C5C5;
+    width: 230px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+@media (min-width: 576px){
+    #gastosModal .modal-dialog {
+        max-width: 825px;
+    }
+    #rolesModal .modal-dialog {
+        max-width: 400px;
+    }
+    #corteTurno .modal-dialog {
+        max-width: 600px;
+    }
+    #rolesModal .modal-dialog-growed {
+        max-width: 825px;
+    }
+}
+
+@media (max-width: 576px){
+    .li-item{
+        width: 88vw !important;
+    }
+}
+
+.w-45-um{
+    width: 45%
+}
+
+.mh-391{
+    min-height: 391px
+}
+
+.mh-508{
+    min-height: 508px;
+}
+
+
+.imagen-perfil{
+    width: 8vh;
+    height: 8vh;
+    border-radius: 5vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 14vh;
+}
+
+.name-menu{
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #801336;
+}
+
+.option{
+    margin-bottom: 1vh;
+    height: 6vh;
+    box-shadow: 3px 3px 5px #dfdfdf;
+    border-radius: 1vh;
+    padding: 1vh 2vh !important;
+    font-size: 2.5vh;
+    border:none;
+}
+
+.option:hover{
+    background-color:#801336 ;
+    color:white;
+}
+
+.titulo-modales-alertas{
+    font-size: 4.7vh;
+  }
+
+  .tamaño-modal-alerta{
+    width: 100vh;
+  }
+
+  @media (max-width: 769px){         /*IPAD*/
+  
+    .titulo-modales-alertas{
+      font-size: 3.5vh;
+    }
+  
+    .tamaño-modal-alerta{
+      width: 65vh;
+    }
+  
+  }
+  
+  @media (max-width: 767px){  /* TELEFONO */
+
+    .titulo-modales-alertas{
+      font-size: 3.5vh;
+    }
+  
+    .tamaño-modal-alerta{
+      width: 55vh;
+    }
+
+    .foto-perfil{
+        width: 12vh !important;
+    }
+  }
+
+  @media (min-width: 1200px)
+{
+    .option{     
+        padding: 2vh 2vh!important;
+        font-size: 1.7vh;
+    }
+}
+
+/***** TAMAÑO MEDIANO *****/
+@media (max-width: 767px){
+
+    .option{
+        margin-bottom: 1vh;
+        height: 6vh;
+        box-shadow: 3px 3px 5px #dfdfdf;;
+        border-radius: 1vh;
+        padding: 1vh 2vh !important;
+        font-size: 2.5vh;
+        border:none;
+    }
+
+    .option2{
+        margin-bottom: 1vh;
+        height: 6vh;
+        box-shadow: 3px 3px 5px #dfdfdf;;
+        border-radius: 1vh;
+        padding: 1vh 2vh !important;
+        font-size: 2.5vh;
+        border:none;
+    }
+  
+  }

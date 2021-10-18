@@ -1,0 +1,113 @@
+
+.cortes-select p.text-danger{
+  font-size: 2.5vh;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.cortes-select .form-group{
+  font-size: 2.5vh;
+  text-align: center;
+  margin-bottom: 1.5vh;
+}
+
+.cortes-select .form-group label{
+  font-weight: 600;
+}
+
+.cortes-select .form-group select{
+  border-radius: 1vh;
+  /* width: 20vh; */
+  font-weight: 700;
+  text-align: center;
+  background: #d0d0d0;
+}
+
+.card{
+  border-radius: 1vh;
+  box-shadow: 0px 2px 9px 0px #7f7f7f;
+}
+
+.card-header{
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5vh;
+  padding: 0.5vh;
+}
+
+.card-body{
+  padding: 0 1.5vh 1vh 1.5vh;
+}
+
+.resumen-pagos{
+  margin: 1vh 0vh;
+  border: 1px solid #b5b5b5;
+  border-radius: 2vh;
+  font-size: 2vh;
+}
+
+.resumen-pagos .list-group{
+  border-radius: 2vh;
+  border: none;
+}
+
+.resumen-pagos .list-group li{
+  padding: 0vh 2vh;
+  font-weight: 600;
+  border: none;
+}
+
+.resumen-pagos ul li b{
+  font-weight: 700;
+}
+
+.resumen-total{
+  font-size: 3vh;
+  font-weight: 700;
+  border: 0.5vh solid #b5b5b5;
+  border-radius: 2vh;
+}
+
+.resumen-total b{
+  font-weight: 750;
+}
+
+.resumen-total ul li{
+  padding: 0.5vh 2vh;
+}
+
+.verde{
+  border: 0.5vh solid #0ac917;
+  color: #00a10b;
+}
+
+.rojo{
+  border: .5vh solid #dc3545;
+  color: #801336;
+}
+
+
+@media (max-width: 576px){ /*  TELEFONOS */
+
+  .cortes-select .form-group{
+    font-size: 2.25vh;
+    margin-bottom: 1vh;
+  }
+
+  .card-header{
+    font-size: 2vh;
+  }
+
+  .card-body{
+    padding: 0 1vh 1.5vh;
+  }
+
+  .resumen-pagos{
+    font-size: 1.75vh;
+  }
+
+  .resumen-total{
+    font-size: 2.25vh;
+  }
+
+}

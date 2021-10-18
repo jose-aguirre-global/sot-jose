@@ -1,0 +1,46 @@
+<div class="accordion" id="accordion-corte-{{ data.tipo+idRol }}">
+  <div class="card">
+    <div class="card-header" id="heading-corte-{{ data.tipo+idRol }}">
+      <h5>
+        <button class="btn btn-link d-flex justify-content-between w-100 collapsed" #botonCollapse type="button" data-toggle="collapse" attr.data-target="#collapse-{{ data.tipo+idRol }}" aria-expanded="false" aria-controls="collapseOne">
+          <p>{{ data.titulo }}</p>
+          <i  [class.fa-arrow-up]="!botonCollapse.classList.contains('collapsed')"
+              [class.fa-arrow-down]="botonCollapse.classList.contains('collapsed')"
+              class="fa"></i>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapse-{{ data.tipo+idRol }}" class="collapse" attr.aria-labelledby="heading-corte-{{ data.tipo+idRol }}" attr.data-parent="#accordion-corte-{{ data.tipo+idRol }}">
+      <div class="card-body">
+        <ul class="list-group">
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" id="checkbox1" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label"> &nbsp;&nbsp; Check this custom checkbox</span>
+            </label>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" id="checkbox2" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label"> &nbsp;&nbsp; Check this custom checkbox</span>
+            </label>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" id="checkbox3" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label"> &nbsp;&nbsp; Check this custom checkbox</span>
+            </label>
+          </li>
+
+        </ul>
+      </div><!-- card-body -->
+    </div>
+  </div><!-- card-accordion -->
+</div><!-- accordion -->

@@ -1,0 +1,119 @@
+<div class="row">
+    <div  class="col-12 d-flex justify-content-between box-header"
+          [ngClass]="{'black-header': isDarkMode, 'light-header':!isDarkMode}">
+
+            <div class="d-flex">
+                <div class="d-inline-block icono-buscar font-2vh">
+                  <i class="fas fa-search"></i>
+                </div>
+                <input type="text" class="ml-6vh font-2-5vh d-inline-block form-control">
+            </div>
+
+            <div class="mr-1vh">
+                <div class="box-bw-color" [ngClass]="{'box-sun': isDarkMode, 'box-moon': !isDarkMode}"
+                    (click)="isDarkMode = !isDarkMode">
+                    <i class="fas" [ngClass]="{'fa-sun': isDarkMode, 'fa-moon': !isDarkMode}"></i>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="row d-flex row-comandas">
+
+  <div class="col-12 col-md-6" [ngClass]="{'box-onCooking':true,'box-onCooking-dark': isDarkMode, 'box-onCooking-ligh': !isDarkMode}">
+
+    <div [ngClass]="{'black-header': isDarkMode, 'light-header':!isDarkMode}">
+      <div class="d-inline-block w-20per font-5vh ml-3vh">
+        <i class=" demo-icon" [ngClass]="{'icon-bar': isBar , 'icon-cocina': !isBar}"></i>
+      </div>
+      <div class="d-inline-block font-3vh">
+          <span>Por Preparar</span>
+      </div>
+    </div>
+
+      <div class="order-box box-cooking-delivering cursor-pointer" [ngClass]="{'green-box': comanda.timer.elapsed === 0,
+                                              'yellow-box': comanda.timer.elapsed === 1,
+                                              'red-box': comanda.timer.elapsed === 2}"
+          (click)="PorEntregar(comanda); child_huella.SetModoAutorizacion(modeAutorization, this.PostingModel)"
+          *ngFor="let comanda of cooking">
+
+          <div class="d-flex justify-content-between p-0">
+            <div>
+              <div class="clock"> {{ comanda.timer.timeStamp }} </div>
+              <!-- <div class="font-2-5vh">Preparación</div> -->
+            </div>
+            <div class="font-2vh">Habitacion {{ comanda.destino }}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+              <div class="text-center w-13vh">
+                  <div class="font-4vh mt-1vh"><b>{{ comanda.orden }}</b></div>
+              </div>
+              <div class="w-100 mt-1-5vh">
+                  <div class="cont-comanda-cb"
+                      *ngFor="let orden of comanda.articulosComanda">
+                      <div class="cantidad-comanda-cb"> {{ orden.cantidad }}
+                          {{
+                          orden.nombre }}
+                      </div>
+                      <div class="pl-2 pr-2" *ngIf="orden.observaciones.length">{{ orden.observaciones }}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-12 col-md-6" [ngClass]="{'box-onCooking':true,'box-delivering-dark': isDarkMode, 'box-delivering-ligh': !isDarkMode}">
+
+    <div [ngClass]="{'black-header': isDarkMode, 'light-header':!isDarkMode}">
+
+      <div class="d-inline-block w-20per font-5vh ml-3vh">
+        <i class=" demo-icon icon-porentregar"></i>
+    </div>
+      <div class="d-inline-block font-3vh">
+          <span>Por Entregar</span>
+      </div>
+    </div>
+
+      <div class="order-box box-cooking-delivering cursor-pointer" [ngClass]="{'green-box': comanda.timer.elapsed === 0,
+                                              'yellow-box': comanda.timer.elapsed === 1,
+                                              'red-box': comanda.timer.elapsed === 2}"
+          (click)="PorEntregar(comanda); child_huella.SetModoAutorizacion(modeAutorization, this.PostingModel)"
+          *ngFor="let comanda of delivering">
+          <div class="d-flex justify-content-between p-0">
+            <div>
+              <div class="clock">{{ comanda.timer.timeStamp }}</div>
+              <!-- <div class="font-2-5vh">Preparación</div> -->
+            </div>
+              <div class="font-2vh">Habitacion {{ comanda.destino }}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+              <div class="text-center w-13vh">
+                  <div class="font-4vh mt-1vh">{{ comanda.orden }}</div>
+              </div>
+              <div class="w-100 mt-1-5vh">
+                  <div class="cont-comanda-cb"
+                      *ngFor="let orden of comanda.articulosComanda">
+                      <div class="cantidad-comanda-cb"> {{ orden.cantidad }}
+                          {{
+                          orden.nombre }}
+                      </div>
+                      <div class="pl-2 pr-2" *ngIf="orden.observaciones.length">{{ orden.observaciones }}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="autorizacionModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered justify-content-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <app-huella #child_huella (envioData)="Respuesta($event);"></app-huella>
+            </div>
+        </div>
+
+    </div>
+</div>

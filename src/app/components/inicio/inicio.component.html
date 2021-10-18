@@ -1,0 +1,3141 @@
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white overflow-auto-in" id="sidebar">
+    <div class="border-navbar-in py-1 px-3 mb-1 bg-light">
+        <div class="d-flex justify-content-between">
+            <div class="quickAccess-navbar-btn cursor-pointer" (click)="Home()">
+                <i class="icon-icon-material-home color-red-obs"></i>
+            </div>
+            <div class="quickAccess-navbar-btn cursor-pointer color-gris-cl" (click)="ShowUserOptions()">
+                <i class="fas fa-user-alt"></i>
+            </div>
+            <div class="quickAccess-navbar-btn cursor-pointer color-gris-cl" (click)="ShowMenuHam()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li *ngFor="let el of listaFiltrosAux"
+            [ngClass]="['nav-item', 'information-pill', 'cursor-pointer', 'menu-id-estado-'+el.idEstado]"
+            (click)="FiltradoHabitaciones(el)">
+            <a class="d-flex justify-content-between">
+                <div [ngClass]="el.color"><b>{{ el.cantidad }}</b> &nbsp; {{ el.tipo }}</div>
+                <div [ngClass]="el.color"><i class="far fa-check-circle" [ngClass]="el.icon"></i></div>
+            </a>
+        </li>
+    </ul>
+
+    <div class="text-center mt-2">
+        <input type="text" name="matricula" id="matricula" class="input-tipo-habitacion"
+            placeholder="Tipo de habitación" autocomplete="off" [(ngModel)]="filterTipoHabitacion" maxlength="15"
+            (keyup)="FiltradoHabitacionesTexto(filterTipoHabitacion)">
+    </div>
+
+    <div id="sidebar">
+        <div class="big-square-gray square-color-gray d-flex justify-content-between">
+            <div><b>4</b> Taxi</div>
+            <div><i class="demo-icon icon-car"></i></div>
+        </div>
+
+        <div class="big-square-gray square-color-lightGray d-flex justify-content-between">
+            <div><b>2</b> Mesas</div>
+            <div><i class="demo-icon icon-menu"></i></div>
+        </div>
+
+        <!-- <div class="big-square-gray square-color-gray d-flex justify-content-between">
+            <div><b>2</b> Tarjeta de lealtad</div>
+            <div><i class="demo-icon icon-card"></i></div>
+        </div> -->
+
+        <div (click)="ShowMenuFajillas()" class="big-square-gray square-color-lightGray d-flex justify-content-between">
+            <div><b>0</b> Fajillas</div>
+            <div><i class="icon-money"></i></div>
+        </div>
+
+        <div class="text-center mt-3">
+            <img src="./assets/img/logo_GlobalMaster.png" alt="GM LOGO" width="80">
+        </div>
+    </div>
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content" id="content">
+
+    <!-- Inicia Dialogo -->
+    <div id="dialogo" *ngIf="showDetails">
+        <!-- Inicia Data Box -->
+        <div class="data-box" *ngFor="let el of listaDatosHabitaciones">
+            <div id="dialogo-times" (click)="HideDetails()">
+                <i class="fas fa-times"></i>
+            </div>
+            <!-- Inicia Primer Collapse -->
+            <div class="titulo"><b>Datos de Habitación</b>
+                <span class="mr-2 float-right" id="datosCollapse" data-toggle="collapse"
+                    data-target="#collapsedatosHabitacion" aria-expanded="false">
+                    <i class="fas fa-chevron-circle-down color-red-obs"></i>
+                    <i class="fas fa-chevron-circle-up color-red-obs"></i>
+                </span>
+            </div>
+            <div class="collapse" id="collapsedatosHabitacion">
+                <div>
+                    <div class="label-static">Habitación:</div>
+                    <div class="label-dynamic text-center">{{el.habitacionElectron}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Tipo:</div>
+                    <div class="label-dynamic text-center">{{el.tipo}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Estado:</div>
+                    <div class="label-dynamic text-center">{{el.NombreEstado}}</div>
+                </div>
+                <div *ngIf="el.NombreEstado == 'Supervisión' || el.NombreEstado == 'Supervisor de Mantenimiento'">
+                    <div class="label-static">Supervisor:</div>
+                    <div class="label-dynamic text-center">{{nombreSuperCam}}</div>
+                </div>
+
+                <div *ngIf="el.NombreEstado == 'Limpieza' && num_camaristas <= 2">
+                    <div class="label-static">Camarista:</div>
+                    <div class="label-dynamic text-center">{{nombreSuperCam}}</div>
+                </div>
+
+                <div *ngIf="el.NombreEstado == 'Limpieza' && num_camaristas >= 3">
+                    <div class="label-static">Camarista:</div>
+                    <div *ngFor="let cam of arrayListaCamaristasDetalle">
+                        <div class="label-dynamic text-center">{{cam}}</div><br>
+                    </div>
+                </div>
+
+                <div *ngIf="el.NombreEstado == 'Libre con Detalle'">
+                    <div class="label-static">Observaciones:</div>
+                    <div class="label-dynamic text-center">{{observacionesDetalleHabitacionLibre}}</div>
+                </div>
+
+                <div *ngIf="el.NombreEstado == 'Mantenimiento'">
+                    <div class="label-static">Detalle:</div>
+                    <div class="label-dynamic text-center">{{detalleManto}}</div>
+                </div>
+
+                <div *ngIf="el.NombreEstado == 'Bloqueada'">
+                    <div class="label-static">Detalle:</div>
+                    <div class="label-dynamic text-center">{{detalleManto}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Tarjeta V:</div>
+                    <div class="label-dynamic text-center">{{el.tarjetaV}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Entrada:</div>
+                    <div class="d-flex justify-content-between">
+                        <div class="label-dynamic text-center">{{el.HoraEntrada}}</div>
+                        <div class="label-dynamic text-center">{{el.FechaEntrada}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="label-static">Salida:</div>
+                    <div class="d-flex justify-content-between">
+                        <div class="label-dynamic text-center">{{el.HoraSalida}}</div>
+                        <div class="label-dynamic text-center">{{el.FechaSalida}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="label-static">Automovil:</div>
+                    <div class="label-dynamic text-center">{{el.matricula}}</div>
+                    <div class="label-dynamic text-center mt-1">{{el.DatosAuto}}</div>
+                </div>
+            </div>
+            <!-- Termina Primer Collapse -->
+
+            <!-- Inicia Segundo Collapse -->
+            <div class="titulo"><b>Detalles</b>
+                <span id="detallesCollapse" class="float-right mr-2" data-toggle="collapse"
+                    data-target="#detallesHabitacion" aria-expanded="false">
+                    <i class="fas fa-chevron-circle-down color-red-obs"></i>
+                    <i class="fas fa-chevron-circle-up color-red-obs"></i>
+                </span>
+            </div>
+            <div class="collapse" id="detallesHabitacion">
+                <div>
+                    <div class="label-static">Habitación:</div>
+                    <div class="label-dynamic text-center">${{el.precioHabitacion}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Personas extra:</div>
+                    <div class="label-dynamic text-center">{{el.numeroPersonasExtra}}</div>
+                    <div class="label-dynamic text-center mt-1">${{el.personasExtra}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Horas extra:</div>
+                    <div class="label-dynamic text-center">{{el.numeroHospedajeExtra}}</div>
+                    <div class="label-dynamic text-center mt-1">${{el.hospedajeExtra}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Cortesías:</div>
+                    <div class="label-dynamic text-center">${{el.cortesias}}</div>
+                </div>
+                <div>
+                    <div class="label-static">Paquetes:</div>
+                    <div class="label-dynamic text-center">${{el.paquetes}}</div>
+                </div>
+            </div>
+            <!-- Termina Segundo Collapse -->
+
+            <!-- Inicia Tercer Collapse -->
+            <div class="titulo"><b>Room Service</b>
+                <span id="roomCollapse" class="float-right mr-2" data-toggle="collapse" data-target="#roomService"
+                    aria-expanded="false">
+                    <i class="fas fa-chevron-circle-down color-red-obs"></i>
+                    <i class="fas fa-chevron-circle-up color-red-obs"></i>
+                </span>
+            </div>
+            <div class="collapse" id="roomService">
+                <!-- Inicia For -->
+                <div *ngFor="let el of listaDatosHabitaciones">
+                    <div>
+                        <div class="label-static">Servicio de restaurante:</div>
+                        <div class="label-dynamic text-center">${{el.Comandas.total}}</div>
+                    </div>
+                    <div class="roomService-detail-title text-center">Servicio de restaurante desglosado</div>
+
+                    <div class="roomService-detail-item" *ngFor="let el of articulosComandas">
+                        <ul>
+                            <li class="roomService-detail-item">
+                                <div [ngClass]="el.esCortesia ? 'colorRed':'colorBlack'" class="color">
+                                    <b>{{ el.nombre }}</b>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="label-static">Otros:</div>
+                        <div class="label-dynamic text-center">$0.00</div>
+                    </div>
+                </div>
+                <!-- Termina For -->
+            </div>
+            <!-- Termina Tercer Collapse -->
+
+            <!-- Inician Botones -->
+            <div class="w-100 pr-2">
+                <div *ngIf="libre || preparada ||preparada && reservada || pendiente || bloqueada || libredetalle"
+                    (click)="EvaluaHabitacion(el)">
+                    <div class="big-square square-color-green d-flex justify-content-between">
+                        <div>Entrada de habitación</div>
+                        <div><i class="icon icon-pareja-ocupada"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="preparada" (click)="OpenCancelacionModal(el)">
+                    <div class="big-square square-color-red d-flex justify-content-between">
+                        <div>Cancelar Entrada</div>
+                        <div><i class="icon icon-pareja-ocupada"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="ocupada" (click)="SalidaHabitacion(el.id,el.habitacionElectron)">
+                    <div class="big-square square-color-redbold d-flex justify-content-between">
+                        <div>Salida</div>
+                        <div><i class="icon-icon-metro-exit"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="ConsultarComanda">
+                    <div *ngIf="preparada && reservada || ocupada || pendiente"
+                        (click)="el.ComandasRoomServices.length == 0 ? child_roomService.OpenModal(el) : child_autorizarOrden.GetRoomComanda(el); child_roomService.DefineIdHabitacion(el);">
+                        <div class="big-square square-color-red d-flex justify-content-between">
+                            <div>Room Service</div>
+                            <div><i class="icon icon-roomservice"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="ocupada" (click)="AgregarExtra(el)">
+                    <div class="big-square square-color-green d-flex justify-content-between">
+                        <div>Extra</div>
+                        <div><i class="fas fa-user-plus"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="ocupada" (click)="Imprimir(el.id, el.habitacionElectron)">
+                    <div class="big-square square-color-solidGray d-flex justify-content-between">
+                        <div>Imprimir Ticket</div>
+                        <div><i class="fas fa-print"></i></div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="ocupada" >
+                  <div class="big-square square-color-purple d-flex justify-content-between">
+                      <div>Tarjeta de Lealtad</div>
+                      <div><i class="icon-mantenimiento"></i></div>
+                  </div>
+              </div> -->
+                <!-- <div *ngIf="mantto" (click)="TerminarMantenimiento(el)">
+                  <div class="big-square square-color-green d-flex justify-content-between">
+                      <div>Terminar Mantenimiento</div>
+                      <div><i class=""></i></div>
+                  </div>
+              </div> -->
+                <div *ngIf="mantto" (click)="EnviarSupervision(el, 'mantenimiento')">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Supervisor</div>
+                        <div><i class="fas fa-search"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="supervision" (click)="LiberarHabitacion(el)">
+                    <div class="big-square square-color-green d-flex justify-content-between">
+                        <div>Liberar Habitación</div>
+                        <div><i class="far fa-check-circle"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="supervisionmtto" (click)="LiberarHabitacionMto(el)">
+                    <div class="big-square square-color-green d-flex justify-content-between">
+                        <div>Liberar Habitación</div>
+                        <div><i class="far fa-check-circle"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="supervisionmtto" (click)="EnviarLimpieza(el, 1, 'mantenimiento', true)">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Limpieza</div>
+                        <div><i class="icon-limpieza"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="mediasucia" (click)="EnviarLimpieza(el, 3, 'normal', true)">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Limpieza</div>
+                        <div><i class="icon-limpieza"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="sucia" (click)="EnviarLimpieza(el, 1, 'normal', false)">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Limpieza</div>
+                        <div><i class="icon-limpieza"></i></div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="supervision" (click)="EnviarLimpieza(el, 3, 'normal', true)">
+                  <div class="big-square square-color-skyblue d-flex justify-content-between">
+                      <div>Enviar a Limpieza</div>
+                      <div><i class="icon-limpieza"></i></div>
+                  </div>
+              </div> -->
+                <div *ngIf="supervision" (click)="EnviarLimpieza(el, 4, 'normal', true)">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Limpieza</div>
+                        <div><i class="icon-limpieza"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="libre ||  bloqueada || sucia || mediasucia || libredetalle" (click)="Mantenimiento(el);">
+                    <div class="big-square square-color-solidGray d-flex justify-content-between">
+                        <div>Mantenimiento</div>
+                        <div><i class="icon-mantenimiento"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="bloqueada" (click)="CancelarBloquearHabitacion(el)">
+                    <div class="big-square square-color-red d-flex justify-content-between">
+                        <div>Cancelar Bloqueo</div>
+                        <div><i class="far fa-times-circle"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="libre || preparada || pendiente || libredetalle" (click)="BloquearHabitacion(el)">
+                    <div class="big-square square-color-purple d-flex justify-content-between">
+                        <div>Bloquear</div>
+                        <div><i class="icon-candado"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="libre || preparada || pendiente || bloqueada || libredetalle">
+                    <div class="big-square square-color-purple-light d-flex justify-content-between">
+                        <div>Reservación</div>
+                        <div><i class="icon-calendar"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="preparada && reservada">
+                    <div class="big-square square-color-green d-flex justify-content-between">
+                        <div>Cambiar Habitación</div>
+                        <div><i class="icon-calendar"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="preparada && reservada">
+                    <div class="big-square square-color-purple-light d-flex justify-content-between">
+                        <div>Desanclar Reservación</div>
+                        <div><i class="icon-calendar"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="sucia || mediasucia">
+                    <div class="big-square square-color-red d-flex justify-content-between"
+                        (click)="modalvalidaMatriculaModal()">
+                        <div>Reportar Matricula</div>
+                        <div><i class=""></i></div>
+                    </div>
+                </div>
+                <div *ngIf="limpieza" (click)="EnviarSupervision(el, 'limpieza')">
+                    <div class="big-square square-color-skyblue d-flex justify-content-between">
+                        <div>Enviar a Supervisión</div>
+                        <div><i class="icon-limpieza"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="limpieza" (click)="CambiarCamaristaLimpieza(el)">
+                    <div class="big-square square-color-yellowBold d-flex justify-content-between">
+                        <div>Cambiar</div>
+                        <div><i class="fas fa-sync-alt"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="supervisionmtto" (click)="CambiarSupervisorLimpieza(el, 'cambiarmtto')">
+                    <div class="big-square square-color-yellowBold d-flex justify-content-between">
+                        <div>Cambiar</div>
+                        <div><i class="fas fa-sync-alt"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="limpieza" (click)="CancelarLimpieza(el)">
+                    <div class="big-square square-color-red d-flex justify-content-between">
+                        <div>Cancelar Limpieza</div>
+                        <div><i class="far fa-times-circle"></i></div>
+                    </div>
+                </div>
+                <div *ngIf="sucia || limpieza || supervision" (click)="camaristaEnTurno(el)">
+                    <div class="big-square square-color-solidGray d-flex justify-content-between">
+                        <div>Camaristas en Turno</div>
+                        <div><i class=""></i></div>
+                    </div>
+                </div>
+                <div *ngIf="mantto || supervisionmtto" (click)="HistorialMantenimiento(el)">
+                    <div class="big-square square-color-purple d-flex justify-content-between">
+                        <div>Historial de Mantenimiento</div>
+                        <div><i class=""></i></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Terminan Botones -->
+
+        </div>
+        <!-- Termina Data Box -->
+
+    </div>
+    <!-- Termina Dialogo Botones -->
+
+    <!--Inicia Opciones de Usuario-->
+    <div id="dialogo" *ngIf="userOptions">
+        <!--Inicia Data Box-->
+        <div class="data-box border-0 p-0">
+            <div id="dialogo-times" (click)="HideDetails()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div>
+                <app-user-menu></app-user-menu>
+            </div>
+        </div>
+        <!--Termina Data Box-->
+    </div>
+    <!--Termina Opciones de Usuario-->
+
+    <!--Inicia Menú Hamburguesa-->
+    <div id="dialogo" *ngIf="MenuHamOptions">
+        <!--Inicia Data Box-->
+        <div class="data-box border-0 p-0">
+            <div id="dialogo-times" (click)="HideDetails()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div>
+                <app-menu-hamburguesa (toggleMenuCortes)="toggleMenuCortes($event)"></app-menu-hamburguesa>
+            </div>
+        </div>
+        <!--Termina Data Box-->
+    </div>
+    <!--Termina Menú Hamburgues-->
+
+    <!--Inicia Menú Cortes-->
+    <div id="dialogo" *ngIf="MenuCortesOptions">
+        <!--Inicia Data Box-->
+        <div class="data-box border-0 p-0">
+            <div id="dialogo-times" (click)="HideDetails()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div>
+                <app-menu-cortes (abrirModal)="abrirModal($event)"></app-menu-cortes>
+            </div>
+        </div>
+        <!--Termina Data Box-->
+    </div>
+    <!--Termina Menú Cortes-->
+
+    <!--Inicia Menú Operaciones-->
+    <div id="dialogo" *ngIf="MenuOperacionesOptions">
+        <!--Inicia Data Box-->
+        <div class="data-box border-0 p-0">
+            <div id="dialogo-times" (click)="HideDetails()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div>
+                <app-menu-operaciones (abrirModal)="abrirModal($event)"></app-menu-operaciones>
+            </div>
+        </div>
+        <!--Termina Data Box-->
+    </div>
+    <!--Termina Menú Operaciones-->
+  
+    <!--Inicia Menú Fajillas-->
+    <div id="dialogo" *ngIf="MenuFajillasOptions">
+      <!--Inicia Data Box-->
+      <div class="data-box border-0 p-0">
+          <div id="dialogo-times" (click)="HideDetails()">
+              <i class="fas fa-times"></i>
+          </div>
+          <div>
+              <app-menu-fajillas (cerrarModalEvent)="HideDetails()"></app-menu-fajillas>
+          </div>
+      </div>
+      <!--Termina Data Box-->
+  </div>
+  <!--Termina Menú Fajillas-->
+
+    <!-- Empieza Sky Suite y Poll Villa -->
+    <div class="d-flex justify-content-start d-flex-habitaciones-container">
+        <div class="rooms-container" *ngIf="arrSkySuite.length >0">
+            <h6>Sky Suite</h6>
+            <div class="d-flex d-flex-rooms-left justify-content-start flex-wrap-reverse d-flex-pool-spa">
+                <div class="div-room-card mr-1" *ngFor="let item of arrSkySuite">
+
+                    <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Sky-Suite']"
+                        (click)="CardClick(item.idHabitacion, item.numeroHabitacion,true, item.datoBase, item.detalle)">
+                        <span class="span-usuario-card"></span>
+                        <div *ngIf="item.esVencida"
+                            [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' ,item.definition.alertCss]">
+                            <i class="icon-clock"></i>
+                        </div>
+                        <div>
+                            <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                                {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado) |
+                                titlecase}}
+                            </div>
+                            <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                                {{ item.detalle }}
+                            </div>
+                            <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                            <div class="position-absolute font-10px label-state pie-adjust"
+                                *ngIf="item.idEstado == 9 && !item.esVencida">
+                                <div
+                                    *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendienteskysuite">
+                                    Pendiente
+                                </div>
+                                <ng-template #pendienteskysuite>
+                                    <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                        {{ item.definition.nombre.split(',')[1] }}
+                                    </div>
+                                    <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                        {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <div *ngIf="item.esVencida else estadoskysuite" class="font-10px">
+                                Vencida
+                            </div>
+                            <ng-template #estadoskysuite>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                                    {{ item.detalle }}
+                                </div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                                    {{ item.definition.copyEstado }}
+                                </div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                                    {{ item.datoBase }}
+                                </div>
+                            </ng-template>
+                        </div>
+                        <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4 )"
+                            class="estilo-icon-in">
+                            <i class="icon-cobrar icon-green"></i>
+                        </div>
+                        <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                            <i [ngClass]="[item.definition.icon]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-md-0">
+            <div class="rooms-container2" *ngIf="arrPoolVilla.length >0">
+
+                <h6>Pool Villa</h6>
+                <div
+                    class="d-flex d-flex-rooms-right justify-content-start flex-wrap-reverse flex-wrap d-flex-junior-suit">
+                    <div class="div-room-card mr-1" *ngFor="let item of arrPoolVilla">
+                        <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Pool-Villa']"
+                            (click)="CardClick(item.idHabitacion, item.numeroHabitacion,true, item.datoBase, item.detalle)">
+                            <span class="span-usuario-card"></span>
+                            <div *ngIf="item.esVencida"
+                                [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' , item.definition.alertCss]">
+                                <i class="icon-clock"></i>
+                            </div>
+                            <div>
+                                <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                                    {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado)
+                                    | titlecase}}
+                                </div>
+                                <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                                    {{ item.detalle }}
+                                </div>
+                                <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 9 && !item.esVencida">
+                                    <div
+                                        *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendientepoolvilla">
+                                        Pendiente
+                                    </div>
+                                    <ng-template #pendientepoolvilla>
+                                        <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                            {{ item.definition.nombre.split(',')[1] }}
+                                        </div>
+                                        <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                            {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div *ngIf="item.esVencida else estadospoolvilla" class="font-10px">
+                                    Vencida
+                                </div>
+                                <ng-template #estadospoolvilla>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                                        {{ item.detalle }}
+                                    </div>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                                        {{ item.definition.copyEstado }}
+                                    </div>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                                        {{ item.datoBase }}
+                                    </div>
+                                </ng-template>
+
+                            </div>
+                            <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4)"
+                                class="estilo-icon-in">
+                                <i class="icon-cobrar icon-green"></i>
+                            </div>
+                            <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                                <i [ngClass]="[item.definition.icon]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Termina Sky Suite y Poll Villa -->
+
+    <!-- Empieza Pool & Spa y Junior Suite -->
+    <div class="d-flex justify-content-start d-flex-habitaciones-container">
+        <div class="rooms-container" *ngIf="arrPoolSpa.length >0">
+            <h6>Pool & Spa</h6>
+            <div class="d-flex d-flex-rooms-left justify-content-start flex-wrap-reverse d-flex-pool-spa">
+                <div class="div-room-card mr-1" *ngFor="let item of arrPoolSpa">
+                    <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Pool-Spa']"
+                        (click)="CardClick(item.idHabitacion, item.numeroHabitacion,true, item.datoBase, item.detalle)">
+                        <span class="span-usuario-card"></span>
+                        <div *ngIf="item.esVencida"
+                            [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' , item.definition.alertCss]">
+                            <i class="icon-clock"></i>
+                        </div>
+                        <div>
+                            <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                                {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado) |
+                                titlecase}}
+                            </div>
+                            <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                                {{ item.detalle }}
+                            </div>
+                            <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                            <div class="position-absolute font-10px label-state pie-adjust"
+                                *ngIf="item.idEstado == 9 && !item.esVencida">
+                                <div
+                                    *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendientepoolspa">
+                                    Pendiente
+                                </div>
+                                <ng-template #pendientepoolspa>
+                                    <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                        {{ item.definition.nombre.split(',')[1] }}
+                                    </div>
+                                    <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                        {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <div *ngIf="item.esVencida else estadospoolspa" class="font-10px">
+                                Vencida
+                            </div>
+                            <ng-template #estadospoolspa>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                                    {{ item.detalle }}
+                                </div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                                    {{ item.definition.copyEstado }}
+                                </div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                                    {{ item.datoBase }}
+                                </div>
+                            </ng-template>
+                        </div>
+                        <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4)"
+                            class="estilo-icon-in">
+                            <i class="icon-cobrar icon-green"></i>
+                        </div>
+                        <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                            <i [ngClass]="[item.definition.icon]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ml-md-0">
+            <div class="rooms-container2" *ngIf="arrJuniorSuite.length >0">
+                <h6>Junior Suite</h6>
+                <div
+                    class="d-flex d-flex-rooms-right justify-content-start flex-wrap-reverse flex-wrap d-flex-junior-suit">
+                    <div class="div-room-card mr-1" *ngFor="let item of arrJuniorSuite">
+                        <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Junior-Suite']"
+                            (click)="CardClick(item.idHabitacion, item.numeroHabitacion,true, item.datoBase, item.detalle)">
+                            <span class="span-usuario-card"></span>
+                            <div *ngIf="item.esVencida"
+                                [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' , item.definition.alertCss]">
+                                <i class="icon-clock"></i>
+                            </div>
+                            <div>
+                                <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                                    {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado)
+                                    | titlecase}}
+                                </div>
+                                <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                                    {{ item.detalle }}
+                                </div>
+                                <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                                <div class="position-absolute font-10px label-state pie-adjust"
+                                    *ngIf="item.idEstado == 9 && !item.esVencida">
+                                    <div
+                                        *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendientejrsuite">
+                                        Pendiente
+                                    </div>
+                                    <ng-template #pendientejrsuite>
+                                        <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                            {{ item.definition.nombre.split(',')[1] }}
+                                        </div>
+                                        <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                            {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div *ngIf="item.esVencida else estadojrsuite" class="font-10px">
+                                    Vencida
+                                </div>
+                                <ng-template #estadojrsuite>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                                        {{ item.detalle }}
+                                    </div>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                                        {{ item.definition.copyEstado }}
+                                    </div>
+                                    <div class="position-absolute font-10px label-state pie-adjust"
+                                        *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                                        {{ item.datoBase }}
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4)"
+                                class="estilo-icon-in">
+                                <i class="icon-cobrar icon-green"></i>
+                            </div>
+                            <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                                <i [ngClass]="[item.definition.icon]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Termina Sky Suite y Poll Villa -->
+
+    <div class="row">
+        <div class="col-md-12 rooms-container-title" *ngIf="arrTwinSuite.length >0">
+            <h6>Twin Suite</h6>
+        </div>
+    </div>
+
+    <div class="d-flex d-flex-rooms-bottom justify-content-start flex-wrap flex-wrap-reverse rooms-container">
+        <div class="div-room-card mr-1" *ngFor="let item of arrTwinSuite">
+            <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Twin-Suite']"
+                (click)="CardClick(item.idHabitacion, item.numeroHabitacion,true, item.datoBase, item.detalle)">
+                <span class="span-usuario-card"></span>
+                <div *ngIf="item.esVencida"
+                    [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' , item.definition.alertCss]">
+                    <i class="icon-clock"></i>
+                </div>
+                <div>
+                    <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                        {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado) | titlecase}}
+                    </div>
+                    <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                        {{ item.detalle }}
+                    </div>
+                    <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                    <div class="position-absolute font-10px label-state pie-adjust"
+                        *ngIf="item.idEstado == 9 && !item.esVencida">
+                        <div
+                            *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendientetwinsuite">
+                            Pendiente
+                        </div>
+                        <ng-template #pendientetwinsuite>
+                            <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                {{ item.definition.nombre.split(',')[1] }}
+                            </div>
+                            <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="item.esVencida else estadotwinsuite" class="font-10px">
+                        Vencida
+                    </div>
+                    <ng-template #estadotwinsuite>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                            <span> {{ item.detalle }}</span>
+                        </div>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                            <span> {{ item.definition.copyEstado }}</span>
+                        </div>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                            <span> {{ item.datoBase }}</span>
+                        </div>
+                    </ng-template>
+                </div>
+                <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4)"
+                    class="estilo-icon-in">
+                    <i class="icon-cobrar icon-green"></i>
+                </div>
+                <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                    <i [ngClass]="[item.definition.icon]"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 rooms-container-title" *ngIf="arrJuniorVilla.length >0">
+            <h6>Villas</h6>
+        </div>
+    </div>
+    <div class="d-flex d-flex-rooms-bottom justify-content-start flex-wrap-reverse rooms-container">
+        <div class="div-room-card mr-1" *ngFor="let item of arrJuniorVilla">
+            <div [ngClass]="['d-flex', 'justify-content-between', 'roomCard', (item.esVencida) ? 'roomCard-vencida' : '', 'roomCard-'+item.idHabitacion, item.definition.claseCss, 'id-estado-'+item.idEstado, 'tipo-Villas', 'tipo-Villa']"
+                (click)="CardClick(item.idHabitacion, item.numeroHabitacion, true, item.datoBase, item.detalle)">
+                <span class="span-usuario-card"></span>
+                <div *ngIf="item.esVencida"
+                    [ngClass]="['text-center alert-blink-box', 'animated flash slower infinite' , item.definition.alertCss]">
+                    <i class="icon-clock"></i>
+                </div>
+                <div>
+                    <div class="limitDescription font-10px label-state" *ngIf="item.idEstado != 13">
+                        {{ (item.definition.nombre != null ? item.detalle : item.definition.copyEstado) | titlecase}}
+                    </div>
+                    <div class="limitDescription font-10px label-state" *ngIf="item.idEstado == 13">
+                        {{ item.detalle }}
+                    </div>
+                    <div class="numero-habitacion">{{ item.numeroHabitacion }}</div>
+                    <div class="position-absolute font-10px label-state pie-adjust"
+                        *ngIf="item.idEstado == 9 && !item.esVencida">
+                        <div
+                            *ngIf=" item.datoBase.split(',') [ item.datoBase.split(',').length - 1 ] == 3  else pendientevillas">
+                            Pendiente
+                        </div>
+                        <ng-template #pendientevillas>
+                            <div *ngIf="item.definition.nombre.split(',').length - 1 <= 2">
+                                {{ item.definition.nombre.split(',')[1] }}
+                            </div>
+                            <div *ngIf="item.definition.nombre.split(',').length -1 >= 3">
+                                {{ item.definition.nombre.split(',').length -3 }} Recamaristas
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="item.esVencida else estadovillas" class="font-10px">
+                        Vencida
+                    </div>
+                    <ng-template #estadovillas>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado != 9 && item.idEstado != 13 && item.idEstado != 10 && item.idEstado != 12 && item.idEstado != 14">
+                            {{ item.detalle }}
+                        </div>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado == 13 || item.idEstado == 14">
+                            {{ item.definition.copyEstado }}
+                        </div>
+                        <div class="position-absolute font-10px label-state pie-adjust"
+                            *ngIf="item.idEstado == 10 || item.idEstado == 12">
+                            {{ item.datoBase }}
+                        </div>
+                    </ng-template>
+                </div>
+                <div *ngIf="item.idEstado == 15 && (item.idEstadoComanda == 3 || item.idEstadoComanda == 4)"
+                    class="estilo-icon-in">
+                    <i class="icon-cobrar icon-green"></i>
+                </div>
+                <div [ngClass]="[item.definition.iconColor,'estilo-icon-in']">
+                    <i [ngClass]="[item.definition.icon]"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="CancelaEntradaModal" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+                        <div class="titulo-modales-alertas mb-3">
+                            <b>¿Estás seguro de cancelar la entrada de la habitación {{habitacionCancelNum}}?</b>
+                        </div>
+                        <div class="mt-3">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                (click)="CancelaPreparacionHabitacion(habitacionCancelID,habitacionCancelNum)">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<form #formRentaHabitacion="ngForm" autocomplete="off">
+
+    <div class="modal fade" id="habitacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content body-modal-habitacion" *ngFor="let el of DatosHabitacion">
+                <div class="modal-body">
+                    <div class="justify-content-center">
+                        <div class="row d-flex justify-content-around">
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between">
+                                    <div class="titulo-modal-hab pt-2"><b>Habitación</b></div>
+                                    <div class="ml-2 text-center">
+
+                                        <div class="color-red-obs">
+                                            <b>{{el.habitacionElectron}}</b>
+                                        </div>
+                                        <div class="mt-10">
+
+                                            <b>{{el.tipo}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="enableTarifas">
+                                    <div>
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Habitación</div>
+                                        <div class="d-flex justify-content-center titulos-s-modal-habitacion">
+                                            <div class="w-377 text-center">${{renta.TarifaHabitaciones |
+                                                number:'1.2-2'}}</div>
+                                            <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="TarifaHabitaciones" [(value)]="tTarifaHabitacion" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Persona Extra</div>
+                                        <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                            <div class="square-plus-minus mr-1"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '': null"
+                                                (click)="clickExtra(1, true)"><i class="fas fa-minus"></i></div>
+                                            <div class="sot-form-control text-center w-90"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                                {{ renta.CantidadpersonasExtra}}
+                                            </div>
+                                            <div class="square-plus-minus ml-1" (click)="clickExtra(1, false)"><i
+                                                    class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="w-180 text-center">${{ renta.TarifaPersonasExtra |
+                                                number:'1.2-2'}}</div>
+                                            <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="TarifaPersonasExtra" id="TarifaPersonasExtra"
+                                                    [(value)]="tPersonasExtra" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Hospedaje</div>
+                                        <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                            <div class="square-plus-minus mr-1"><i class="fas fa-minus"
+                                                    (click)="clickExtra(2,true)"></i>
+                                            </div>
+                                            <div class="sot-form-control text-center w-90"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                                {{ renta.CantidadHospedajeExtra}}
+                                            </div>
+                                            <div class="square-plus-minus ml-1" (click)="clickExtra(2, false)"><i
+                                                    class="fas fa-plus"></i>
+                                            </div>
+
+                                            <div class="w-180 text-center">${{renta.TarifaHabitaciones |
+                                                number:'1.2-2'}}</div>
+                                            <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="TarifaHabitaciones" [(value)]="tNochesExtra" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="tTiempoExtra">
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Horas extras</div>
+                                        <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                            <div class="square-plus-minus mr-1"
+                                                (click)="clickExtra(3, true,tTiempoExtra)"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null"><i
+                                                    class="fas fa-minus"></i></div>
+                                            <div class="sot-form-control text-center w-90"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                                {{ renta.CantidadHorasExtras }}
+                                            </div>
+                                            <div class="square-plus-minus ml-1"
+                                                (click)="clickExtra(3, false, tTiempoExtra)"><i class="fas fa-plus"></i>
+                                            </div>
+
+                                            <div class="w-180 text-center">${{renta.TarifaHorasExtra |
+                                                number:'1.2-2'}}</div>
+                                            <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="TarifaHorasExtra" [(value)]="tHorasExtra" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Paquetes</div>
+                                        <div class="d-flex justify-content-start subtitulos-modal-hab">
+                                            <div class="label-dynamic-details text-center w-90p mr-2">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="_paquetes" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                            <!-- <div class="sot-form-control text-center" style="width: 100%;">
+                                              <input type="text" class="sot-form-control text-center" name="_valorPaquetes"
+                                              readonly [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                          </div> -->
+                                            <div class="d-flex justify-content-end ">
+                                                <div class="label-dynamic-details ml-3 text-center w-90p">
+                                                    <input type="text"
+                                                        class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                        name="_valorPaquetes" readonly
+                                                        [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="subtitle-details subtitulos-habitacion-modal">Descuentos</div>
+                                        <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                            <div class="label-dynamic-details text-center w-136">
+                                                <input type="text"
+                                                    class="sot-form-control text-center w-136 titulos-s-modal-habitacion"
+                                                    name="_valorDescuentos" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="mt-2">
+                                      <div class="subtitle-details subtitulos-habitacion-modal">Descuentos tarjeta de
+                                          lealtad</div>
+                                      <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                          <div
+                                              class="label-dynamic-details text-center w-136 titulos-s-modal-habitacion">
+                                              <input type="text" class="sot-form-control text-center w-136" readonly
+                                                  [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                          </div>
+                                      </div>
+                                  </div> -->
+                                </div>
+
+                                <div *ngIf="!enableTarifas" class="label-dynamic-details text-center mb-5">
+                                    <span class="text-danger titulos-s-modal-habitacion"> No existen Tarifas de Motel
+                                        disponibles para este tipo de habitación</span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 mt-5 mt-md-0">
+                                <div class="ml p-3 box-datos-entrada">
+                                    <div class="titulo-modal-hab"><b>Datos de entrada</b></div>
+                                    <div class="subtitulos-modal-hab">
+                                        Para comenzar, seleccione un tipo de Tarifa
+                                    </div>
+                                    <div class="subtitulos-modal-hab d-flex justify-content-between mt-3">
+                                        <div>Tarifa</div>
+                                        <div class="cont-select-tarifa">
+                                            <select
+                                                [ngClass]="{'custom-form-control text-center subtitulos-modal-hab':true,'text-danger': renta.TipoEstancia==0}"
+                                                name="estancia" id="estanciafirstaa" [(ngModel)]="renta.TipoEstancia"
+                                                (change)="ObtenerTarifas(el.id)">
+                                                <option class="text-left" *ngFor="let item of listTipoEstancia"
+                                                    [value]="item.cod_TipoEstadia">
+                                                    {{item.desc_TipoEstadia}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div class="subtitulos-modal-hab">No. de reservación</div>
+                                        <div class="w-128">
+                                            <div class="label-dynamic-details text-center">
+                                                <input type="text"
+                                                    class="input-text-transparent text-center titulos-s-modal-habitacion"
+                                                    name="Reservacion" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex justify-content-between mt-2">
+                                        <div class="subtitulos-modal-hab">Tarjeta de lealtad</div>
+                                        <div class="w-128">
+                                            <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                                <input type="text" class="input-text-transparent" disabled>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="d-flex justify-content-center py-2">
+                                        <div class="form-check subtitulos-modal-hab">
+                                            <input class="form-check-input" type="checkbox" value="" id="formaE"
+                                                name="apie" #apie="ngModel" [(ngModel)]="renta.EsAPie"
+                                                [class.is-invalid]="renta.EsAPie===false && renta.AutoMatricula===''"
+                                                (change)="ResetDatosAuto(renta.EsAPie)"
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+
+                                            <label for="formaE" [ngClass]="{'form-check-label':true,'text-danger': renta.EsAPie===false &&
+                                  (renta.AutoMatricula=='' || renta.AutoMatricula.length<6)}">
+                                                A pie
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div for="matricula" [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.EsAPie===false &&
+                            (renta.AutoMatricula=='' || renta.AutoMatricula.length<6)}">
+                                            Matricula</div>
+
+                                        <div class="ml-3 w-128">
+                                            <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                                <input type="text"
+                                                    class="sot-form-control text-center text-uppercase input-custom"
+                                                    [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                    maxlength="7" id="matricula" name="matricula"
+                                                    #autoActual_Matricula="ngModel" [(ngModel)]="renta.AutoMatricula"
+                                                    [class.is-invalid]="(renta.AutoMatricula=='' && renta.AutoMatricula.length<6)&& renta.EsAPie===false"
+                                                    (keyup)="ValidarNumMatricula(renta.AutoMatricula)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div for="marca"
+                                            [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoMatricula.length && renta.AutoMarca==''}">
+                                            Marca</div>
+
+                                        <div class="w-128 ml-3">
+                                            <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                                <input type="text" class="sot-form-control text-center text-uppercase"
+                                                    [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                    id="marca" name="marca" #autoActual_Marca="ngModel"
+                                                    [(ngModel)]="renta.AutoMarca" maxlength="15"
+                                                    [class.is-invalid]=" renta.AutoMatricula.length<6 && (renta.AutoMarca===''|| renta.AutoMarca.length<2)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div for="modelo"
+                                            [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoMarca.length && renta.AutoModelo==''}">
+                                            Modelo</div>
+
+                                        <div class="w-128 ml-3">
+                                            <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                                <input type="text" class="sot-form-control text-center text-uppercase"
+                                                    [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                    id="modelo" name="modelo" #autoActual_Modelo="ngModel"
+                                                    [(ngModel)]="renta.AutoModelo" maxlength="20"
+                                                    [class.is-invalid]="renta.AutoMarca.length<3 && (renta.AutoModelo=='' || renta.AutoModelo.length<2)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div for="color"
+                                            [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoModelo.length && renta.AutoColor==''}">
+                                            Color</div>
+
+                                        <div class="w-128 ml-3">
+                                            <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                                <input type="text" class="sot-form-control text-center text-uppercase"
+                                                    [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                    id="color" name="color" #AutoColor="ngModel"
+                                                    [(ngModel)]="renta.AutoColor" maxlength="15"
+                                                    [class.is-invalid]="renta.AutoModelo.length<2 && (renta.AutoColor=='' || renta.AutoColor.length<4)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <div class="label-total total-modal-hab ml-0 ml-md-5">
+                                        <b>Total: $ {{renta.Total | number:'1.2-2'}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 pr-5">
+                                <div class="d-flex justify-content-end">
+                                    <!-- <button type="button" class="btn-modal-details btn-purple mr-2">
+                                    <div class="font-3vh"><i class="icon-card"></i></div>
+                                    <div class="font-2vh">Tarjeta de lealtad </div>
+                                </button> -->
+                                    <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                        (click)="SaleRentaHabitacionModal()">
+                                        <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                        <div class="font-2vh">Salir</div>
+                                    </button>
+
+                                    <button type="button" class="btn-modal-details btn-green ml-2"
+                                        [attr.disabled]="renta.EsAPie
+                                          && renta.TarifaHabitaciones!==0 && renta.TipoEstancia!==0  || (
+                                          renta.AutoMatricula.length>5  && renta.AutoModelo.length>2 && renta.AutoMarca.length>2
+                                          && renta.AutoColor.length>3 && renta.TarifaHabitaciones!==0 && renta.TipoEstancia!==0) ? null : '' "
+                                        (click)="ObtenerSiTieneReportes(formRentaHabitacion)">
+                                        <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                        <div class="font-2vh">Aceptar</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPorCobrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content body-modal-habitacion" *ngFor="let el of DatosHabitacion">
+                <div class="modal-body justify-content-center">
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-between">
+                                <div class="titulo-modal-hab pt-2"><b>Habitación</b></div>
+                                <div class="ml-2 text-center">
+
+                                    <div class="color-red-obs">
+                                        <b>{{datosHPorCobrar.numeroHabitacion}}</b>
+                                    </div>
+                                    <div class="mt-10">
+
+                                        <b>{{datosHPorCobrar.nombreHabitacion}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="enableTarifas">
+                                <div>
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Habitación</div>
+                                    <div class="d-flex justify-content-center titulos-s-modal-habitacion">
+                                        <div class="w-377 text-center">${{datosHPorCobrar.precioHabitacion |
+                                            number:'1.2-2'}}</div>
+                                        <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                            <input type="text"
+                                                class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                name="TarifaHabitaciones" id="TarifaHabitaciones2" readonly
+                                                [attr.disabled]="datosHPorCobrar.idTipoTarifa ==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Persona Extra</div>
+                                    <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                        <div class="square-plus-minus mr-1" *ngIf="habilitarBotonesXCobrar"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa ==0 ? '': null"
+                                            (click)="clickExtraXCobrar(1, true)"><i class="fas fa-minus"></i></div>
+                                        <div class="sot-form-control text-center w-90"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa ==0 ? '':null">
+                                            {{ datosHPorCobrar.personasExtras }}
+                                        </div>
+                                        <div class="square-plus-minus ml-1" *ngIf="habilitarBotonesXCobrar"
+                                            (click)="clickExtraXCobrar(1, false)"><i class="fas fa-plus"></i></div>
+                                        <div class="w-180 text-center">${{ datosHPorCobrar.precioPersonaExtra |
+                                            number:'1.2-2'}}</div>
+                                        <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                            <input type="text"
+                                                class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                name="TarifaPersonasExtra" id="TarifaPersonasExtra2"
+                                                [(value)]="tPersonasExtra" readonly
+                                                [attr.disabled]="datosHPorCobrar.idTipoTarifa ==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Hospedaje</div>
+                                    <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                        <div class="square-plus-minus mr-1" *ngIf="habilitarBotonesXCobrar"
+                                            (click)="clickExtraXCobrar(2,true)"><i class="fas fa-minus"></i></div>
+                                        <div class="sot-form-control text-center w-90"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa==0 ? '':null">
+                                            {{ datosHPorCobrar.hospedajeExtra}}
+                                        </div>
+                                        <div class="square-plus-minus ml-1" *ngIf="habilitarBotonesXCobrar"
+                                            (click)="clickExtraXCobrar(2, false)"><i class="fas fa-plus"></i></div>
+
+                                        <div class="w-180 text-center">${{datosHPorCobrar.precioHospedajeExtra |
+                                            number:'1.2-2'}}</div>
+                                        <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                            <input type="text"
+                                                class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                name="TarifaHabitaciones" id="TarifaHospedaje2" [(value)]="tNochesExtra"
+                                                readonly [attr.disabled]="datosHPorCobrar.idTipoTarifa==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="tTiempoExtra">
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Horas extras</div>
+                                    <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                        <div class="square-plus-minus mr-1" *ngIf="habilitarBotonesXCobrar"
+                                            (click)="clickExtraXCobrar(3, true,tTiempoExtra)"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa==0 ? '':null"><i
+                                                class="fas fa-minus"></i></div>
+                                        <div class="sot-form-control text-center w-90"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa==0 ? '':null">
+                                            {{ datosHPorCobrar.horasExtra }}
+                                        </div>
+                                        <div class="square-plus-minus ml-1" *ngIf="habilitarBotonesXCobrar"
+                                            (click)="clickExtraXCobrar(3, false, tTiempoExtra)"><i
+                                                class="fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="w-180 text-center">${{datosHPorCobrar.precioHoraExtra |
+                                            number:'1.2-2'}}</div>
+                                        <div class="ml-3 mr-0 label-dynamic-details text-center">
+                                            <input type="text"
+                                                class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                name="TarifaHorasExtra" id="TarifaHorasExtra2" [(value)]="tHorasExtra"
+                                                readonly [attr.disabled]="datosHPorCobrar.idTipoTarifa==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Paquetes</div>
+                                    <div class="d-flex justify-content-start subtitulos-modal-hab">
+                                        <div class="label-dynamic-details text-center w-90p mr-2">
+                                            <input type="text"
+                                                class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                name="_paquetes" readonly
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                        </div>
+                                        <!-- <div class="sot-form-control text-center" style="width: 100%;">
+                                            <input type="text" class="sot-form-control text-center" name="_valorPaquetes"
+                                            readonly [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                        </div> -->
+                                        <div class="d-flex justify-content-end ">
+                                            <div class="label-dynamic-details ml-3 text-center w-90p">
+                                                <input type="text"
+                                                    class="sot-form-control text-center titulos-s-modal-habitacion"
+                                                    name="_valorPaquetes" readonly
+                                                    [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="subtitle-details subtitulos-habitacion-modal">Descuentos</div>
+                                    <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                        <div class="label-dynamic-details text-center w-136">
+                                            <input type="text"
+                                                class="sot-form-control text-center w-136 titulos-s-modal-habitacion"
+                                                name="_valorDescuentos" readonly
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <!-- <div class="subtitle-details subtitulos-habitacion-modal">
+                                        Descuentos tarjeta de lealtad
+                                    </div> -->
+                                    <div class="d-flex justify-content-end subtitulos-modal-hab">
+                                        <div class="label-dynamic-details text-center w-136 titulos-s-modal-habitacion">
+                                            <input type="text" class="sot-form-control text-center w-136" readonly
+                                                [attr.disabled]="renta.TipoEstancia==0 ? '':null">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="!enableTarifas" class="label-dynamic-details text-center mb-5">
+                                <span class="text-danger titulos-s-modal-habitacion">No existen Tarifas de Motel
+                                    disponibles para este tipo de
+                                    habitación</span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mt-5 mt-md-0">
+                            <div class="ml p-3 box-datos-entrada">
+                                <div class="titulo-modal-hab"><b>Datos de entrada</b></div>
+                                <div
+                                    [ngClass]="{'subtitle-details subtitulos-modal-hab':true,'text-danger text-left':estancia.value==0}">
+                                    Para comenzar, seleccione un tipo de Tarifa
+                                </div>
+                                <div class="subtitulos-modal-hab d-flex justify-content-between mt-3">
+                                    <div>Tarifa</div>
+                                    <div class="cont-select-tarifa">
+                                        <select
+                                            [ngClass]="{'custom-form-control text-center subtitulos-modal-hab':true,'text-danger':estancia.value==0}"
+                                            disabled name="estancia2" id="estancia" #estancia="ngModel"
+                                            [disabled]="habilitarBotonesXCobrar"
+                                            [(ngModel)]="datosHPorCobrar.idTipoTarifa "
+                                            (change)="ObtenerTarifas(datosHPorCobrar.idTipoTarifa )">
+                                            <option class="text-left" *ngFor="let item of listTipoEstancia"
+                                                [ngValue]="item.cod_TipoEstadia">
+                                                {{item.desc_TipoEstadia}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div class="subtitulos-modal-hab">No. de reservación</div>
+                                    <div class="w-128">
+                                        <div class="label-dynamic-details text-center">
+                                            <input type="text"
+                                                class="input-text-transparent text-center titulos-s-modal-habitacion"
+                                                name="Reservacion" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="d-flex justify-content-between mt-2">
+                                    <div class="subtitulos-modal-hab">Tarjeta de lealtad</div>
+                                    <div class="w-128">
+                                        <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                            <input type="text" class="input-text-transparent w-136" disabled>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="d-flex justify-content-center py-2">
+                                    <div class="form-check subtitulos-modal-hab">
+                                        <input class="form-check-input" type="checkbox" value="" id="formaExtra"
+                                            name="apie" #apie="ngModel" [(ngModel)]="APieXCobrar"
+                                            [class.is-invalid]="datosHPorCobrar.matricula=='A PIE'"
+                                            (change)="ResetDatosAuto(renta.EsAPie)"
+                                            [attr.disabled]="datosHPorCobrar.idTipoTarifa!=0 ? '':null">
+
+                                        <label for="formaExtra" [ngClass]="{'form-check-label':true,'text-danger': renta.EsAPie===false &&
+                                  (renta.AutoMatricula=='' || renta.AutoMatricula.length<6)}">
+                                            A pie
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div for="matricula" [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.EsAPie===false &&
+                            (renta.AutoMatricula=='' || renta.AutoMatricula.length<6)}">
+                                        Matricula</div>
+
+                                    <div class="ml-3 w-128">
+                                        <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                            <input type="text"
+                                                class="sot-form-control text-center text-uppercase input-custom"
+                                                [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                maxlength="7" id="matricula2" name="matricula"
+                                                #autoActual_Matricula="ngModel" [(ngModel)]="renta.AutoMatricula"
+                                                [class.is-invalid]="(renta.AutoMatricula=='' && renta.AutoMatricula.length<6)&& renta.EsAPie===false"
+                                                (keyup)="ValidarNumMatricula(renta.AutoMatricula)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div for="marca"
+                                        [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoMatricula.length && renta.AutoMarca==''}">
+                                        Marca</div>
+
+                                    <div class="w-128 ml-3">
+                                        <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                            <input type="text" class="sot-form-control text-center text-uppercase"
+                                                [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                id="marca2" name="marca" #autoActual_Marca="ngModel"
+                                                [(ngModel)]="renta.AutoMarca" maxlength="15"
+                                                [class.is-invalid]=" renta.AutoMatricula.length<6 && (renta.AutoMarca===''|| renta.AutoMarca.length<2)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div for="modelo"
+                                        [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoMarca.length && renta.AutoModelo==''}">
+                                        Modelo</div>
+
+                                    <div class="w-128 ml-3">
+                                        <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                            <input type="text" class="sot-form-control text-center text-uppercase"
+                                                [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                id="modelo2" name="modelo" #autoActual_Modelo="ngModel"
+                                                [(ngModel)]="renta.AutoModelo" maxlength="20"
+                                                [class.is-invalid]="renta.AutoMarca.length<3 && (renta.AutoModelo=='' || renta.AutoModelo.length<2)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div for="color"
+                                        [ngClass]="{'subtitulos-modal-hab lDisabled':true,'text-danger': renta.AutoModelo.length && renta.AutoColor==''}">
+                                        Color</div>
+
+                                    <div class="w-128 ml-3">
+                                        <div class="label-dynamic-details text-center titulos-s-modal-habitacion">
+                                            <input type="text" class="sot-form-control text-center text-uppercase"
+                                                [attr.disabled]="renta.EsAPie || renta.TipoEstancia==0 ? '' : null"
+                                                id="color2" name="color" #AutoColor="ngModel"
+                                                [(ngModel)]="renta.AutoColor" maxlength="15"
+                                                [class.is-invalid]="renta.AutoModelo.length<2 && (renta.AutoColor=='' || renta.AutoColor.length<4)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-between pl-5 pr-5 mt-2 mb-5">
+                    <div class="col-12 col-md-5">
+                        <div>
+                            <div class="label-total total-modal-hab ml-0 ml-md-5">
+                                <b>Total: $ {{TotalXCobrar | number:'1.2-2'}}</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-7 pr-0 pr-md-5">
+                        <!-- Cobros Pendientes-->
+                        <div class="d-flex justify-content-end" *ngIf="!habilitarBotonesXCobrar">
+                            <button type="button" id="butondiss" class="btn-modal-details btn-gray mr-2"
+                                [disabled]="!CobrarHabitaciones">
+                                <div><i class="fas fa-times font-3vh"></i></div>
+                                <div class="font-2vh">Cancelar</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-yellow mr-2"
+                                [disabled]="!CobrarHabitaciones" (click)="cancelarPendiente()">
+                                <div><i class="icon-cobrar font-3vh"></i></div>
+                                <div class="font-2vh">Cancelar pendiente</div>
+                            </button>
+                            <!-- <button type="button" class="btn-modal-details btn-purple mr-2"
+                                [disabled]="!CobrarHabitaciones">
+                                <div><i class="icon-card font-3vh"></i></div>
+                                <div class="font-2vh">Tarjeta de lealtad </div>
+                            </button> -->
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                (click)="SaleRentaHabitacionModal()">
+                                <div><i class="icon-icon-metro-exit font-3vh"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                [disabled]="!CobrarHabitaciones" (click)="ObtenerSiTieneReportes(formRentaHabitacion)">
+                                <div><i class="fas fa-check font-3vh"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                        <!--Agregar extras-->
+                        <div class="d-flex justify-content-end" *ngIf="habilitarBotonesXCobrar">
+                            <button type="button" id="butondiss" class="btn-modal-details btn-danger mr-2"
+                                (click)="mostrarModalCancelarExtra(datosHPorCobrar.numeroHabitacion)">
+                                <div><i class="fas fa-times font-3vh"></i></div>
+                                <div class="font-2vh">Cancelar</div>
+                            </button>
+                            <!-- <button type="button" class="btn-modal-details btn-purple mr-2">
+                                <div><i class="icon-card font-3vh"></i></div>
+                                <div class="font-2vh">Tarjeta de lealtad </div>
+                            </button> -->
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                (click)="SaleRentaHabitacionModal()">
+                                <div><i class="icon-icon-metro-exit font-3vh"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                (click)="modalConfirmarAgregarExtra(datosHPorCobrar.numeroHabitacion)">
+                                <div><i class="fas fa-check font-3vh"></i></div>
+                                <div class="font-2vh">Agregar Extras</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+            <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+                <div class="modal-body">
+                    <div *ngIf="!rentConfirmed">
+                        <div class="text-center">
+                            <div class="titulo-modales-alertas mb-3" *ngIf="el.NombreEstado != 'Por Cobrar'">
+                                <b>${{renta.Total| number:'1.2-2'}}</b>
+                            </div>
+                            <div class="titulo-modales-alertas mb-3" *ngIf="el.NombreEstado == 'Por Cobrar'">
+                                <b>${{TotalXCobrar| number:'1.2-2'}}</b>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <select class="text-left custom-form-control subtitulos-modal-hab" name="tipoPago"
+                                        id="tipoPago" #tipoPago="ngModel" [(ngModel)]="renta.TipoPago"
+                                        (change)="ResetDatosPago()">
+                                        <option *ngFor="let item of opcTipoPago" [ngValue]="item.idTipoPago">
+                                            {{item.desc_TipoPago}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div *ngIf="tipoPago.invalid && tipoPago.touched" class="alert-danger">
+                                <div *ngIf="tipoPago.errors.required">
+                                    Seleccione una Forma de Pago
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Tarjeta de crédito -->
+                                <div *ngIf="renta.TipoPago == 2">
+
+                                    <div class="mt-3 d-flex justify-content-center">
+                                        <div>
+                                            <select id="tipoTDC"
+                                                [ngClass]="{'text-left custom-form-control subtitulos-modal-hab':true,'text-danger': renta.TipoTarjeta===0 && tipoTDC.touched}"
+                                                name="tipoTDC" #tipoTDC="ngModel" [(ngModel)]="renta.TipoTarjeta"
+                                                required [class.is-invalid]="renta.TipoTarjeta===0 && tipoTDC.touched">
+                                                <option *ngFor="let item of TiposTarjeta"
+                                                    [ngValue]="item.cod_TipoTarjeta">
+                                                    {{item.desc_TipoTarjeta}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <span for="numTarjeta"
+                                            [ngClass]="{'tamaño-letra-tarjeta tamaño-contenedor-textos-tarjeta':true,'text-danger': renta.NumeroTarjeta.length<4 && numeroTarjeta.touched}">
+                                            Número de tarjeta *</span>
+                                        <input type="text" id="numTarjeta"
+                                            class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                            maxlength="4" name="numeroTarjeta" #numeroTarjeta="ngModel"
+                                            [(ngModel)]="renta.NumeroTarjeta" required
+                                            [class.is-invalid]="(renta.NumeroTarjeta=='' || renta.NumeroTarjeta.length<4 ) && numeroTarjeta.touched"
+                                            (keyup)="ValidaEnteros($event)" onCopy="return false"
+                                            onPaste="return false">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mt-2 mb-2">
+                                        <span for="numAppTDC"
+                                            [ngClass]="{'tamaño-letra-tarjeta tamaño-contenedor-textos-tarjeta':true,'text-danger': renta.Referencia.length<4 && numAprobacionTDC.touched}">
+                                            Número de aprobación *</span>
+
+                                        <input type="text"
+                                            class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta"
+                                            maxlength="4" required id="numAppTDC" name="numAprobacionTDC"
+                                            #numAprobacionTDC="ngModel" required [(ngModel)]="renta.Referencia"
+                                            (keyup)="ValidaEnteros($event)"
+                                            [class.is-invalid]="renta.Referencia=='' && numAprobacionTDC.touched">
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta"> Propina con
+                                            tarjeta </span>
+
+                                        <div class="position-pagos-in">
+                                            <input type="text" currencyMask
+                                                [options]="{ prefix: '', thousands: ',', decimal: '.' }"
+                                                class="sot-form-control tamaño-letra-tarjeta inputs-pago-tarjeta pl-15-in"
+                                                [(ngModel)]="renta.propina" id="propTarjeta" name="propinaTarjeta">
+                                            <div class="position-txt-pagos-in">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+                                        <small class="text-danger">{{mensajeError}}</small>
+                                    </div>
+                                </div>
+
+
+                                <!-- cortesia -->
+                                <div *ngIf="renta.TipoPago == 6">
+                                    <div>
+
+                                        <input type="text" class="observaciones-motivo tamaño-letra-tarjeta"
+                                            placeholder="Observaciones Cortesia " id="observCortesia" name="obsCortesia"
+                                            #obsCortesia="ngModel" required [(ngModel)]="renta.Referencia"
+                                            [class.is-invalid]="renta.Referencia==='' || renta.Referencia.length<3 && obsCortesia.touched">
+                                    </div>
+                                    <div *ngIf="obsCortesia.invalid && obsCortesia.touched">
+                                        <span
+                                            [ngClass]="{'.text-black-50 tamaño-letra-tarjeta':true,'text-danger': renta.Referencia.length<3}">
+                                            Ingrese la observación de la Cortesía</span>
+                                    </div>
+                                </div>
+
+                                <!-- consumo interno -->
+                                <div *ngIf="renta.TipoPago == 7">
+                                    <div>
+                                        <div class="mt-3 d-flex justify-content-center">
+                                            <div class="justify-content-center">
+
+                                                <select
+                                                    [ngClass]="{'custom-form-control tamaño-letra-tarjeta tamaño-select':true,'text-danger': renta.idEmpleadoInterno===0 && empInterno.touched}"
+                                                    id="empleadoInt" name="empInterno" #empInterno="ngModel"
+                                                    [(ngModel)]="renta.idEmpleadoInterno" required
+                                                    [class.is-invalid]="renta.idEmpleadoInterno===0 && empInterno.touched">
+                                                    <option *ngFor="let item of listEmpleados"
+                                                        [ngValue]="item.idEmpleado">{{item.nombreEmpleado}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <input type="text" class="tamaño-letra-tarjeta observaciones-motivo pb-2"
+                                            id="mConsumo" name="motivoConsumo" placeholder="Motivo"
+                                            #motivoConsumo="ngModel" [(ngModel)]="renta.MotivoConsumo" required
+                                            [class.is-invalid]="renta.MotivoConsumo==''">
+                                        <div class="d-flex justify-content-center tamaño-letra-tarjeta">
+                                            <label name="fechaActual">{{FechaHora|date:'dd/MMMM/yyyy'}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="tamaño-letra-tarjeta text-danger mt-3 d-flex justify-content-center"
+                                        *ngIf="empInterno.invalid && empInterno.touched">
+                                        <span *ngIf="renta.idEmpleadoInterno===0 ">
+                                            Selecciona el Personal </span>
+                                    </div>
+
+                                    <div class="tamaño-letra-tarjeta text-danger mt-3 d-flex justify-content-center"
+                                        *ngIf="motivoConsumo.invalid && motivoConsumo.touched">
+                                        <span *ngIf="renta.MotivoConsumo==='' && motivoConsumo.touched">
+                                            Ingresa el motivo de consumo</span>
+                                    </div>
+                                </div>
+
+                                <!-- Transferencia -->
+                                <div *ngIf="renta.TipoPago == 8">
+                                    <div class="d-flex justify-content-center mt-2 mb-2">
+
+                                        <input type="text" placeholder="Codigo de transferencia *"
+                                            class="sot-form-control text-center tamaño-select tamaño-letra-tarjeta"
+                                            id="numT" name="numT" #numT="ngModel" [(ngModel)]="renta.Referencia"
+                                            required [class.is-invalid]="renta.Referencia==='' && numT.touched"
+                                            (keyup)="ValidaNumTransferencia($event)" maxlength="27">
+                                    </div>
+                                    <div class="text-danger mt-3 d-flex tamaño-letra-tarjeta justify-content-center"
+                                        *ngIf="numT.invalid && numT.touched">
+                                        <small *ngIf="renta.Referencia==='' && numT.touched">
+                                            Ingresa el codigo de transferencia </small>
+                                    </div>
+                                </div>
+
+                                <!-- Mixto -->
+                                <div *ngIf="renta.TipoPago == 9">
+                                    <div class="mt-3 d-flex justify-content-center">
+                                        <div class="w-200">
+
+                                            <select
+                                                [ngClass]="{'text-left custom-form-control subtitulos-modal-hab':true,'text-danger': renta.TipoTarjeta===0 && tipoTDC.touched}"
+                                                id="tipoTDCmixto" name="tipoTDC" #tipoTDC="ngModel"
+                                                [(ngModel)]="renta.TipoTarjeta" required
+                                                [class.is-invalid]="renta.TipoTarjeta===0 && tipoTDC.touched">
+                                                <option *ngFor="let item of TiposTarjeta"
+                                                    [ngValue]="item.cod_TipoTarjeta">
+                                                    {{item.desc_TipoTarjeta}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-2">
+
+                                        <span for="numTarjetaMixto"
+                                            [ngClass]="{'text-black-50 tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta':true,'text-danger': renta.NumeroTarjeta.length<4 && numeroTarj.touched}">
+                                            Número de tarjeta</span>
+
+                                        <input type="text" id="numTarjetaMixto"
+                                            class="sot-form-control inputs-pago-tarjeta numeroTarjeta tamaño-letra-tarjeta"
+                                            autocomplete="off" maxlength="4" name="numeroTarj" #numeroTarj="ngModel"
+                                            [(ngModel)]="renta.NumeroTarjeta" required
+                                            [class.is-invalid]="renta.NumeroTarjeta=='' && numeroTarj.touched"
+                                            (keyup)="ValidaEnteros($event)" onCopy="return false"
+                                            onPaste="return false">
+
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center mt-2 mb-2">
+                                        <span for="NumAppMixto"
+                                            [ngClass]="{'text-black-50 tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta':true,'text-danger': renta.Referencia.length<4 && NumAprobacionMix.touched}">
+                                            Número de aprobación</span>
+
+                                        <input type="text"
+                                            class="sot-form-control numeroTarjeta inputs-pago-tarjeta tamaño-letra-tarjeta"
+                                            maxlength="4" id="NumAppMixto" name="NumAprobacionMix"
+                                            #NumAprobacionMix="ngModel" [(ngModel)]="renta.Referencia" required
+                                            [class.is-invalid]="renta.Referencia=='' && NumAprobacionMix.touched"
+                                            (keyup)="ValidaEnteros($event)">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mt-2 mb-2">
+
+                                        <span for="montoTarjetaMixto"
+                                            [ngClass]="{'text-black-50 tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta':true,'text-danger': renta.MontoTarjetaMixto===0 && MontoTarjetaMixto.touched}"><b>Pago
+                                                con tarjeta</b></span>
+
+                                        <div class="position-pagos-in">
+                                            <input currencyMask [options]="{ prefix: '', thousands: ',', decimal: '.' }"
+                                                type="text" id="montoTarjetaMixto"
+                                                class="sot-form-control numeroTarjeta inputs-pago-tarjeta tamaño-letra-tarjeta pl-15-in"
+                                                required name="MontoTarjetaMixto" id="montoTarjetaMixto"
+                                                #MontoTarjetaMixto="ngModel" [(ngModel)]="renta.MontoTarjetaMixto"
+                                                [class.is-invalid]="(renta.MontoTarjetaMixto===0 || renta.MontoTarjetaMixto==null) && MontoTarjetaMixto.touched"
+                                                placeholder="0.00"
+                                                (keyup)="MascaraDecimalMixtoXCobrar($event, el.NombreEstado)">
+                                            <div class="position-txt-pagos-in">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center mt-2 mb-2">
+
+                                        <span for="montoEfectivoMixto"
+                                            [ngClass]="{'text-black-50 tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta':true,'text-danger': renta.MontoEfectivoMixto===0 && MontoEfectivoMixto.touched}">
+                                            <b>Pago en efectivo</b></span>
+
+                                        <div class="position-pagos-in">
+                                            <input currencyMask [options]="{ prefix: '', thousands: ',', decimal: '.' }"
+                                                type="text"
+                                                class="pagoEfectivo sot-form-control inputs-pago-tarjeta tamaño-letra-tarjeta pl-15-in"
+                                                id="montoEfectivoMixto" name="MontoEfectivoMixto" required
+                                                #MontoEfectivoMixto="ngModel" [(ngModel)]="renta.MontoEfectivoMixto"
+                                                [class.is-invalid]="(renta.MontoEfectivoMixto===0 || renta.MontoEfectivoMixto===null) && MontoEfectivoMixto.touched"
+                                                placeholder="0.00"
+                                                (keyup)="MascaraDecimalMixtoXCobrar($event, el.NombreEstado)">
+                                            <div class="position-txt-pagos-in">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center">
+                                        <span class="tamaño-contenedor-textos-tarjeta tamaño-letra-tarjeta">Propina con
+                                            tarjeta</span>
+
+                                        <div class="position-pagos-in">
+                                            <input currencyMask [options]="{ prefix: '', thousands: ',', decimal: '.' }"
+                                                type="text"
+                                                class="sot-form-control numeroTarjeta inputs-pago-tarjeta tamaño-letra-tarjeta pl-15-in"
+                                                placeholder="0.00" [(ngModel)]="renta.propina" id="propinaTDCMixto"
+                                                name="propinaTDC">
+                                            <div class="position-txt-pagos-in">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <small class="text-danger">{{mensajeError}}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3" *ngIf="renta.TipoPago>0">
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    id="btnExitFormaPago" (click)="SaleTipoPagoModal(formRentaHabitacion)">
+                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                    <div class="font-2vh">Salir</div>
+                                </button>
+
+                                <button *ngIf="el.NombreEstado != 'Por Cobrar'" type="button"
+                                    class="btn-modal-details btn-green ml-2" id="btnOkFormaPago"
+                                    (click)="renta.TipoPago==6 || renta.TipoPago==7 ? child_huella.OpenModal('renta-habitacion',formRentaHabitacion,renta): AplicarRentaHabitacion(formRentaHabitacion)">
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="font-2vh">Aceptar</div>
+                                </button>
+
+                                <button *ngIf="el.NombreEstado == 'Por Cobrar'" type="button"
+                                    class="btn-modal-details btn-green ml-2" id="btnOkFormaPago"
+                                    (click)="renta.TipoPago==6 || renta.TipoPago==7 ? child_huella.pagarPorCobrar('renta-habitacionXcobrar',formRentaHabitacion,renta,datosHPorCobrar,TotalXCobrar): AplicarRentaHabitacionXCobrar(formRentaHabitacion)">
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="font-2vh">Aceptar</div>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="rentConfirmed">
+                        <div class="text-center">
+
+                            <div class="titulo-modales-alertas mb-4">
+                                <b>Renta agregada con exito</b>
+                            </div>
+                            <div class="d-flex justify-content-center">
+
+                                <button type="button" class="btn-modal-details btn-turkish mr-2" data-dismiss="modal"
+                                    (click)="VerDetalle(el.id, el.habitacionElectron)">
+                                    <div class="font-3vh"><i class="icon-eye"></i></div>
+                                    <div class="font-2vh">Ver detalle</div>
+                                </button>
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    (click)="Home()">
+                                    <div class="font-3vh"><i class="icon-icon-material-home"></i></div>
+                                    <div class="font-2vh">Inicio</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal fade" id="rentConfirmedModal" tabindex="-1" role="dialog" data-backdrop="static"
+      data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+          <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+              <div class="modal-body">
+                  <div>
+                      <div class="text-center">
+
+                          <div class="titulo-modales-alertas mb-4">
+                              <b>Renta agregada con exito</b>
+                          </div>
+                          <div class="d-flex justify-content-center">
+
+                              <button type="button" class="btn-modal-details btn-turkish mr-2" data-dismiss="modal"
+                                  (click)="VerDetalle(el.id, el.habitacionElectron)">
+                                  <div class="font-3vh"><i class="icon-eye"></i></div>
+                                  <div class="font-2vh">Ver detalle</div>
+                              </button>
+                              <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                  (click)="Home()">
+                                  <div class="font-3vh"><i class="icon-icon-material-home"></i></div>
+                                  <div class="font-2vh">Inicio</div>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+    <div class="modal fade" id="validaMatriculaModal" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+            <div class="modal-content tamaño-modal-alerta">
+                <div class="modal-body">
+                    <div>
+                        <div class="text-center">
+
+                            <div class="titulo-modales-alertas mb-4">
+                                <b>Existen reportes relacionados con la matricula: {{renta.AutoMatricula}}</b>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <h3>Para continuar deben inhabilitarse los reportes</h3>
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    id="btnValMatExit">
+                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                    <div class="font-2vh">Salir</div>
+                                </button>
+                                <button type="button" class="btn-modal-details btn-green ml-2" id="btnOkValMat"
+                                    (click)="child_inhabilitaMatricula.ObtieneReportesMatricula(renta.AutoMatricula,userOptions, '')">
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="font-2vh">Aceptar</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="validaMatriculaModal2" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+            <div class="modal-content tamaño-modal-alerta">
+                <div class="modal-body">
+                    <div>
+                        <div class="text-center">
+
+                            <div class="titulo-modales-alertas mb-4">
+                                <b>Esta seguro de levantar un reporte para la matricula: {{renta.AutoMatricula}}</b>
+                            </div>
+                            <!-- <div class="d-flex justify-content-center">
+                              <h3>Esta </h3>
+                          </div> -->
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    id="btnValMatExit">
+                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                    <div class="font-2vh">Salir</div>
+                                </button>
+                                <button type="button" class="btn-modal-details btn-green ml-2" id="btnOkValMat"
+                                    (click)="child_inhabilitaMatricula.ObtieneReportesMatricula(renta.AutoMatricula,userOptions, 'normal')">
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="font-2vh">Aceptar</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reporInhabilitadoModal" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+            <div class="modal-content tamaño-modal-alerta">
+                <div class="modal-body">
+                    <div>
+                        <div class="text-center">
+
+                            <div class="titulo-modales-alertas mb-4">
+                                <b><span id="validacionReporte"></span> reportes relacionados<br> ¿Deseas continuar con
+                                    el proceso?</b>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    (click)="SaleReporteInhabilitadoModal()">
+                                    <div class="font-3vh"><i class="icon-eye"></i></div>
+                                    <div class="font-2vh">Salir</div>
+                                </button>
+                                <button type="button" class="btn-modal-details btn-green ml-2" id="btnOkValMat"
+                                    (click)="child_inhabilitaMatricula.ObtieneReportesMatricula(renta.AutoMatricula, userOptions, '')">
+                                    <div class="font-3vh"><i class="icon-icon-material-home"></i></div>
+                                    <div class="font-2vh">Ver Reportes</div>
+                                </button>
+                                <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal"
+                                    (click)="OpenConfirmFormaPago(formRentaHabitacion)">
+                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                    <div class="font-2vh">Ir a Pagar</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+<div class="modal fade pr-0" id="salirModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>¿Estás seguro de terminar la renta de la habitación {{salidaNumeroH}}?</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <!-- <button type="button" class="btn-modal-details btn-green ml-2"
+                          (click)="ExitHabitacion(salidaId,salidaNumeroH)">
+                          <div class="font-3vh"><i class="fas fa-check"></i></div>
+                          <div class="font-2vh">Aceptar</div>
+                      </button> -->
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="CambiarModalSalirHabitacion(salidaId,salidaNumeroH)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="salirModalEstadoSucia" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>Selecciona en que estado dejan la habitación {{salidaNumeroH}}</b>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <div class="radio-item">
+                            <input type="radio" id="ritema" name="estado_habitacion" value="sucia" checked>
+                            <label for="ritema" class="titulo-hsucia"><b> Sucia </b></label>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <div class="radio-item">
+                            <input type="radio" id="ritemb" name="estado_habitacion" value="mediasucia">
+                            <label for="ritemb" class="titulo-hsucia"><b> Medio Sucia </b></label>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="ExitHabitacion(salidaId,salidaNumeroH)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal-roomservice" id="modal-roomservice" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+        <div class="modal-content modal-content-size-in">
+            <app-room-list #child_roomService [datosComandaModificar]="comandaModificar"></app-room-list>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-autorizarOrden" id="modal-autorizarOrden" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center m-0">
+        <div class="modal-content modal-content-size-in">
+            <app-autorizarorden #child_autorizarOrden (actualizarHabitaciones)="ActualizaHabitaciones($event)"
+                (modificarComanda)="comandaModificar = $event">
+            </app-autorizarorden>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-huella" id="huella" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <app-huella #child_huella (actualizarHabitaciones)="ActualizaHabitaciones($event)"></app-huella>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-inhabilitaMatricula" id="inhabilitaMatricula" tabindex="-1" role="dialog"
+    data-backdrop="static" data-keyboard="false" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-reporte-matricula">
+            <app-matriculas #child_inhabilitaMatricula></app-matriculas>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div *ngIf="!rentConfirmed">
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas mb-4">
+                            <b>{{ errorRentaHabitacion }}</b>
+                        </div>
+                        <div class="d-flex justify-content-center">
+
+                            <div class="mt-3">
+                                <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                                    (click)="Home()">
+                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                    <div class="font-2vh">Salir</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalComandaUnsuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="d-flex justify-content-center titulo-modales-alertas text-center py-3">
+                    <h2>No se pudo agregar la orden</h2>
+                </div>
+
+                <div class="d-flex justify-content-center py-3">
+                    <button type="button" class="btn-modal-details btn-green" data-dismiss="modal">
+                        <div class="font-3vh"><i class="fas fa-check"></i></div>
+                        <div class="font-2vh">Aceptar</div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalComandaUnsuccess2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="titulo-modales-alertas d-flex justify-content-center text-center">
+                    <h2>Los artículos con precio cero deben ser marcados como cortesías</h2>
+                </div>
+                <br>
+
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn-modal-details btn-green" data-dismiss="modal">
+                        <div class="font-3vh"><i class="fas fa-check"></i></div>
+                        <div class="font-2vh">Aceptar</div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalComandaUnsuccess3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="d-flex justify-content-center titulo-modales-alertas text-center py-3">
+                    <h2>La renta se encuentra vencida</h2>
+                </div>
+
+                <div class="d-flex justify-content-center py-3">
+                    <button type="button" class="btn-modal-details btn-green" data-dismiss="modal">
+                        <div class="font-3vh"><i class="fas fa-check"></i></div>
+                        <div class="font-2vh">Aceptar</div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="d-flex justify-content-center pb-4">
+                    <h2 class="titulo-modales-alertas text-center">Orden agregada con exito</h2>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn-modal-details btn-turkish mr-2" data-dismiss="modal"
+                        (click)="VerDetalleRoomService()">
+                        <div class="font-3vh"><i class="icon-eye"></i></div>
+                        <div class="font-2vh">Ver detalle</div>
+
+                    </button>
+                    <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal" (click)="Home()">
+                        <div class="font-3vh"><i class="icon-icon-material-home"></i></div>
+                        <div class="font-2vh">Inicio</div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loadermodal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered confirmModal-100px" role="document">
+        <div class="modal-content">
+            <div class="loader">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="CancelarPendienteModal" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>¿Deseas cancelar el pendiente de pago?</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                            (click)="Home()">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-3"
+                            (click)="child_huella.cancelarPorCobrar('cancelarCobrar', datosHPorCobrar.idHAbitacion )">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loader-skeleton" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas">
+                            <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader" [theme]="{height:'50px'}">
+                            </ngx-skeleton-loader>
+                            <ngx-skeleton-loader count="2" appearance="circle" [theme]="{
+                              'border-radius': '5px',
+                              width: '100px',
+                              height: '100px',
+                              'background-color': '',
+                              border: '1px solid white'
+                              }" *ngIf="loader"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="salirModalExtra" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>¿Estás seguro de cancelar la renta de la habitación {{numeroHabitacionExtra}}?</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="child_huella.cancelarExtra('cancelarHabitacionExtra', el.id)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="agregarExtra" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>¿Estas seguro de agregar extras a la habitación {{numeroHabitacionExtra}}?</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" (click)="AgregarCosasExtra(el)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="agregarExtraAceptado" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>Se agregarón los extras a la habitación</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <!-- <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                        <div><i class="icon-icon-metro-exit"></i></div>
+                        <div class="font-11px">Salir</div>
+                    </button> -->
+                        <button type="button" class="btn-modal-details btn-turkish mr-2" data-dismiss="modal"
+                            (click)="VerDetalle(el.id, el.habitacionElectron)">
+                            <div class="font-3vh"><i class="icon-eye"></i></div>
+                            <div class="font-2vh">Ver detalle</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2" (click)="reload()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="agregarExtraFallo" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>Fallo al agregar los extras a la habitación</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                            (click)="falloAgregarExtras('agregarExtraFallo')">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="agregarHorasExtraFallo" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>La tarifa no permite agregar horas extra</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal"
+                            (click)="falloAgregarExtras('agregarExtraFallo')">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancelarExtraFallo" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b id="errorTextCancelarExtra"></b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="bloqueoHabitacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas mb-4">
+                            <b>Motivo del bloqueo <br> de habitación</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <h6>Habitación {{numeroHabitacion}} - {{tipoHabitacion}} </h6>
+                        </div>
+                        <br>
+                        <textarea class="details-textarea text-capitalize border-10p background-color-gris-in"
+                            id="detalles_bloqueo" name="detalles_bloqueo" placeholder="Descripción" cols="50"
+                            rows="5"> </textarea>
+                        <br>
+                        <span class="text-danger" id="bloqueo_fallo"></span>
+                        <br><br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                (click)="child_huella.aceptarBloqueoHabitacion('bloquearHabitacion', el.id );">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="BloquearModalError" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>Fallo al bloquear la habitación </b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal"
+                            (click)="Home()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-3vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancelarBloqueoHabitacion" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas justify-content-center mb-4">
+                            <b>¿Estás seguro de cancelar el bloqueo de la habitación {{numeroHabitacion}}?</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                (click)="child_huella.cancelarBloqueoHabitacion('cancelarbloquearHabitacion', el.id );">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancelarBloquearModalError" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>Fallo al cancelar el bloqueo de la habitación </b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal"
+                            (click)="Home()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="enviarMantenimiento" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-bloqueo" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body d-flex justify-content-center">
+                <div class="text-center pt-2">
+                    <div class="titulo-modal-mantenimiento mb-1 icon-gray text-center">
+                        <b>Enviar a mantenimiento</b>
+                    </div>
+
+                    <div class="card tamaño-card-modal-bloqueo">
+                        <div class="card-header text-center">
+                            <b class="color-gris-head titulo-modal-mantenimiento">Selecciona un motivo</b>
+                        </div>
+                        <div class="card-body text-center justify-content-center">
+
+
+                            <div class="details-card">
+                                <div *ngFor="let item of listaTiposMantenimiento">
+                                    <label class="text-left label-modal-bloqueo">{{item.concepto}}</label>
+                                    <div class="form-check form-check-inline">
+                                        <div class="radio-itemmto" *ngIf="item.id == '3'">
+                                            <input type="radio" id="radio_{{item.concepto}}" name="radio_mto"
+                                                value="{{item.id}}" checked>
+                                            <label for="radio_{{item.concepto}}"></label>
+                                        </div>
+                                        <div class="radio-itemmto" *ngIf="item.id != '3'">
+                                            <input type="radio" id="radio_{{item.concepto}}" name="radio_mto"
+                                                value="{{item.id}}">
+                                            <label for="radio_{{item.concepto}}"></label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <span id="error_radio" class="text-danger"></span>
+
+                                <div class="mt-2">
+                                    <textarea
+                                        class="textarea-modal-bloqueo  placeholder-textarea text-capitalize border-10p"
+                                        id="detalles_mantenimiento" name="detalles_mantenimiento"
+                                        placeholder="Observaciones" cols="35" rows="5"></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="ValidarCamposMantenimiento(el)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="terminarMantenimiento" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-bloqueo" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas mb-4">
+                            <b>¿Estás seguro de terminar el mantenimiento de la habitación {{numeroHabitacion}}?</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2"
+                                (click)="TerminarMantenimientoExito(el.id)">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="historialMantenimiento" tabindex="-1" role="dialog" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered justify-content-center modal-dialog-hitorial-mantenimiento"
+      role="document">
+      <div class="modal-content modal-hitorial-mantenimiento" *ngFor="let el of DatosHabitacion">
+          <div class="modal-body d-flex justify-content-center">
+              <div class="text-center">
+                  <div class="titulo-revison-cortes color-gris-head mb-4 text-center">
+                      <b>Historial de mantenimiento</b>
+                  </div>
+
+                    <div id="tableFixHead" class="card tabla-modal-hismantenimiento mt-1">
+                        <!--height: 450px; overflow-y: scroll;-->
+                        <table class="table">
+                            <thead class="card-header titulos-modal-historial">
+                                <tr>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Concepto</th>
+                                    <th scope="col">Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let dato of arrayHistMato" class="contenido-tabla-historial text-left">
+                                <tr>
+                                    <td>{{dato.fecha | date:'dd/MM/yy, HH:mm' }}</td>
+                                    <td>{{dato.concepto}}</td>
+                                    <td>{{dato.descripcion}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right mt-2">
+
+                        <button type="button" class="btn-modal-details btn-gray mx-2" (click)="GenerarReporte(el.id)">
+                            <div class="font-3vh"><i class="fas fa-print"></i></div>
+                            <div class="font-2vh">Imprimir</div>
+                        </button>
+
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-enviarLimpieza" id="enviarLimpieza" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-hitorial-mantenimiento">
+            <div class="modal-body">
+                <div class="text-center titulo-modal-historial color-gris-head">
+                    <b>Limpieza de habitación</b>
+                </div>
+                <app-limpieza (actualizarHabitaciones)="ActualizaHabitaciones($event)"
+                    [idHabitacionLimpieza]="idHabitacion" [tipoEnvioLimpieza]="tipoNormalManto"
+                    [supervisorValidar]="supervisorValidar" #child_enviarLimpieza></app-limpieza>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancelarLimpieza" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>¿Estas seguro de cancelar la limpieza de la habitación {{numeroHabitacion}} ?</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir </div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="child_enviarLimpieza.ConfirmarCancelarLimpieza(el.id)">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="enviarSupervision" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-bloqueo">
+            <div class="modal-body">
+                <div class="text-center pt-2">
+                    <div class="titulo-modal-historial icon-gray mb-2 text-center">
+                        <b>Supervisores Disponibles</b>
+                    </div>
+
+                    <div class="mt-1 d-flex ">
+                        <input type="text" class="input-supervisor text-center" name="buscar_supervisor"
+                            id="buscar_supervisor" placeholder="Ingresa un nombre" [(ngModel)]="filterSupervisor"
+                            (keyup)="FiltarSupervisor(filterSupervisor,true)">
+                        <span class="fas fa-search text-secondary search font-3vh mt-3"></span>
+                    </div>
+                    <div class="card contenedor-supervisores mt-1">
+                        <div class="card-header contenedor-supervisor text-center">
+                            <b>Selecciona un Supervisor</b>
+                        </div>
+                        <div class="card-body d-flex flex-wrap justify-content-center overy-auto"
+                            id="lista_supervisores">
+
+                            <div class="mt-0-5vh" *ngFor="let supervisor of listaTodosSupervisores">
+                                <div id="recam_{{supervisor.idEmpleado}}" data-id="{{supervisor.nombreEmpleado}}"
+                                    class="mb-2 text-left supervisor-box-list ">
+                                    <div class="row">
+                                        <div class="col-9 d-flex align-items-center">
+                                            {{supervisor.nombreEmpleado}}
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="radio-item2 fl-right">
+                                                <input type="radio" id="radio_super_{{supervisor.idEmpleado}}"
+                                                    name="radio_supervisor" value="{{supervisor.idEmpleado}}">
+                                                <label for="radio_super_{{supervisor.idEmpleado}}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="details-card">
+                        <span id="error_radio_supervisor" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="ValidarSeleccionSupervisor()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="liberarHabitacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-bloqueo" *ngFor="let el of DatosHabitacion">
+            <div class="modal-body d-flex justify-content-center">
+                <div class="text-center pt-2">
+                    <div class="mb-4 text-center titulo-modal-historial icon-gray">
+                        <b>Confirmar la liberación de la habitación {{numeroHabitacion}} </b>
+                    </div>
+
+                    <div class="card contenedor-liberar mt-4">
+                        <div class="card-header contenedor-supervisor text-center">
+                            <b>Selecciona un tipo de liberación</b>
+                        </div>
+
+                        <div class="card-body overy-auto" id="lista_supervisores" *ngIf="tipoLiberacion == 'normal'">
+
+                            <div class="mb-3 mt-1" *ngFor="let conceptos of listaConceptosLiberacion">
+                                <div id="concepto_{{conceptos.id}}" data-id="{{conceptos.id}}"
+                                    class="mb-3 mt-1 text-left liberacion-box-list" *ngIf="conceptos.activo">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            {{conceptos.concepto}}
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="radio-item3 fl-right">
+                                                <input type="radio" id="radio_concepto_{{conceptos.id}}"
+                                                    name="radio_concepto" value="{{conceptos.id}}"
+                                                    (click)="mostrarDetalle(conceptos.id)">
+                                                <label for="radio_concepto_{{conceptos.id}}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="conceptos.id != 33">
+                                    <div class="row justify-content-center">
+                                        <div id="mostrar_text_{{conceptos.id}}" class="text-detalle-area d-none my-2">
+                                            <textarea
+                                                class="details-textarea-liberar text-capitalize border-10p form-control background-color-gris-in"
+                                                id="concepto_detalle_{{conceptos.id}}"
+                                                name="concepto_detalle_{{conceptos.id}}" placeholder="Descripción"
+                                                cols="45" rows="3"> </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card-body" *ngIf="tipoLiberacion == 'mantenimiento'">
+                            <div class="row justify-content-center">
+                                <div id="mostrar_text_mtto" class="text-detalle-area pt-5">
+                                    <textarea
+                                        class="details-textarea-liberar text-capitalize border-10p form-control background-color-gris-in"
+                                        id="concepto_detalle_mtto" name="concepto_detalle_mtto"
+                                        placeholder="Descripción" cols="45" rows="3"> </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-card">
+                        <span id="error_radio_conceptos" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-green ml-2"
+                            (click)="ValidarSeleccionConceptos()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="camaristaEnTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-bloqueo">
+            <div class="modal-body">
+                <div class="text-center pt-2">
+                    <div class="titulo-modal-historial icon-gray mb-2 text-center">
+                        <b>Camarista en Turno</b>
+                    </div>
+
+                    <div class="mt-1 d-flex ">
+                        <input type="text" class="input-supervisor text-center" name="password" id="passwordLogin"
+                            placeholder="Ingresa un nombre" [(ngModel)]="filterCamarista"
+                            (keyup)="FiltrarCamarista(filterCamarista,false)">
+                        <span class="fas fa-search text-secondary search font-3vh mt-3"></span>
+                    </div>
+                    <div class="card contenedor-supervisores mt-1">
+                        <div class="card-header contenedor-supervisor text-center">
+                            Camarista
+                            Habitación
+                            <!-- <div class="row">
+                              <div class="col-6 d-flex card-header contenedor-supervisor text-center">
+                              </div>
+                              <div class="col-6 d-flex card-header contenedor-supervisor text-center">
+                              </div>
+                          </div> -->
+                        </div>
+                        <div class="card-body d-flex flex-wrap justify-content-center overy-auto"
+                            id="camaristas_en_turno">
+
+                            <div class="mt-0-5vh" *ngFor="let camarista of listaTodasCamaristas">
+                                <div id="recam_{{camarista.idEmpleado}}" data-id="{{camarista.nombre}}"
+                                    class="mb-2 text-left supervisor-box-list camarista-box-libre"
+                                    *ngIf="camarista.idHabitacion == 0">
+                                    <div class="row">
+                                        <div class="col-12 d-flex align-items-center camarista-heigth ">
+                                            {{ camarista.nombre }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="recam_{{camarista.idEmpleado}}" data-id="{{camarista.nombre}}"
+                                    class="mb-2 text-left supervisor-box-list camarista-box-ocupada"
+                                    *ngIf="camarista.idHabitacion != 0">
+                                    <div class="row">
+                                        <div class="col-10 d-flex align-items-center camarista-heigth ">
+                                            {{camarista.nombre}}
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center camarista-heigth">
+                                            {{camarista.numeroHabitacion}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="details-card">
+                        <span id="texto_mensaje_camaristas" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-3 pb-2">
+                        <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                            <div class="font-2vh">Salir</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-revisionCortes" id="revisionCortes" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content modal-hitorial-mantenimiento">
+          <div class="modal-body">
+                <div class="container boton-cerrar pt-2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="text-center titulo-revison-cortes">
+                    <b>Selecciona un corte para revisar</b>
+                </div>
+                <app-revision-cortes (corteActivo)="abrirDetalleCorte($event)" #child_revisionCortes></app-revision-cortes>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-detalle-corte [idCorte]="corteActivo" #child_detalleCorte></app-detalle-corte>
+
+<div class="modal fade" id="salirModalError" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div class="text-center pt-5">
+                    <div class="titulo-modales-alertas mb-4">
+                        <b>{{errorHabitacionTerminada}}</b>
+                    </div>
+                    <div class="mt-3 pb-5">
+
+                        <button type="button" class="btn-modal-details btn-green ml-2" data-dismiss="modal"
+                            (click)="Home()">
+                            <div class="font-3vh"><i class="fas fa-check"></i></div>
+                            <div class="font-2vh">Aceptar</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-control-gastos #modalControlGastos></app-control-gastos>
+
+<div class="modal fade" id="incidenciasTurno" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-incidencias-turno">
+            <div class="modal-body">
+                <app-incidencias-turno #child_incidenciasTurno></app-incidencias-turno>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reporteVentas" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-incidencias-turno">
+            <div class="modal-body">
+                <app-reporte-ventas #child_incidenciasTurno></app-reporte-ventas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reporteContables" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-incidencias-turno">
+            <div class="modal-body">
+                <app-reporte-contable #child_incidenciasTurno></app-reporte-contable>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reportePropinas" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-incidencias-turno">
+            <div class="modal-body">
+                <app-reporte-propinas #child_incidenciasTurno></app-reporte-propinas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="horariosPrecios" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content modal-incidencias-turno">
+            <div class="modal-body">
+                <app-horarios-precios #child_incidenciasTurno></app-horarios-precios>
+            </div>
+        </div>
+    </div>
+</div>

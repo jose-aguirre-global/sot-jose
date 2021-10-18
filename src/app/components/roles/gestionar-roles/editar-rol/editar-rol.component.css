@@ -1,0 +1,105 @@
+.modal{
+  background: #0000006b;
+}
+
+.modal-header{
+  padding: 3vh 4vh 0vh;
+}
+
+.modal-header .form-group{
+  width: 100%;
+}
+
+.form-group .col-input{
+  margin-bottom: 0vh;
+}
+
+.form-group .col-input input{
+  max-width: 70%;
+  width: inherit;
+  background: #d0d0d0;
+  margin-left: 2vh;
+  font-size: 2vh;
+  font-weight: 600;
+  border-radius: 2vh;
+  display: inline-block;
+  box-shadow: none;
+  border: none;
+}
+
+.form-group .col-input input::placeholder{
+  text-align: center;
+  font-size: 2vh;
+}
+
+.form-group .col-input label{
+  font-size: 2.5vh;
+  font-weight: 600;
+  color: #747474;
+  padding: 0px;
+}
+
+.modal-dialog{
+  width: 90vw;
+  margin: auto;
+}
+
+.modal-content{
+  min-height: 50vh;
+  max-height: 90vh;
+  border-radius: 2.5vh;
+}
+
+.modal-body{
+  overflow-x: auto;
+  padding: 2.5vh 3vh;
+}
+
+.modal-body .lista-roles{
+  box-shadow: 0px 2px 5px #7f7f7f;
+  border-radius: 2vh;
+}
+
+.row-botones{
+  margin: 2vh 0vh;
+}
+
+
+@media (min-width: 1327px){     /*  PANTALLAS GRANDES */
+  .modal-dialog{
+    width: 60vw;
+  }
+}
+
+@media (max-width: 768px){ /*  TELEFONOS */
+
+  .modal-header{
+    padding: 4vw 5vw 0;
+  }
+
+  .modal-dialog{
+    width: 95vw;
+  }
+
+  .form-group .col-input{
+    margin: 0vw 0vw 2vw 0vw;
+  }
+
+  .form-group .col-input label{
+    display: block;
+    font-size: 3.5vw;
+    margin-bottom: 1vw;
+  }
+
+  .form-group .col-input input{
+    margin-left: 0vw;
+    max-width: none;
+    font-size: 3vw;
+    padding: 0vw 5vw;
+  }
+
+  .modal-body{
+    padding: 3vw 4vw;
+  }
+
+}

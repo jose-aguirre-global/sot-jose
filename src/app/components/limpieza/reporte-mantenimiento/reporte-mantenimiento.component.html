@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+  <title>Reporte Mantenimiento</title>
+
+</head>
+
+<body>
+
+  <div id="reporteMantenimiento" class="disenio_impresion">
+    <div style="border-top: solid; border-bottom: none; border-left: solid; border-right: solid; border-width: 1px; border-color: black; height: 20px;" >
+      <div style="width: 45%; float: left; "  class="disenio_impresion"><b>Historial de Matenimiento</b></div>
+      <div style="width: 45%; float: right; border-left: 1px solid black; background-color: #C6C5C5;" class="disenio_impresion">
+        Reporte Generado el: <span id="Console" class="disenio_impresion" ></span>
+      </div>
+    </div>
+
+    <div style="border-top: solid; border-bottom: solid; border-left: solid; border-right: solid; border-width: 1px; border-color: black; height: 40px; background-color: #C6C5C5;">
+      <div style="width: 45%; float: left; border-right: 1px solid black;" class="disenio_impresion" >
+        Hotel: <br>
+        Usuario:
+      </div>
+      <div style="width: 45%; float: right;" class="disenio_impresion" >
+        Dirección: <br><span id="Console" class="disenio_impresion" > aqui va tu Direccion </span>
+      </div>
+    </div>
+
+    <div style="border-top: none; border-bottom: none; border-left: solid; border-right: solid; border-width: 1px; border-color: black; height: 20px;">
+      <div class="disenio_impresion" style="width: 50%; float: left; ">
+        Numero habitación: <span id="Console" class="disenio_impresion" > {{idHabitacion}} </span>
+      </div>
+      <div class="disenio_impresion" style="width: 49%; float: right;" >
+        Tipo habitación: <span id="Console" class="disenio_impresion" > {{idHabitacion}} </span>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-sm disenio_impresion" style="border: 1px solid black; border-collapse: collapse;">
+      <thead class="card-header disenio_impresion" style="border: 1px solid black">
+        <tr style="background-color: #C6C5C5;">
+          <th style="width: 10%;">Fecha</th>
+          <th style="width: 30%;">Concepto</th>
+          <th style="width: 40%;">Descripción</th>
+          <th style="width: 20%;">Usuario</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let dato of arrayHistManto" class="text-left" style="border: 1px solid black">
+        <tr>
+          <td style="width: 10%; border: 1px solid black">{{dato.fecha | date:'dd/MM/yy, HH:mm'	}}</td>
+          <td style="width: 30%; border: 1px solid black">{{dato.concepto}}</td>
+          <td style="width: 40%; border: 1px solid black">{{dato.descripcion}}</td>
+          <td style="width: 20%; border: 1px solid black"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div style="text-align: center;">
+    <button type="button" class="BotonImprimir" (click)="imprSelec('reporteMantenimiento')">
+      <img src="./assets/img/Imprimir_Tickets.png">
+    </button>
+  </div>
+
+</body>
+
+</html>

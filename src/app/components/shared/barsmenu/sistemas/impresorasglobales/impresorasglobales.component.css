@@ -1,0 +1,14 @@
+
+@media (min-width: 576px){
+    #impresorasModal .modal-dialog {
+        max-width: 550px;
+    }
+}
+
+.w300-px {
+    width: 300px;
+}
+
+.card {
+    border: none;
+}

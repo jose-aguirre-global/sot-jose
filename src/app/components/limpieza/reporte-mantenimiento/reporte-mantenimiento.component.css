@@ -1,0 +1,11 @@
+.BotonImprimir
+{
+    border: 0;
+    text-align: center;
+}
+
+.disenio_impresion{
+  color: black;
+  font-size: 13px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

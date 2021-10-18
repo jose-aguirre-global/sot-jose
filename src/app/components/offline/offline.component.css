@@ -1,0 +1,27 @@
+.offline-container{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  color: #ffffff;
+}
+
+.vertical-center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.offline-titulo{
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.offline-subtitulo{
+  font-size: 2rem;
+}

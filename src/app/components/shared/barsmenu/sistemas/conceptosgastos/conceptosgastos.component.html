@@ -1,0 +1,89 @@
+<div class="modal fade" id="conceptosgModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Conceptos de gastos</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="card mb-3" style="width: 100%;">
+                    <div class="card-header d-flex justify-content-around">
+                        <div class="w25-per"><b>Concepto</b></div>
+                        <div class="w25-per"><b>Centro de costos</b></div>
+                        <div class="w25-per"><b>Pagable en caja</b></div>
+                        <div class="w25-per"><b>Representa almacen</b></div>
+                    </div>
+                    <div class="card-body">
+
+
+                        <div class="custom-card" *ngFor="let item of arrConceptos; let i=index"
+                            (click)="SelectConcept($event, i, item.visible)">
+                            <ng-container *ngIf="item.visible">
+                                <div class="d-flex justify-content-around">
+                                    <div class="w25-per">Comedor de empleados</div>
+                                    <div class="w25-per">Gastos de operacion</div>
+                                    <div class="w25-per">Pagable en caja</div>
+                                    <div class="w25-per">Representa almacen</div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!item.visible">
+                                <div class="text-center">
+                                    <div class="">Concepto</div>
+                                    <div class="">
+                                        <div><input type="text" class="porcentaje-input" name="porcentaje"
+                                                placeholder="$">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" [id]="'chk' + i"
+                                            [name]="'chk' + i">
+                                        <label class="custom-control-label" [for]="'chk' + i">Custom checkbox</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" [id]="'chk2' + i"
+                                            [name]="'chk2' + i">
+                                        <label class="custom-control-label" [for]="'chk2' + i">Custom checkbox</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" [id]="'chk3' + i"
+                                            [name]="'chk3' + i">
+                                        <label class="custom-control-label" [for]="'chk3' + i">Custom checkbox</label>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center p-4 d-flex justify-content-between">
+                    <div>
+                        <button type="button" class="btn-modal-details btn-success mr-3">
+                            <div><i class="fas fa-check"></i></div>
+                            <div style="font-size: 11px;">Registrar</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-warning mr-3" (click)="EditRow()">
+                            <div><i class="fas fa-check"></i></div>
+                            <div style="font-size: 11px;">Modificar</div>
+                        </button>
+                        <button type="button" class="btn-modal-details btn-secondary mr-3">
+                            <div><i class="fas fa-check"></i></div>
+                            <div style="font-size: 11px;">Eliminar</div>
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                        <div><i class="icon-icon-metro-exit"></i></div>
+                        <div style="font-size: 11px;">Salir</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,45 @@
+<header id="topNavBar">
+    <nav class="navbar navbar-expand-sm justify-content-end navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+        <div id="app-header" class="page-content d-flex justify-content-between">
+            <div id="boton-menu" class="">
+
+                <button id="sidebarCollapse" type="button" *ngIf="!isExpanded" (click)="ToggleNav()"
+                    class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+                    <i class="fas fa-hand-point-left animated rotateIn"></i>
+                </button>
+                <button id="sidebarCollapse" type="button" *ngIf="isExpanded" (click)="ToggleNav()"
+                    class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+                    <i class="fas fa-hand-point-right animated rotateIn"></i>
+                </button>
+
+            </div>
+            <!-- <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+          aria-label="Toggle navigation"
+          [attr.aria-expanded]="isExpanded"
+          (click)="toggle()"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="row mr-5 mr-md-4">
+            <div class="d-flex justify-content-around text-center">
+            <div class="col-7 px-0 imagen-logo">
+                <img src="./assets/img/motelv_Logo.png" alt="Motel Logo">
+            </div>
+            <div class="col-5 px-0 data-head" id="collapseExample2">
+                <div class="clock-box d-flex flex-column">
+                    <span id="dia">{{fecha|date:'d'}}</span>
+                    <span id="diaLetra">{{fecha|date:'EEEE'}}</span>
+                    <span id="mes" class="text-capitalize">{{fecha|date:'MMMM'}}, {{fecha|date:'YYYY'}}</span>
+                    <span id="reloj">{{time|date:'HH:mm'}}</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </nav>
+</header>

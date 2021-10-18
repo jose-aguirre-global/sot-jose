@@ -1,0 +1,51 @@
+@media (min-width: 576px){
+    #conceptosgModal .modal-dialog {
+        max-width: 930px;
+    }
+}
+
+.w25-per {
+    width: 25%;
+}
+
+.card-header {
+    background-color: #E4E4E4;
+    color: #9B9898;
+}
+
+.row-active {
+    background-color: #C6C5C5;
+    color: white;
+}
+
+.card-body { 
+    padding: 0;
+}
+
+.custom-card {
+    cursor: pointer;
+}
+
+.custom-card > div{
+    padding: 15px;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #801336;
+}
+
+.porcentaje-input {
+    background-color: #C6C5C5;
+    width: 160px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+#conceptosgModal input[type=text]:focus {
+    border: 3px solid #a7a5a5;
+    
+    border-radius: 10px;
+}

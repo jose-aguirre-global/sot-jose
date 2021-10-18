@@ -1,0 +1,238 @@
+.modal{
+  background: #0000006b;
+}
+
+.modal-dialog{
+  width: 90vw;
+  margin: auto;
+}
+
+.modal-content{
+  min-height: 50vh;
+  max-height: 95vh;
+  border-radius: 2.5vh;
+}
+
+.modal-header{
+  padding: 1vh 2vh;
+  border-bottom: none;
+}
+
+.modal-title{
+  width: 100%;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: 700;
+}
+
+.modal-body{
+  overflow-x: auto;
+  padding: 1vh 3vh;
+}
+
+
+/***********  DOLARES Y EUROS **********/
+.otras-monedas-titulos{
+  padding: 0.5vh 20vh 0vh;
+}
+
+.otras-monedas-titulos span{
+  font-size: 2vh;
+  color: #6c6c6c;
+  font-weight: 600;
+}
+
+.otras-monedas{
+  padding: 0vh 4vh 2vh;
+  border: none;
+}
+
+.otras-monedas .botones-contador,
+.otras-monedas .input-sumador{
+  display: inline-block;
+}
+
+.otras-monedas button{
+  font-size: 2vh;
+  color: #fff;
+  border-radius: 0.5vh;
+  border: none;
+  box-shadow: none;
+}
+
+.otras-monedas span{
+  margin-left: 1.5vh;
+  font-size: 2.5vh;
+  font-weight: 700;
+  color: #8f8f8f;
+}
+
+.otras-monedas input{
+  color: #000000;
+  background: #d0d0d0;
+  font-size: 2.5vh;
+  font-weight: 700;
+  padding: 0vh;
+  text-align: center;
+  border-radius: 5vh;
+  display: inline-block;
+  box-shadow: none;
+  border: none;
+  height: 3.5vh;
+  margin: 0vh 1vh;
+}
+
+.otras-monedas .botones-contador input{
+  width: 8vh;
+}
+
+.otras-monedas .input-sumador input{
+  width: 15vh;
+}
+/***********  DOLARES Y EUROS **********/
+
+/************  TOTAL FAJILLA ************/
+.total-fajilla{
+  padding: 0.5vh 4vh;
+  margin: 0vh 10vh;
+  border-radius: 1vh;
+  box-shadow: 0px 2px 8px 0px #adadad;
+}
+
+.total-fajilla span{
+  font-size: 2.5vh;
+  font-weight: 700;
+}
+
+.total-fajilla span.text-danger{
+  font-weight: 800;
+}
+/************  TOTAL FAJILLA ************/
+
+/**************  BOTONES  **************/
+.row-botones{
+  margin: 2vh 0vh;
+}
+
+.row-botones button{
+  width: 10vh;
+  height: 10vh;
+  border-radius: 1vh;
+  opacity: 1;
+  color: #fff;
+  border: 1px solid #0000;
+}
+
+.row-botones button i{
+  display: block;
+  font-size: 2.5vh;
+}
+
+.row-botones button span{
+  font-size: 2vh;
+}
+/**************  BOTONES  **************/
+
+
+/*****************************  PANTALLAS GRANDES  ***********************************/
+@media (min-width: 1327px){
+  .modal-dialog{
+    width: 70vw;
+  }
+}
+
+
+/***********************************  TELEFONOS  *************************************/
+@media (max-width: 850px){
+
+  .modal-dialog{
+    width: 95vw;
+  }
+
+  .modal-header{
+    padding: 1vw 2vw;
+  }
+
+  .modal-title{
+    font-size: 5vw;
+  }
+
+  .modal-body{
+    padding: 2vw 3vw;
+  }
+
+  /***********  DOLARES Y EUROS **********/
+  .otras-monedas-titulos{
+    padding: 1vw 10vw 0vw;
+  }
+
+  .otras-monedas-titulos span{
+    font-size: 3.5vw;
+  }
+
+  .otras-monedas{
+    padding: 0vw 0vw 2vw;
+  }
+
+  .otras-monedas button{
+    font-size: 3vw;
+    border-radius: 1vw;
+  }
+
+  .otras-monedas span{
+    display: none;
+    margin-left: 1vw;
+    font-size: 3vw;
+  }
+
+  .otras-monedas input{
+    font-size: 3vw;
+    padding: 0vw;
+    border-radius: 5vw;
+    height: 5vw;
+    margin: 0vh 0.5vw;
+  }
+
+  .otras-monedas .botones-contador input{
+    width: 8vw;
+  }
+
+  .otras-monedas .input-sumador input{
+    width: 18vw;
+    margin-left: 2vw;
+  }
+  /***********  DOLARES Y EUROS **********/
+
+  /************  TOTAL FAJILLA ************/
+  .total-fajilla{
+    padding: 1vw 2vw;
+    margin: 0vw 5vw;
+    border-radius: 2vw;
+  }
+
+  .total-fajilla span{
+    font-size: 4vw;
+  }
+  /************  TOTAL FAJILLA ************/
+
+  /**************  BOTONES  **************/
+  .row-botones{
+    margin: 3vw 0vw;
+  }
+
+  .row-botones button{
+    width: 16vw;
+    height: 16vw;
+    border-radius: 2vw;
+  }
+
+  .row-botones button i{
+    font-size: 4vw;
+  }
+
+  .row-botones button span{
+    font-size: 3vw;
+  }
+  /**************  BOTONES  **************/
+
+}

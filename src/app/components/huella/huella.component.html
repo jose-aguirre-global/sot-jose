@@ -1,0 +1,118 @@
+
+<div class="d-flex justify-content-center mb-3">
+  <div [ngClass]="[fingerButtonColor, 'd-flex', 'justify-content-center', 'div-logo-huella', 'sot-login-boton']">
+    <i [ngClass]=" fingerButtonLogo "></i>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeScannerDetectado !== '' ">
+  <span class="text-danger font-2-5vh">
+    {{ mensajeScannerDetectado }}
+  </span>
+</div>
+
+<div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeResultadoLogin !== '' ">
+  <span class="text-danger font-2-5vh">
+    {{ mensajeResultadoLogin }}
+  </span>
+</div>
+
+<form (submit)="AceptarAutorizar()" autocomplete="off">
+    <div class="d-flex justify-content-center mb-4vh">
+        <div>
+            <input  type="text"
+                    class="sot-form-control text-center btnoc font-2-5vh w-40vh line-h-5vh"
+                    name="userName"
+                    [(ngModel)]="loginModel.identificadorUsuario"
+                    placeholder="Usuario"
+                    id="userName"
+                    #userName
+            >
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div>
+            <input  type="password"
+                    class="sotformcontrol text-center btnoc font-2-5vh w-40vh line-h-5vh"
+                    name="password"
+                    [(ngModel)]="loginModel.valorVerificarStr"
+                    placeholder="Contraseña"
+                    id="contrasena"
+                    #userPassword
+            >
+            <span class="fa fa-eye text-secondary ojo btnoc font-3vh" (click)="verContrasenaHuella($event)" id="ojo"></span>
+        </div>
+    </div>
+
+    <div class="mt-1-5vh d-flex justify-content-center" >
+        <div>
+            <label id="NoAutorizado" class="d-none text-danger" >Usuario no tiene autorización favor de validar</label>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center p-3vh" id="contenido">
+        <button type="button"
+                class="btn-modal-details btn-redBold mr-8vh btnoc"
+                data-dismiss="modal"
+                id="btnExitHuella"
+                (click)="salir()"
+          >
+            <div class="font-3vh">
+              <i class="icon-icon-metro-exit"></i>
+            </div>
+            <div class="font-2vh">Salir</div>
+        </button>
+        <button type="submit" class="btn-modal-details btn-green btnoc" id="btnOkHuella">
+            <div class="font-3vh"><i class="fas fa-check"></i></div>
+            <div class="font-2vh">Aceptar</div>
+        </button>
+    </div>
+    <div class="text-center">
+      <ngx-skeleton-loader  count="1"
+                            appearance="line"
+                            *ngIf="loader"
+                            [theme]="{height:'50px'}">
+      </ngx-skeleton-loader>
+      <ngx-skeleton-loader  count="2"
+                            appearance="circle" [theme]="{
+                                      'border-radius': '5px',
+                                      width: '100px',
+                                      height: '100px',
+                                      'background-color': '',
+                                      border: '1px solid white'
+                                    }"
+                            *ngIf="loader">
+      </ngx-skeleton-loader>
+    </div>
+</form>
+
+<div  class="modal fade"
+      id="loader-skeleton"
+      tabindex="-1"
+      role="dialog"
+      data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <div class="text-center">
+
+                            <div class="font-30px">
+                                <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader2" [theme]="{height:'50px'}"></ngx-skeleton-loader>
+                                <ngx-skeleton-loader count="2" appearance="circle" [theme]="{
+                                    'border-radius': '5px',
+                                    width: '100px',
+                                    height: '100px',
+                                    'background-color': '',
+                                    border: '1px solid white'
+                                  }"
+                                  *ngIf="loader2"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

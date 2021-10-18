@@ -1,0 +1,199 @@
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.modal-content{
+  width: 90vh;
+}
+
+.order-box {
+    color: #ebebeb;
+    padding: 1.5vh;
+    margin: 1vh 2vh 1vh 3vh;
+    border-radius: 10px;
+}
+
+.green-box {
+    background-color: #319b20;
+}
+
+.yellow-box {
+    background-color: #debe0c;
+    color: #181818;
+}
+
+.red-box {
+    background-color: #a50b0b;
+}
+
+.clock {
+    background-color: #d8d8d8;
+    border-radius: 1.5vh;
+    font-size: 2.5vh;
+    font-weight: bold;
+    padding: 0vh 2vh;
+}
+
+.yellow-box .clock,
+.red-box .clock,
+.green-box .clock{
+    color: #181818;
+}
+
+/* .green-box .clock {
+    color: #00910A;
+}
+.red-box .clock {
+    color: #FD0022;
+} */
+
+.box-header {
+  padding: 1vh 3vh !important;
+  box-shadow: 0px 3px 6px #707070;
+}
+
+.icono-buscar i{
+  position: absolute;
+  top: 2.5vh;
+  left: 5vh;
+}
+
+.icon-50p {
+    font-size: 50px;
+}
+
+.w-20per {
+    width: 20%;
+}
+
+.font-26p {
+    font-size: 26px;
+}
+
+.box-bw-color {
+  padding: 0vh 2vh;
+  border-radius: 1vh;
+  font-size: 3.5vh;
+}
+
+.box-moon {
+    background-color: #cccccc;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.box-sun {
+    background-color: #3C3C3C;
+    box-shadow: 0px 3px 6px #181818CC;
+}
+
+.box-cooking-delivering {
+    z-index: 20;
+}
+
+.box-onCooking{
+  padding: 0px;
+}
+
+.box-onCooking-ligh,
+.box-delivering-ligh{
+    background-color: #d8d8d8;
+    box-shadow: 0px 3px 6px #707070;
+}
+
+.box-onCooking-dark,
+.box-delivering-dark{
+    background-color: #707070;
+    box-shadow: 0px 3px 6px #ffffff;
+}
+
+.light-header {
+    color: #4a4a4a;
+    background-color: #ffffff;
+}
+
+.black-header {
+    color: white;
+    background-color: #3C3C3C;
+}
+
+input[type="text"]{
+  width: 50vh;
+  border-radius: 25px;
+  color: white;
+  display: inline-block;
+  padding: 0vh 3vh;
+  height: auto;
+}
+
+.light-header input[type="text"] {
+    border: 2px solid #4a4a4a;
+    background-color: #ffffff;
+}
+
+.black-header input[type="text"] {
+    border: 2px solid #FFFEFE;
+    background-color: #3C3C3C;
+}
+
+.position-relative-cb{
+    position: relative;
+}
+
+.porPreparar-position{
+    position: absolute;
+    top:16px;
+    right: 12px;
+    font-size: 20pt;
+}
+
+.cont-comanda-cb{
+    border-radius: 1vh;
+    border: 1px solid white;
+    margin-bottom: 0.5vh;
+}
+.yellow-box .cont-comanda-cb{
+    border: 1px solid black;
+}
+
+.cantidad-comanda-cb{
+    font-size: 2.5vh;
+    font-weight: bolder;
+    padding-left: 1.5vh;
+    margin-top: 0.5vh;
+}
+
+.row-comandas{
+  height: 93vh;
+}
+
+
+/********** Dispositivos Moviles **********/
+@media (max-width: 767px)
+{
+  .box-onCooking{
+    min-height: 50%;
+  }
+
+  input[type="text"]{
+    width: 100%;
+  }
+
+  .cantidad-comanda-cb {
+    font-size: 2vh;
+  }
+
+  .box-bw-color{
+    margin-left: 1vh;
+    font-size: 3vh;
+  }
+
+  .modal-body {
+    padding: 3vw;
+  }
+  .div-logo-huella{
+    width: 25vw;
+    height: 25vw;
+    font-size: 17vw;
+  }
+}

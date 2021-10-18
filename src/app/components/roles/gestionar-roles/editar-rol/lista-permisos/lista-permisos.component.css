@@ -1,0 +1,114 @@
+.accordion{
+  margin: 0vh;
+}
+
+.card{
+  border: none;
+  border-radius: 2vh;
+}
+
+.card-header{
+  border: none;
+  padding: 0px;
+  background: #ffffff;
+}
+
+.card-header h5{
+  margin-bottom: 0rem;
+}
+
+.card-header h5 button{
+  font-size: 2.5vh;
+  padding: 2.5vh 4vh;
+  box-shadow: none;
+}
+
+.card-header h5 button:hover,
+.card-header h5 button:focus{
+  text-decoration: none;
+}
+
+.card-header h5 button p{
+  margin-bottom: 0rem;
+  color: #767676;
+  font-weight: 700;
+}
+
+.card-header h5 button i{
+  color: #636363;
+}
+
+.card-body{
+  padding: 0px;
+  font-size: 2vh;
+  padding: 0.5vh 0vh 1vh 0vh;
+}
+
+.card-body .list-group li{
+  margin: 0.5vh 2vh;
+  padding: 0vh 2vh;
+  font-weight: 600;
+  border: none;
+}
+
+/* Checkboxes */
+.custom-checkbox{
+  padding-left: 3vh;
+}
+
+/* Checkboxes */
+.custom-checkbox .custom-control-label{
+  padding-top: 0.5vh;
+}
+
+/* Checkboxes */
+.custom-checkbox .custom-control-label:after,
+.custom-checkbox .custom-control-label:before{
+  padding: 1.5vh;
+}
+
+/* Checkboxes */
+.custom-control-input:checked~.custom-control-label::before {
+  color: white !important;
+  background-color: #801336 !important;
+}
+
+@media (max-width: 768px){ /*  TELEFONOS */
+
+  .card{
+    border-radius: 2vw;
+  }
+
+  .card-header h5 button{
+    font-size: 4vw;
+    padding: 3vw 4vw;
+  }
+
+  .card-body{
+    font-size: 4vw;
+    padding: 2vw 0vw 4vw;
+  }
+
+  .card-body .list-group li{
+    margin: 1vw 2vw;
+    padding: 0 3vw;
+  }
+
+  /* Checkboxes */
+  .list-group .custom-checkbox{
+    padding-left: 6vw;
+
+  }
+
+  /* Checkboxes */
+  .custom-control-label{
+    padding-top: 1vw;
+  }
+
+  /* Checkboxes */
+  .custom-checkbox .custom-control-label:after,
+  .custom-checkbox .custom-control-label:before{
+    padding: 2.5vw;
+  }
+
+}

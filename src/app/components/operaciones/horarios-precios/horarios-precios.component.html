@@ -1,0 +1,341 @@
+<div class="row justify-content-center">
+    <div class="col-12 text-center">
+        <h4>Horarios y precios</h4>
+    </div>
+
+    <div class="col-12 mt-4">
+        <div class="table-responsive tabla-contenido">
+            <table class="table tabla-contenido table-hover" id="tabla-cont4">
+                <thead class="head-tabla">
+                    <tr class="text-center">
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Descripcion Extendida</th>
+                        <th scope="col">Tarifa</th>
+                        <th scope="col">Motel hospedaje 1</th>
+                        <th scope="col">Motel Hospedaje 2</th>
+                        <th scope="col">Detallada</th>
+                        <th scope="col">Normal</th>
+                        <th scope="col">Retoque</th>
+                    </tr>
+                </thead>
+                <tbody style="overflow-y: auto;">
+                    <tr *ngFor="let tarifa of tablaE" class="text-center fila" id="fila_{{tarifa.Id}}" (click)="activar(tarifa.Id, $event)">
+                        <td>{{tarifa.descripcion}}</td>
+                        <td>{{tarifa.descripcionE}}</td>
+                        <td>{{tarifa.tarifas}}</td>
+                        <td>{{tarifa.motel1}}</td>
+                        <td>{{tarifa.motel2}}</td>
+                        <td>{{tarifa.detallado}}</td>
+                        <td>{{tarifa.normal}}</td>
+                        <td>{{tarifa.retoque}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-12 text-center pt-3">
+        <button type="button" class="btn-modal-details btn-green ml-2" (click)="nuevoHorario()">
+            <div class="font-3vh"><i class="fas fa-file"></i></div>
+            <div class="font-2vh">registrar</div>
+        </button>
+        <button type="button" class="btn-modal-details btn-yellow ml-2" id="modificar">
+            <div class="font-3vh"><i class="fas fa-file"></i></div>
+            <div class="font-2vh">Modificar</div>
+        </button>
+        <button type="button" class="btn-modal-details btn-gray ml-2" id="eliminar" 
+                (click)="eliminarHorario()">
+            <div class="font-3vh"><i class="fas fa-file"></i></div>
+            <div class="font-2vh">Eliminar</div>
+        </button>
+        <button type="button" class="btn-modal-details btn-redBold ml-2" data-dismiss="modal">
+            <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+            <div class="font-2vh">Salir</div>
+        </button>
+    </div>
+</div>
+
+<div class="modal fade" id="nuevoHorario" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content cont-nuevo-horario">
+            <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="row">
+                                <div  class="col-12 text-right pr-3">
+                                    <h4>Tarifas</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-5">
+                                    <div class="row pt-3">
+                                        <div  class="col-12">
+                                            
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="col-12 text-center">
+                                                        Clave
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <input type="text" [(ngModel)]="clave">
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        Reservaciones
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <input type="text" [(ngModel)]="reservacion">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="col-12 text-center">
+                                                        Descripcion
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <input type="text" [(ngModel)]="descripcion">
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        Personas Extra
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <input type="text" [(ngModel)]="personaExtra">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12 p-3 text-center">
+                                                    <textarea class="form-control text-area" id="exampleFormControlTextarea1" rows="3" placeholder="Descripcion *" [(ngModel)]="descripcionCompleta"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="col-12 text-center">
+                                                        Detallado
+                                                        <input type="text" [(ngModel)]="detallado">
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        Retoque
+                                                        <input type="text" [(ngModel)]="normal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="col-12 text-center">
+                                                        Normal
+                                                        <input type="text" [(ngModel)]="retoque">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 col-lg-7">
+                                    <div class="row p-3">
+                                        <div class="col-sm-12 col-md-6 col-lg-6 p-5 contenedor-tarifa">
+                                            
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-12 text-center">
+                                                            <div class="row">
+                                                                <div class="col-6 pr-2 pb-1 text-right">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input radio-check" type="radio" name="radioOp" (change)="tipoTarifaActive()" value="tarifa1" [(ngModel)]="tipoTarifa" checked>   
+                                                                      </div>
+                                                                </div>
+                                                                <div class="col-6 text-left pt-1">
+                                                                    Hotel
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" id="row-tarifa1">
+                                                        <div class="col-12 text-center">
+                                                            Precio
+                                                            <input type="text" [(ngModel)]="precioT1">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Persona extra
+                                                            <input type="text" [(ngModel)]="personaE1">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora extra
+                                                            <input type="text" [(ngModel)]="horaExtra1">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora de entrada
+                                                            <input type="text" [(ngModel)]="horaEntrada1">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora de salida
+                                                            <input type="text" [(ngModel)]="horaSalida2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6 p-5 contenedor-tarifa">
+                                            <div class="row">
+                                                <div class="col-12 text-center">
+                                                    <div class="row mb-3">
+                                                        <div class="col-6 pr-2 pb-1 text-right">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input radio-check" type="radio" name="radioOp" (change)="tipoTarifaActive()" value="tarifa2" [(ngModel)]="tipoTarifa"  >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 text-left pt-1">
+                                                            Motel
+                                                        </div>
+                                                    </div>
+                                                    <div class="row disable-tarifas" id="row-tarifa2">
+                                                        <div class="col-12 text-center">
+                                                            Precio
+                                                            <input type="text" [(ngModel)]="precioT2">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Persona extra
+                                                            <input type="text" [(ngModel)]="personaE2">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora extra
+                                                            <input type="text" [(ngModel)]="horaExtra2">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora de entrada
+                                                            <input type="text" [(ngModel)]="horaEntrada2">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Hora de salida
+                                                            <input type="text" [(ngModel)]="horaSalida2">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Tiempo de hospedaje 1
+                                                            <input type="text" [(ngModel)]="tiempoHospedaje1">
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            Tiempo de hospedaje 2
+                                                            <input type="text" [(ngModel)]="tiempoHospedaje2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2" (click)="CrearHorarioHab()">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="nuevoHorarioExitoso" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas justify-content-center my-4">
+                            <b>Creado con exito</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eliminarHorario" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas justify-content-center my-4">
+                            <b>¿Estas seguro de eliminar el elemento seleccionado?</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2" (click)="eliminarHorario()">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eliminadoExito" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-content tamaño-modal-alerta">
+            <div class="modal-body">
+                <div>
+                    <div class="text-center">
+
+                        <div class="titulo-modales-alertas justify-content-center my-4">
+                            <b>Eliminado con exito</b>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn-modal-details btn-redBold" data-dismiss="modal">
+                                <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
+                                <div class="font-2vh">Salir</div>
+                            </button>
+                            <button type="button" class="btn-modal-details btn-green ml-2">
+                                <div class="font-3vh"><i class="fas fa-check"></i></div>
+                                <div class="font-2vh">Aceptar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1360 @@
+
+/* General */
+h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: 'epilogueFont', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+/*
+  .data-box::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  .data-box::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .data-box::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+  }
+
+  .data-box::-webkit-scrollbar-thumb:hover {
+    background-color: #303d41;
+  } */
+
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #303d41;
+  }
+
+  /* Habitaciones container */
+  #content
+  {
+    background: #f1f1f1 !important;
+  }
+
+/* Room card */
+.roomCard {
+    position: relative;
+    background-color: white;
+    padding: 6px ;
+    line-height: 1.1;
+    box-shadow: 0px 8px 5px #ebeaea;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    width: 95px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.limitDescription {
+    max-width: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Colores RoomCard (Shadow, Icon, Alert) */
+
+.paint-green {
+    box-shadow: 0px 3px 4px;
+    color: #0ac917;
+}
+
+.icon-green {
+    color: #0ac917;
+}
+
+.paint-purple {
+    box-shadow: 0px 3px 4px;
+    color:#a703fb;
+}
+
+.icon-purple {
+    color: #a703fb;
+}
+
+.paint-blue {
+    box-shadow: 0px 3px 4px;
+    color: #008deb;
+}
+
+.icon-blue {
+    color: #008deb;
+}
+
+.icon-darkblue{
+    color:blue;
+}
+
+.paint-red {
+    box-shadow: 0px 3px 4px;
+    color: #fd0022;
+}
+
+.paint-hybridGreen {
+    box-shadow: 0px 3px 4px;
+    color: #fd0022;
+}
+
+.icon-red {
+    color: #fd0022;
+}
+
+.paint-yellow {
+    box-shadow: 0px 3px 4px;
+    color: #ffd500;
+}
+
+.icon-yellow {
+    color: #ffd500;
+}
+
+.paint-gray {
+    box-shadow: 0px 3px 4px;
+    color: #707070;
+}
+
+.icon-gray {
+    color: #707070;
+}
+
+.paint-greenlemon {
+  box-shadow: 0px 3px 4px;
+  color: #CDFF06;
+}
+
+.icon-greenlemon {
+  color: #CDFF06;
+}
+
+.paint-purple {
+  box-shadow: 0px 3px 4px;
+  color: #a703fb;
+}
+
+.icon-purple {
+  color: #a703fb;
+}
+
+.card-seleccionada{
+  box-shadow: 0 0px 5px 5px;
+}
+
+.roomCard .span-usuario-card{
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  width: fit-content;
+  background: #ffffff;
+  padding: 3px;
+  border-radius: 5px;
+  border: currentColor 3px solid;
+  z-index: 10;
+  display: none;
+}
+
+.roomCard:hover .span-usuario-card.usuario-seleccion{
+  display: block !important;
+}
+
+
+.alert-blink-box {
+    position: absolute;
+    top:0; bottom:20px; left:0; right:0;
+    display:block;
+    z-index: 2;
+    font-size: 13px;
+    padding: 17px 0 0 0;
+}
+
+.alert-red {
+    background-image: linear-gradient(rgba(253, 0, 34, .3), rgba(253, 0, 34, 0));
+    color: #fd0022;
+}
+
+.alert-yellow {
+    background-image: linear-gradient(rgba(255, 213, 0, .3), rgba(255, 213, 0, 0));
+    color: #ffd500;
+}
+
+.alert-blue {
+    background-image: linear-gradient(rgba(0, 141, 235, .3), rgba(0, 141, 235, 0));
+    color: #008deb;
+}
+
+.alert-greenlemon {
+  background-image: linear-gradient(rgba(205, 255, 6, .3), rgba(205, 255, 6, 0));
+  color: #CDFF06;
+}
+
+.alert-purple {
+  background-image: linear-gradient(rgba(65, 1, 98, .3), rgba(65, 1, 98, 0));
+  color: #a703fb;
+}
+
+.central-align{
+    margin: auto;
+    width: 50%;
+}
+
+.loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif')
+                50% 50% no-repeat rgb(249,249,249);
+  }
+
+  .colorRed{
+    color:#fd0022;
+  }
+
+  .colorBlack{
+      color:black;
+  }
+
+
+  /*************** Nuevos filtros ***************/
+  .no-filtro
+  {
+    filter: contrast(0.9) opacity(0.15) !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .nav-item
+  {
+    border-radius: 6px;
+    height: auto !important;
+    padding: 8px 12px !important;
+  }
+  .nav-item:hover,
+  .nav-item:hover i,
+  .nav-item:hover a,
+  .nav-item-active,
+  .nav-item-active i{
+    background: #801336 !important;
+    color: #ebeaea !important;
+  }
+
+
+  .nav-item:active a,
+  .nav-item:active i,
+  .nav-item:active li
+  {
+    background: #801336 !important;
+    color:#ebeaea !important;
+  }
+
+  .information-pill a:active{
+    color:#ebeaea !important;
+  }
+
+  .nav-item a
+  {
+    font-size: 14px;
+  }
+  .nav-item a b
+  {
+    font-weight: 800;
+  }
+  .rooms-container
+  {
+    margin: 0.5rem 1.5rem;
+  }
+
+  .rooms-container2
+  {
+    margin: 0.5rem 1.5rem;
+  }
+
+  .input-tipo-habitacion{
+    background-color: #f1f1f1;
+    border-radius: 5vh;
+    width: 90%;
+    border: none;
+    text-align: center;
+    height: 5vh
+  }
+
+  .cont-select-tarifa{
+    margin-right: 1.7vh;
+  }
+
+  .d-flex-rooms-left
+  {
+    grid-gap: 0.25rem;
+    width: 14rem;
+  }
+  .d-flex-rooms-right
+  {
+    grid-gap: 0.25rem;
+    width: 28rem;
+  }
+  .d-flex-rooms-bottom
+  {
+    grid-gap: 0.25rem;
+    width: 55rem;
+  }
+
+  .rooms-container-title
+  {
+    margin-left: 1.5rem;
+  }
+  .rooms-container-title h6
+  {
+    font-size: 1.1rem;
+  }
+  .rooms-container h6
+  {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .rooms-container2 h6
+  {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* input[type='radio']:after {
+        height: 30px;
+        width: 30px;
+        border: 2px solid #707070;
+        border-radius: 50%;
+        top: -5px;
+        left: -1px;
+        position: relative;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+    }
+
+    input[type='radio']:checked:after {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        top: -5px;
+        left: -1px;
+        position: relative;
+        background-color: #801336;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #707070;
+    } */
+
+    .radio-item input[type='radio'] {
+      display: none;
+    }
+
+    .radio-item label {
+      color: #707070;
+      font-weight: normal;
+    }
+
+    .radio-item label:before {
+      content: " ";
+      display: inline-block;
+      position: relative;
+      margin: 0 1vh 0 0;
+      width: 4.5vh;
+      height: 4.5vh;
+      border-radius: 50%;
+      border: 3px solid #707070;
+      background-color: transparent;
+    }
+
+    .radio-item input[type=radio]:checked + label:after {
+      border-radius: 50%;
+      width: 3vh;
+      height: 3vh;
+      position: absolute;
+      top: .8vh;
+      left: .7vh;
+      content: " ";
+      display: block;
+      background: #707070;
+    }
+
+
+/* +++++++++++++ LIMPIEZA HTML +++++++++++++++*/
+
+/* .d-flex-pool-spa{
+  grid-gap: .25rem;
+  width: 220px;
+}
+
+.d-flex-pool-spa .div-room-card{
+  display: inline-block;
+  margin: 1vh 0 0 0;
+  width: calc(100% * (1/2) - 1vh - 1px);
+}
+
+.d-flex-junior-suit{
+  grid-gap: .25rem;
+  width: 450px;
+}
+
+.d-flex-junior-suit .div-room-card{
+  display: inline-block;
+  margin: 1vh 0 0 0;
+  width: calc(100% * (1/4) - 1vh - 1px);
+} */
+
+.overflow-auto-in{
+  overflow: auto;
+}
+
+.border-navbar-in{
+  border-radius: 0 30px 0 0;
+}
+
+.color-red-obs{
+  color:#801336;
+}
+
+.color-gris-cl{
+  color: #c6c5c5;
+}
+
+.estilo-icon-in{
+  font-size: 19px;
+  margin-top: 7px;
+}
+
+.w-50-in{
+  width: 50%;
+}
+
+.mt--10{
+  margin-top: -10px;
+}
+
+.w-377{
+  width: 377px;
+}
+
+.w-90{
+  width: 90px
+}
+
+.w-90p{
+  width: 90%;
+}
+
+.w-180{
+  width: 180px;
+}
+
+.w-136{
+  width: 136px;
+}
+
+.w-128{
+  width: 25vh;
+}
+
+.w-218{
+  width: 218px;
+}
+
+.w-200{
+  width: 200px;
+}
+
+.w-240{
+  width: 240px;
+}
+
+.w-166{
+  width: 166px;
+}
+
+.w-270{
+  width: 270px;
+}
+
+.position-pagos-in{
+  position: relative;
+}
+
+.position-txt-pagos-in{
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  color: #737373;
+}
+
+.pl-15-in{
+  padding-left: 15px;
+}
+
+.mw-50p-in{
+  max-width: 50%;
+}
+
+.titulo-hsucia{
+  font-size: 3.5vh;
+  color:black;
+}
+
+.titulo-error{
+  font-size: 1.5rem;
+}
+
+.modal-content-size-in{
+  width: 950px;
+  padding: 15px;
+}
+
+.modal-reporte-matricula{
+  width: auto;
+  margin: 0vh;
+  border-radius: 2vh;
+}
+
+.modal-reporte-matricula .modal-body col-6{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.modal-roomservice  .modal-content,
+.modal-autorizarOrden .modal-content{
+  width: 90vw;
+  max-height: 95vh;
+  padding: 2vh;
+}
+
+.modal-roomservice  .modal-content{
+  width: 95vw;
+  height: 95vh;
+}
+
+.modal-roomservice app-room-list{
+  width: 100%;
+  height: 100%;
+}
+
+.background-color-gris-in{
+  background-color: #c6c5c5;
+}
+
+#mConsumo,
+#observCortesia{
+  width: 320px;
+  height: 60px;
+  background-color: #C6C5C5;
+  text-align: center;
+  border-radius: 20px;
+  border: none;
+  margin: 15px 0 0 0;
+}
+
+.titulo-modales-alertas{
+  font-size: 4.7vh;
+}
+
+.tamaño-modal-alerta{
+  width: 100vh;
+}
+
+.fl-right{
+  float: right;
+}
+
+.overy-auto{
+  overflow-y: auto
+}
+/*Modal Habitacion*/
+.titulo-modal-hab{
+  font-size: 4vh;
+}
+
+.total-modal-hab{
+  font-size: 4.5vh;
+}
+
+.subtitulos-modal-hab{
+  font-size: 2.7vh;
+}
+
+.body-modal-habitacion{
+  width: 133vh;
+}
+
+.subtitulos-habitacion-modal{
+  font-size: 2.5vh;
+}
+
+.titulos-s-modal-habitacion{
+  font-size:2.7vh
+}
+
+.box-datos-entrada{
+  height: initial !important;
+}
+
+.subtitle-details{
+  /*font-size: 2.5vh !important;*/
+}
+
+@media (max-width: 769px){         /*IPAD*/
+  .body-modal-habitacion{
+    width: 70vh;
+  }
+
+  .titulo-modal-hab{
+    font-size: 2.2vh;
+  }
+
+  .total-modal-hab{
+    font-size: 2.4vh;
+  }
+
+  .subtitulos-modal-hab{
+    font-size: 1.3vh !important;
+  }
+
+  .titulos-s-modal-habitacion{
+    font-size:1.7vh !important
+  }
+
+  .subtitulos-habitacion-modal{
+    font-size: 1.5vh !important;
+  }
+
+  .font-2vh{
+    font-size:1vh !important;
+  }
+
+  .font-3vh{
+    font-size:1.5vh !important;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .tamaño-modal-alerta{
+    width: 65vh;
+  }
+
+  .w-128{
+    width: 17vh;
+  }
+
+  .modal-incidencias-turno{
+    width: 70vh !important;
+}
+
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+  .body-modal-habitacion{
+    width: 55vh;
+  }
+
+  .subtitulos-habitacion-modal{
+    font-size: 2.2vh !important;
+  }
+
+  .subtitulos-modal-hab{
+    font-size: 2vh !important;
+  }
+
+  .total-modal-hab{
+    font-size: 3.7vh;
+  }
+
+  .titulos-s-modal-habitacion{
+    font-size:2.7vh !important
+  }
+
+  .modal-body {
+    padding: 6vh;
+  }
+
+  .font-2vh{
+    font-size:1.2vh !important;
+  }
+
+  .font-3vh{
+    font-size:2.2vh !important;
+  }
+
+  .titulo-modales-alertas{
+    font-size: 3.5vh;
+  }
+
+  .tamaño-modal-alerta{
+    width: 55vh;
+  }
+
+  .d-flex-rooms-left
+  {
+    width: initial !important;
+  }
+
+  .w-128{
+    width: 17vh;
+  }
+
+  .modal-incidencias-turno{
+    width: 52vh !important;
+}
+}
+
+
+
+/* ////////////////////////////////////////// */
+
+/* MODAL PAGO */
+
+.inputs-pago-tarjeta{
+  width: 27vh;
+}
+
+.tamaño-letra-tarjeta{
+  font-size:2.5vh
+}
+
+.tamaño-contenedor-textos-tarjeta{
+  width: 40vh;
+}
+
+.observaciones-motivo{
+  width: 55vh !important;
+  height: 10vh !important;
+}
+
+.tamaño-select{
+  width:45vh;
+}
+
+@media (max-width: 769px){
+
+  .inputs-pago-tarjeta{
+    width: 18vh;
+  }
+
+  .tamaño-contenedor-textos-tarjeta{
+    width: 35vh;
+  }
+
+  .tamaño-letra-tarjeta{
+    font-size:1.8vh
+  }
+
+  .observaciones-motivo{
+    width: 35vh !important;
+    height: 10vh !important;
+  }
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+
+  .tamaño-select{
+    width:35vh;
+  }
+
+}
+
+
+/*////////////////////////////////////////// */
+
+
+.radio-item input[type='radio'] {
+  display: none;
+}
+
+.radio-item label {
+  color: #707070;
+  font-weight: normal;
+}
+
+/* .radio-item label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 5px 0 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #707070;
+  background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 13px;
+  left: 5px;
+  content: " ";
+  display: block;
+  background: #707070;
+}*/
+
+/*******************************diseño 2***********************************/
+.radio-itemmto input[type='radio'] {
+  display: none;
+}
+
+.radio-itemmto label {
+  color: #707070;
+  font-weight: normal;
+
+}
+
+.radio-itemmto label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 1vh;
+  margin: 0 0px 0 0;
+  width: 3.5vh;
+  height: 3.5vh;
+  border-radius: 50%;
+  border: 2px solid #9B9898;
+  background-color: transparent;
+}
+
+.radio-itemmto input[type=radio]:checked + label:after {
+  border-radius: 50%;
+  width: 2vh;
+  height: 2vh;
+  position: absolute;
+  top: 1.7vh;
+  left: .7vh;
+  content: " ";
+  display: block;
+  background: #9B9898;
+}
+
+/************************************************************/
+
+.radio-item2 input[type='radio'] {
+  display: none;
+}
+
+.radio-item2 label {
+  color: white;
+  font-weight: normal;
+}
+
+.radio-item2 label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 5px 0 0;
+  width: 4vh;
+  height: 4vh;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+.radio-item2 input[type=radio]:checked + label:after {
+  border-radius: 50%;
+  width: 2.5vh;
+  height: 2.5vh;
+  position: relative;
+  top: -3.1vh;
+  left: .73vh;
+  content: " ";
+  display: block;
+  background: white;
+}
+
+/************************************************************/
+
+.radio-item3 input[type='radio'] {
+  display: none;
+}
+
+.radio-item3 label {
+  color: #707070;
+  font-weight: normal;
+}
+
+.radio-item3 label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  margin: 0 1vh 0 0;
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  border: 3px solid #707070;
+  background-color: transparent;
+}
+
+.radio-item3 input[type=radio]:checked + label:after {
+  border-radius: 50%;
+    width: 1.8vh;
+    height: 1.8vh;
+    position: relative;
+    top: -3.2vh;
+    left: .55vh;
+    content: " ";
+    display: block;
+    background: #707070;
+}
+
+/******************************bordefailtext********************/
+.borde-fail{
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #ff0011;
+  color: #ff0011;
+}
+
+/********************+tabel fixed*********************/
+#tableFixHead          { overflow: auto; height: 450px; }
+#tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
+th {background: #F7F7F7 ;}
+/******************************************************************/
+.supervisor-box-list {
+font-size: 1.8vh;
+width: 49vh;
+height: 9vh;
+box-shadow: 0px 3px 6px #A19C9C;
+border-radius: 6px;
+background-color: #00d2cb;
+color: white;
+padding: 2vh;
+cursor: pointer;
+justify-content: left;
+align-content: left;
+/* display: flex; */
+}
+
+.supervisor-box-list .radio-item2 label{
+  height: 4vh;
+}
+
+.liberacion-box-list {
+font-size: 2.3vh;
+font-weight: bold;
+width: 50vh;
+height: 5vh;
+box-shadow: 0px 0px 0px;
+/* border-radius: 6px; */
+background-color: white;
+color: #A19C9C;
+padding: 12px;
+cursor: pointer;
+justify-content: left;
+align-content: left;
+/* display: flex; */
+}
+
+.camarista-box-libre {
+  font-size: 1.8vh;
+  width: 49vh;
+  height: 9vh;
+  box-shadow: 0px 3px 6px #A19C9C;
+  border-radius: 6px;
+  background-color: #00d2cb;
+  color: white;
+  padding: 2vh;
+  cursor: pointer;
+  justify-content: left;
+  align-content: left;
+}
+
+.camarista-box-ocupada {
+  font-size: 1.8vh;
+  width: 49vh;
+  height: 9vh;
+  box-shadow: 0px 3px 6px #e6e6e6;
+  border-radius: 6px;
+  background-color: #A19C9C;
+  color: #C6C5C5;
+  padding: 2vh;
+  cursor: pointer;
+  justify-content: left;
+  align-content: left;
+}
+
+.camarista-heigth {
+  height: 5vh;
+}
+
+/*************************show/hide button****************************/
+
+span[aria-expanded=true] .fa-chevron-circle-down {
+  display: none;
+}
+span[aria-expanded=false] .fa-chevron-circle-up {
+  display: none;
+}
+
+.pie-adjust{
+width: 70px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+
+/* ///////////////////////// MODAL BLOQUEO ////////////////////////// */
+
+@media (max-width: 767px){  /* TELEFONO */
+  .tamaño-modal-bloqueo{
+    width: 54vh !important
+  }
+
+  .tamaño-card-modal-bloqueo{
+    width: 52vh !important;
+  }
+}
+
+.tamaño-modal-bloqueo{
+    width: 60vh
+}
+.color-gris-head{
+  color: #9B9898;
+}
+
+.titulo-modal-mantenimiento{
+  font-size:3vh
+}
+
+.label-modal-bloqueo{
+  width: 38vh;
+  font-size: 2vh;
+  color:#707070;
+}
+
+.tamaño-card-modal-bloqueo{
+  width: 55vh;
+  box-shadow: 0 3px 6px #00000029
+}
+
+.textarea-modal-bloqueo{
+  background-color: #C6C5C5;
+  width: 100%;
+  height: 14vh;
+}
+
+.card-header{
+  background-color:#E4E4E4;
+}
+
+.details-textarea{
+  width: 40vh;
+}
+
+.placeholder-textarea{
+  color:black !important;
+} 
+
+.placeholder-textarea::placeholder{
+  color:black !important;
+}
+
+.placeholder-textarea-red::placeholder{
+  color:red !important;
+}
+/* MODAL HISTORIAL MANTENIMIENTO */
+
+.modal-dialog-hitorial-mantenimiento{
+  max-width: initial !important;
+}
+
+.modal-hitorial-mantenimiento{
+  width: 130vh !important;
+}
+
+.titulo-modal-historial{
+  font-size: 4vh;
+}
+
+.tabla-modal-hismantenimiento{
+  width: 100vh;
+  height: 52vh !important;
+}
+
+.titulos-modal-historial{
+  color: #9B9898;
+  font-size: 3vh;
+}
+
+.contenido-tabla-historial{
+  color: #9B9898;
+  font-size: 1.8vh;
+  font-weight: bold;
+  height: 10vh
+}
+
+.contenido-tabla-historial td{
+  padding: 1.5vh 1.5vh 1.5vh 5vh;
+}
+
+@media (max-width: 769px){ /* IPAD */
+
+  .modal-hitorial-mantenimiento{
+    width: 70vh !important;
+  }
+
+  .titulo-modal-historial{
+    font-size: 3vh;
+  }
+
+  .tabla-modal-hismantenimiento{
+    width: 65vh;
+  }
+
+  .contenido-tabla-historial{
+    color: #9B9898;
+    font-size: 1.6vh;
+    font-weight: bold;
+    height: 9vh;
+  }
+
+  .titulos-modal-historial{
+    color: #9B9898;
+    font-size: 2vh;
+  }
+
+
+  /********** HABITACIONES RESPONSIVAS IPAD ***********/
+
+  .d-flex-habitaciones-container{
+    flex-wrap: wrap;
+  }
+
+  .rooms-container,
+  .rooms-container2{
+    grid-gap: .25rem;
+    width: 100%;
+  }
+
+  .rooms-container2 .div-room-card,
+  .rooms-container .div-room-card{
+    margin-top: 0.5vh;
+    margin-right: 0.5vh;
+    flex-grow: inherit;
+    width: auto;
+  }
+
+  /* .d-flex-pool-spa{
+    grid-gap: .25rem;
+    width: auto;
+  } */
+
+  .d-flex-pool-spa .div-room-card{
+    margin-top: 0.5vh;
+    margin-right: 0.5vh;
+    flex-grow: inherit;
+    width: auto;
+  }
+
+
+  /* .d-flex-junior-suit{
+    grid-gap: .25rem;
+    width: auto;
+  } */
+
+  .d-flex-rooms-left{
+    width: 65%;
+  }
+
+  .d-flex-rooms-right{
+    width: 65%;
+  }
+
+  .d-flex-rooms-bottom
+  {
+    width: 65%;
+  }
+
+  .d-flex-junior-suit .div-room-card{
+    margin-top: 0.5vh;
+    margin-right: 0.5vh;
+    flex-grow: inherit;
+    width: auto;
+  }
+
+  /*************************************************************/
+}
+
+@media (max-width: 767px){  /* TELEFONO */
+  .modal-hitorial-mantenimiento{
+    width: 50vh !important;
+  }
+
+  .titulo-modal-historial{
+    font-size: 3vh;
+  }
+
+  .tabla-modal-hismantenimiento{
+    width: 45vh;
+  }
+
+  .contenido-tabla-historial{
+    color: #9B9898;
+    font-size: 1.6vh;
+    font-weight: bold;
+    height: 9vh;
+  }
+
+  .titulos-modal-historial{
+    color: #9B9898;
+    font-size: 2vh;
+  }
+
+  /********** HABITACIONES RESPONSIVAS TELEFONO ***********/
+
+  .d-flex-rooms-left{
+    width: 95%;
+  }
+
+  .d-flex-rooms-right{
+    width: 95%;
+  }
+
+  .d-flex-rooms-bottom
+  {
+    width: 95%;
+  }
+
+  /*************************************************************/
+
+}
+
+/* //////////////////// Modal supervision ///////////////////////// */
+
+.input-supervisor{
+  margin: 0px -5vh 0px 1.5vh;
+  width: 51vh;
+  height: 6vh;
+  border-radius: 25px;
+  border-color: #E4E4E4;
+  outline-style: none;
+}
+
+.input-supervisor::placeholder{
+  font-size:2vh;
+}
+
+.card-supervisores{
+  border-radius: 10px;
+
+}
+
+.contenedor-supervisor{
+  color: #9B9898;
+  font-size: 2.7vh;
+}
+
+.contenedor-supervisores{
+  height: 58vh;
+}
+
+@media (max-width: 769px){         /*IPAD*/
+
+  .contenedor-mantenimiento{
+    color: #9B9898;
+    font-size: 2vh;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 767px){     /*  TELEFONO */
+
+  .contenedor-supervisores{
+    height: 54vh;
+    width: 45vh;
+  }
+
+  .supervisor-box-list{
+    width: 39vh;
+  }
+
+}
+
+
+/* //////////////////// Modal Liberar habitacion ///////////////////////// */
+
+.contenedor-liberar{
+  width: 55vh
+}
+
+.details-textarea-liberar{
+  width: 46vh;
+}
+
+@media (max-width: 769px){         /*IPAD*/
+
+}
+
+@media (max-width: 767px){     /*  TELEFONO */
+
+  .contenedor-liberar{
+    width: 50vh
+  }
+
+  .liberacion-box-list {
+    font-size: 2.3vh;
+    width: 45vh;
+    height: 5vh;
+    box-shadow: 0px 0px 0px;
+    /* border-radius: 6px; */
+    background-color: white;
+    color: #A19C9C;
+    padding: 12px;
+    cursor: pointer;
+    justify-content: left;
+    align-content: left;
+    /* display: flex; */
+    }
+
+    .details-textarea-liberar{
+      width: 40vh;
+    }
+
+}
+
+/**************************Revision Cortes**************************/
+
+.titulo-revison-cortes{
+  font-size: 3.5vh;
+  color: #9b9898;
+}
+
+.modal-incidencias-turno{
+  width: 180vh;
+}

@@ -1,0 +1,31 @@
+
+                  <div class="accordion" *ngIf="data.tipo" id="accordion-corte-{{ data.tipo+idCorte }}">
+                    <div class="card">
+                      <div class="card-header" id="heading-corte-{{ data.tipo+idCorte }}">
+                        <h5>
+                          <button class="btn btn-link d-flex justify-content-between w-100 collapsed" #botonCollapse type="button" data-toggle="collapse" attr.data-target="#collapse-{{ data.tipo+idCorte }}" aria-expanded="false" aria-controls="collapseOne">
+                            <p>{{ data.concepto }}</p>
+                            <p>
+                              {{ data.valor | currency:'':'$' }}
+                              <i  [class.fa-arrow-up]="!botonCollapse.classList.contains('collapsed')"
+                                  [class.fa-arrow-down]="botonCollapse.classList.contains('collapsed')"
+                                  class="fa"></i>
+                            </p>
+                          </button>
+                        </h5>
+                      </div>
+
+                      <div id="collapse-{{ data.tipo+idCorte }}" class="collapse" attr.aria-labelledby="heading-corte-{{ data.tipo+idCorte }}" attr.data-parent="#accordion-corte-{{ data.tipo+idCorte }}">
+                        <div class="card-body">
+
+                          <ul class="list-group" *ngFor="let item of data.conceptos">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              {{ item.concepto }}
+                              <b>{{ item.valor | currency:'':'$' }}</b>
+                            </li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div><!-- card-accordion -->
+                  </div><!-- accordion -->
